@@ -79,11 +79,13 @@ def get_events(headers, league, n_season, n_round):
                     temp.append(event_minute)
 
                 # Event Type Information
-                if event_type == 'icon-tor-formation': temp.append(0) # Normal Goal
-                elif event_type == 'icon-elfmeter-formation': temp.append(1) # Penalty Goal
-                elif event_type == 'icon-eigentor-formation': temp.append(2) # Own Goal
-                elif event_type == 'icon-verschossener-elfmeter-formation': temp.append(-2) # Penalty Missed
-                else: temp.append(-1) # Red Cards
+                if event_type == 'icon-tor-formation': temp.append(1) # Normal Goal
+                elif event_type == 'icon-elfmeter-formation': temp.append(2) # Penalty Goal
+                elif event_type == 'icon-eigentor-formation': temp.append(3) # Own Goal
+                elif event_type == 'icon-verschossener-elfmeter-formation': temp.append(-1) # Penalty Missed
+                elif event_type == 'icon-rotekarte-formation': temp.append(-2) # Red Card
+                elif event_type == 'icon-gelbrotekarte-formation': temp.append(-3) # second yellow
+                else: temp.append(0) # Exceptions
 
                 # Player wich made the action
                 player = row.find('a').get('title')
