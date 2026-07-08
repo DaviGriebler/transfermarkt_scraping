@@ -12,7 +12,7 @@ def get_events(headers, league, n_season, n_round):
         season_id = f'PL-{n_season}'
         
         # Inicializing Beautiful Soup
-        url = f'https://www.transfermarkt.com.br/{league}/spieltag/wettbewerb/GB1/saison_id/{n_season}/spieltag/{n_round}'
+        url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/GB1/saison_id/{n_season}/spieltag/{n_round}'
         response = requests.get(url, headers=headers)
         response.status_code
         soup = BeautifulSoup(response.content, "lxml")
@@ -104,7 +104,7 @@ def get_match(headers, league, n_season, n_round):
     all_rounds = []
     n_match = 0
 
-    url = f'https://www.transfermarkt.com.br/{league}/spieltag/wettbewerb/GB1/saison_id/{n_season}/spieltag/{n_round}'
+    url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/GB1/saison_id/{n_season}/spieltag/{n_round}'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
     
@@ -180,7 +180,7 @@ def get_match(headers, league, n_season, n_round):
 def get_placements(headers, league, n_season, n_round):
     round_classification = []
     
-    url = f'https://www.transfermarkt.com.br/{league}/spieltagtabelle/wettbewerb/GB1/saison_id/{n_season}/spieltag/{n_round}'
+    url = f'https://www.transfermarkt.com/{league}/spieltagtabelle/wettbewerb/GB1/saison_id/{n_season}/spieltag/{n_round}'
     response = requests.get(url,headers=headers)
     soup = BeautifulSoup(response.content,'lxml')
 
@@ -219,7 +219,7 @@ def get_placements(headers, league, n_season, n_round):
 def get_squad(headers, league, n_season):
     value = []
 
-    url = f'https://www.transfermarkt.com.br/{league}/startseite/wettbewerb/GB1/plus/?saison_id={n_season}'
+    url = f'https://www.transfermarkt.com/{league}/startseite/wettbewerb/GB1/plus/?saison_id={n_season}'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
 
@@ -261,7 +261,7 @@ def get_squad(headers, league, n_season):
 def get_title(headers, league):
     titles = []
 
-    url = f'https://www.transfermarkt.com.br/{league}/erfolge/wettbewerb/GB1'
+    url = f'https://www.transfermarkt.com/{league}/erfolge/wettbewerb/GB1'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
 
@@ -298,7 +298,7 @@ def get_title(headers, league):
 def get_table(headers, league, n_season):
     final_placement = []
 
-    url = f'https://www.transfermarkt.com.br/{league}/tabelle/wettbewerb/GB1/saison_id/{n_season}'
+    url = f'https://www.transfermarkt.com/{league}/tabelle/wettbewerb/GB1/saison_id/{n_season}'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
 
