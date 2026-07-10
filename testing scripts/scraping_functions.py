@@ -396,7 +396,7 @@ def get_top_scorers(headers, league, n_season):
                 
                 # Creating the season key
                 league_season_key = url.split('/')
-                season_key = f'{league_season_key[-7]}-{n_season}'
+                season_key = f'{league_season_key[-9]}-{n_season}'
 
                 # Gathering all the information for one player
                 temp.append(season_key)
