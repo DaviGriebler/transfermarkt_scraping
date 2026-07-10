@@ -231,7 +231,8 @@ def get_squad(headers, league, n_season):
 
     info = odd_info + even_info
 
-    season_key = f'PL-{n_season}'
+    league_season_key = url.split('/')
+    season_key = f'{league_season_key[-3]}-{n_season}'
 
     for row in info:
         temp = []
@@ -242,6 +243,13 @@ def get_squad(headers, league, n_season):
         
         if row.find_all('a')[2].get('href') == '#': team_value = row.find_all('a')[-1].string
         else: team_value = row.find_all('a')[3].string
+
+        if team_value[-1] == 'm': 
+            team_value = team_value[1:-1]+'0.000'
+            team_value = float(team_value.replace(".", ""))
+        elif team_value[-1] == 'n': 
+            team_value = team_value[1:-2]+'0.000.000'
+            team_value = float(team_value.replace(".", ""))
 
         temp.append(team_name)
         temp.append(team_value)
@@ -327,3 +335,83 @@ def get_table(headers, league, n_season):
 
     final_placement.insert(0,['season_id', 'pos','team_name','played','wins','draws','losses','goals','goal_dif','points'])
     return final_placement
+
+# ------------------------------------------------------------------
+# get_top_scorers() function
+# ------------------------------------------------------------------
+def get_top_scorers(headers, league, n_season):
+    top_scorers = []
+
+    url = f'https://www.transfermarkt.com/{league}/torschuetzenliste/wettbewerb/GB1/saison_id/{n_season}/altersklasse/alle/detailpos//page/1'
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content,'lxml')
+
+    # --------------------------------------------------
+    # Finding the last page
+    # --------------------------------------------------
+    pages_info = soup.find_all('div', {'class':'pager'})
+    last_page_link = pages_info[0].find_all('li',{'class':'tm-pagination__list-item tm-pagination__list-item--icon-last-page'})
+    last_page_number = last_page_link[0].find('a').get('href').split('/')[-1]
+
+
+    # --------------------------------------------------
+    # Getting information
+    # --------------------------------------------------
+    for n_page in range(1,int(last_page_number)+1):
+        url = f'https://www.transfermarkt.com/{league}/torschuetzenliste/wettbewerb/GB1/saison_id/{n_season}/altersklasse/alle/detailpos//page/{n_page}'
+        response = requests.get(url, headers=headers)
+        soup = BeautifulSoup(response.content,'lxml')
+        
+        # --------------------------------------------------
+        # Extrating only the usefull information in the transfermarkt source page
+        # --------------------------------------------------
+        all_info = soup.find_all('table')
+        # Transfermarkt separates information by index (odd, even)
+        odd_info = all_info[1].find_all('tr',{'class':'odd'})
+        even_info = all_info[1].find_all('tr',{'class':'even'})
+
+        player_list = [odd_info,even_info]
+
+        for player in player_list:
+            for row in player:
+                temp = []
+
+                # --------------------------------------------------
+                # Extracting data information
+                # --------------------------------------------------
+                # Creating a list containing only the main data points
+                data = row.find_all('td',{'class':'zentriert'})
+
+                # Extracting all relevant data and storing in different variables, mainly for better understanding
+                pos = int(data[0].string)
+                country = data[1].find('img').get('alt')
+                age = int(data[2].string)
+                name = data[4].find('a').get('title')
+                matches = int(data[4].find('a').string)
+                goals = int(data[5].find('a').string)
+
+                # Some players scored for more than one club, that behaves differently in the transfermarkt source page
+                try:team = data[3].find('a').get('title')
+                except AttributeError: team = data[3].string
+                
+                # Creating the season key
+                league_season_key = url.split('/')
+                season_key = f'{league_season_key[-7]}-{n_season}'
+
+                # Gathering all the information for one player
+                temp.append(season_key)
+                temp.append(pos)
+                temp.append(country)
+                temp.append(age)
+                temp.append(name)
+                temp.append(team)
+                temp.append(matches)
+                temp.append(goals)
+
+                # Appending the payer information in the main list
+                top_scorers.append(temp)
+    
+    # Informing the headers of the list created
+    head = (['season_id','pos','country','age','player_name','team','matches','goals'])
+    top_scorers.insert(0,head)
+    return top_scorers
