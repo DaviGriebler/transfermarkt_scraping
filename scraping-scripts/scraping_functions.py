@@ -18,7 +18,7 @@ all_leagues = {
 # ------------------------------------------------------------------
 def get_events(headers, league, n_season, n_round):
         # Variables Needed
-        goals_list = []
+        events_list = []
         count_event = 0
         n_match = 0
         season_id = f'{all_leagues[league]}-{n_season}'
@@ -26,12 +26,10 @@ def get_events(headers, league, n_season, n_round):
         # Inicializing Beautiful Soup
         url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
         response = requests.get(url, headers=headers)
-        response.status_code
         soup = BeautifulSoup(response.content, "lxml")
 
         # Storing all match related data in a single list
         all_matches = soup.find_all('table', {'style':'border-top: 0 !important;'})
-        
         
         for match in all_matches:
             # Creating match identifier
@@ -104,10 +102,10 @@ def get_events(headers, league, n_season, n_round):
                 temp.append(player)    
 
                 # Inserting all events related to the match into the list
-                goals_list.append(temp)
+                events_list.append(temp)
 
-        goals_list.insert(0,['season_id', 'match_id', 'event_id','event_team','event_minute','event_type', 'event_player'])
-        return goals_list
+        events_list.insert(0,['season_id', 'match_id', 'event_id','event_team','event_minute','event_type', 'event_player'])
+        return events_list
 
 # ------------------------------------------------------------------
 # get_match() function
@@ -190,7 +188,7 @@ def get_match(headers, league, n_season, n_round):
 # get_placements() function
 # ------------------------------------------------------------------
 def get_placements(headers, league, n_season, n_round):
-    round_classification = []
+    all_placements = []
     
     url = f'https://www.transfermarkt.com/{league}/spieltagtabelle/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
     response = requests.get(url,headers=headers)
@@ -204,32 +202,30 @@ def get_placements(headers, league, n_season, n_round):
 
         season_key = f'{all_leagues[league]}-{n_season}'
         round_key = f'R-{n_season}-{n_round:02d}'
+        placement = i+1
+        team = row.find('a').get('title')
         
         temp.append(season_key)
         temp.append(round_key)
-
-        placement = i+1
-        team = row.find('a').get('title')
-
         temp.append(placement)
         temp.append(team)
 
-        adicional_info = row.find_all('td', {'class':'zentriert'})
-
-        for i, item in enumerate(adicional_info):
+        # Extracting: 'matches','wins','draws','losses','goals','goal_dif','points'
+        team_info = row.find_all('td', {'class':'zentriert'})
+        for i, item in enumerate(team_info):
             if i == 0: continue
             temp.append(item.string)
 
-        round_classification.append(temp)
+        all_placements.append(temp)
 
-    round_classification.insert(0,['season_id','round_id','placement','team_name','matches','wins','draws','losses','goals','goal_dif','points'])
-    return round_classification
+    all_placements.insert(0,['season_id','round_id','placement','team_name','matches','wins','draws','losses','goals','goal_dif','points'])
+    return all_placements
 
 # ------------------------------------------------------------------
 # get_squad() function
 # ------------------------------------------------------------------
 def get_squad(headers, league, n_season):
-    value = []
+    all_squads = []
 
     url = f'https://www.transfermarkt.com/{league}/startseite/wettbewerb/{all_leagues[league]}/plus/?saison_id={n_season}'
     response = requests.get(url, headers=headers)
@@ -269,10 +265,10 @@ def get_squad(headers, league, n_season):
         for i, item in enumerate(squad_info):
             if i != 0: temp.append(item.string)
 
-        value.append(temp)
+        all_squads.append(temp)
 
-    value.insert(0, ['season_id', 'team_name','team_value','team_squad','team_avg_age','team_foreigners'])
-    return value
+    all_squads.insert(0, ['season_id', 'team_name','team_value','team_squad','team_avg_age','team_foreigners'])
+    return all_squads
 
 # ------------------------------------------------------------------
 # get_title() function
