@@ -259,21 +259,60 @@ def get_match(headers, league, n_season, n_round):
 # get_placements() function
 # ------------------------------------------------------------------
 def get_placements(headers, league, n_season, n_round):
+    """
+    Scrape the league standings after a specific round.
+
+    The function accesses the Transfermarkt standings page for the
+    selected matchday and extracts each team's league position and
+    performance statistics, including matches played, wins, draws,
+    losses, goals, goal difference, and points.
+
+    Parameters
+    ----------
+    headers : dict
+        HTTP headers used in the request to Transfermarkt.
+
+    league : str
+        League name used in the Transfermarkt URL and as a key in the
+        all_leagues dictionary.
+
+    n_season : int
+        Starting year of the season.
+
+    n_round : int
+        Round number whose standings will be retrieved.
+
+    Returns
+    -------
+    list
+        A list containing the league standings. The first element
+        contains the column names, while the remaining elements contain
+        one record for each team.
+    """
+    # Initialize the output list
     all_placements = []
     
+    # Build the standings URL and parse the page
     url = f'https://www.transfermarkt.com/{league}/spieltagtabelle/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
     response = requests.get(url,headers=headers)
     soup = BeautifulSoup(response.content,'lxml')
 
+    # The third table body contains the league standings
     info = soup.find_all('tbody')
     table_info = info[2].find_all('tr')
 
+    # Process each team in the standings
     for i,row in enumerate(table_info):
         temp = []
 
+        # Create identifiers for the season and round
         season_key = f'{all_leagues[league]}-{n_season}'
         round_key = f'R-{n_season}-{n_round:02d}'
+
+        # League position corresponds to the row order
         placement = i+1
+
+        # Extract the team name
         team = row.find('a').get('title')
         
         temp.append(season_key)
@@ -281,14 +320,19 @@ def get_placements(headers, league, n_season, n_round):
         temp.append(placement)
         temp.append(team)
 
-        # Extracting: 'matches','wins','draws','losses','goals','goal_dif','points'
+        # Extract the team's statistics:
+        # matches, wins, draws, losses, goals,
+        # goal difference, and points
         team_info = row.find_all('td', {'class':'zentriert'})
         for i, item in enumerate(team_info):
+            # Skip the first centered cell since it does not contain one of the desired statistics
             if i == 0: continue
             temp.append(item.string)
 
+        # Store the completed standings record
         all_placements.append(temp)
 
+    # Add the column names as the first row
     all_placements.insert(0,['season_id','round_id','placement','team_name','matches','wins','draws','losses','goals','goal_dif','points'])
     return all_placements
 
