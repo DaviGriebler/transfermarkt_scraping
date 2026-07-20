@@ -141,24 +141,55 @@ def get_events(headers, league, n_season, n_round):
     events_list.insert(0,['season_id', 'match_id', 'event_id','event_team','event_minute','event_type', 'event_player'])
     return events_list
 
-# ------------------------------------------------------------------
-# get_match() function
-# ------------------------------------------------------------------
 def get_match(headers, league, n_season, n_round):
+    """
+    Scrape all matches from a specific league round.
+
+    The function accesses the Transfermarkt matchday page and extracts
+    general information for every match, including the participating
+    teams, final score, match date, referee, and attendance.
+
+    Parameters
+    ----------
+    headers : dict
+        HTTP headers used in the request to Transfermarkt.
+
+    league : str
+        League name used in the Transfermarkt URL and as a key in the
+        all_leagues dictionary.
+
+    n_season : int
+        Starting year of the season.
+
+    n_round : int
+        Round number to be scraped.
+
+    Returns
+    -------
+    list
+        A list containing one record per match. The first element
+        contains the column names, while the remaining elements contain
+        the extracted match data.
+    """
+    # Initialize the output list and match counter
     all_rounds = []
     n_match = 0
 
+    # Build the matchday URL and parse the page content
     url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
     
+    # Locate all tables containing match information
     all_information = soup.find_all('table', {'style':'border-top: 0 !important;'})
 
-    # Gathering Useful Information
+    # Process each match individually
     for row in all_information:
+        # Start a new record and a sequential identifier for the current match
         temp = []
         n_match += 1
 
+        # Create unique identifiers for the season, round, and match
         season_key = f'{all_leagues[league]}-{n_season}'
         match_key = f'M-{n_season}-{n_round:02d}-{n_match:03d}'
 
@@ -169,15 +200,15 @@ def get_match(headers, league, n_season, n_round):
         temp.append(round_key)
         temp.append(match_key)
 
-        # List with the entire class necesaire to get the home and away team's names
+        # Locate the HTML elements containing the home and away team names
         gross_home_team = row.find('td', {'class':'rechts hauptlink no-border-rechts hide-for-small spieltagsansicht-vereinsname'})
         gross_away_team = row.find('td', {'class':'hauptlink zentriert no-border-rechts no-border-links hide-for-small spieltagsansicht-wappen'})
 
-        # Checking for a possible forum buttom
+        # Check whether an additional forum link appears before the team link
         home_forum_check = gross_home_team.find('a').get('href')
         away_forum_check = gross_away_team.find('a').get('href')
 
-        # Different ways to get the title depending if it has the forum buttom
+        # Extract team names while accounting for optional forum links
         if 'forum' in home_forum_check and 'forum' in away_forum_check:
             home_team = gross_home_team.find_all('a')[1].get('title')
             away_team = gross_away_team.find_all('a')[1].get('title')
@@ -191,30 +222,36 @@ def get_match(headers, league, n_season, n_round):
             home_team = gross_home_team.find('a').get('title')
             away_team = gross_away_team.find('a').get('title')
 
-        # Getting the final score
+        # Extract the final score of the match
         final_score = row.find('span', {'class':'matchresult finished'}).string
 
-        # Appending data from a single match together
+        # Store the main match information
         temp.append(home_team)
         temp.append(final_score)
         temp.append(away_team)
 
-        # Storing adicional info separately, easier to extract right information
+        # Additional match information is stored in separate table cells
         adicional_info = row.find_all('td', {'class':'zentriert no-border'})
 
+        # Extract the date, referee, and attendance
         for i, item in enumerate(adicional_info):
+            # Attendance requires different handling because it may contain extra text besides the numeric value
             if i == 2:
                 text = item.get_text(" ", strip=True)
                 try: 
                     attendance = text.split()[0]
                     temp.append(attendance)
                 except: temp.append(text)
+            
+            # Date and referee are stored as hyperlink text
             else:
                 day_ref = item.find('a').string
                 temp.append(day_ref.strip())
 
+        # Store the completed match record
         all_rounds.append(temp)
 
+    # Add the column names as the first row
     all_rounds.insert(0,['season_id','round_id', 'match_id', 'home_team', 'final_score', 'away_team', 'date', 'referee', 'attendance'])
     return all_rounds
 
