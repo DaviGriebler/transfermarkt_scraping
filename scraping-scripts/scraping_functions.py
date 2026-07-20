@@ -14,98 +14,132 @@ all_leagues = {
 }
 
 # ------------------------------------------------------------------
-# get_events() function
+# All available scraping functions
 # ------------------------------------------------------------------
 def get_events(headers, league, n_season, n_round):
-        # Variables Needed
-        events_list = []
-        count_event = 0
-        n_match = 0
-        season_id = f'{all_leagues[league]}-{n_season}'
-        
-        # Inicializing Beautiful Soup
-        url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
-        response = requests.get(url, headers=headers)
-        soup = BeautifulSoup(response.content, "lxml")
+    """
+    Scrape match events from a specific league, season, and round.
 
-        # Storing all match related data in a single list
-        all_matches = soup.find_all('table', {'style':'border-top: 0 !important;'})
+    The function accesses the Transfermarkt matchday page and extracts
+    events such as goals, penalties, own goals, missed penalties, and
+    red cards. Each event is associated with its season, match, team,
+    minute, type, and player.
+
+    Parameters
+    ----------
+    headers : dict
+        HTTP headers used in the request to Transfermarkt.
+
+    league : str
+        League name used in the Transfermarkt URL and as a key in the
+        all_leagues dictionary.
+
+    n_season : int
+        Starting year of the season.
+
+    n_round : int
+        Round number to be scraped.
+
+    Returns
+    -------
+    list
+        A list containing the event records. The first element contains
+        the column names, while the remaining elements contain the
+        extracted event data.
+    """
+    # Initialize the output list and identifier counters
+    events_list = []
+    count_event = 0
+    n_match = 0
+
+    # Create a unique identifier for the selected league and season
+    season_id = f'{all_leagues[league]}-{n_season}'
+    
+    # Build the matchday URL and parse the page content
+    url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, "lxml")
+
+    # Find all tables containing individual match information
+    all_matches = soup.find_all('table', {'style':'border-top: 0 !important;'})
+    
+    # Process each match found on the page
+    for match in all_matches:
+        # Create a sequential identifier for the current match
+        n_match += 1
+        match_id = f'M-{n_season}-{n_round:02d}-{n_match:02d}'
         
-        for match in all_matches:
-            # Creating match identifier
-            n_match += 1
-            match_id = f'M-{n_season}-{n_round:02d}-{n_match:02d}'
+        # Find all event rows associated with the current match
+        event = match.find_all('tr', {'class':'no-border spieltagsansicht-aktionen'})
+
+        # Locate the HTML containers holding the home and away team names
+        gross_h_team = match.find('td', {'class':'rechts hauptlink no-border-rechts hide-for-small spieltagsansicht-vereinsname'})
+        gross_a_team = match.find('td', {'class':'hauptlink zentriert no-border-rechts no-border-links hide-for-small spieltagsansicht-wappen'})
+
+        # Check whether an additional forum link appears before the team link
+        home_forum_check = gross_h_team.find('a').get('href')
+        away_forum_check = gross_a_team.find('a').get('href')
+
+        # Extract team names while accounting for optional forum links
+        if 'forum' in home_forum_check and 'forum' in away_forum_check:
+            h_team = gross_h_team.find_all('a')[1].get('title')
+            a_team = gross_a_team.find_all('a')[1].get('title')
+        elif 'forum' in home_forum_check:
+            h_team = gross_h_team.find_all('a')[1].get('title')
+            a_team = gross_a_team.find('a').get('title')
+        elif 'forum' in away_forum_check:
+            h_team = gross_h_team.find('a').get('title')
+            a_team = gross_a_team.find_all('a')[1].get('title')
+        else:
+            h_team = gross_h_team.find('a').get('title')
+            a_team = gross_a_team.find('a').get('title')
+
+        # Process each event recorded for the current match
+        for row in event:
+            # Start a new record with its season and match identifiers
+            temp = []
+            temp.append(season_id)
+            temp.append(match_id)
+
+            # Create a unique sequential identifier for the event
+            count_event += 1
+            event_id = f"E-{n_season}-{n_round:02d}-{count_event:04d}"
+            temp.append(event_id)
+
+            # Transfermarkt separates home and away team events
+            try: 
+                # Extract event information from the home-team side
+                event_type = row.find('td', {'class':'rechts no-border-rechts spieltagsansicht'}).find_all('span')[2].get('class')[1]
+                event_minute = row.find('td', {'class':'zentriert no-border-links'}).string
+                temp.append(h_team)
+                temp.append(event_minute)
             
-            # Storing all events data in a single list
-            event = match.find_all('tr', {'class':'no-border spieltagsansicht-aktionen'})
+            except: 
+                # Extract event information from the away-team side
+                event_type = row.find('td', {'class':'links no-border-links spieltagsansicht'}).find('span').get('class')[1]
+                event_minute = row.find('td', {'class':'zentriert no-border-rechts'}).string
+                temp.append(a_team)
+                temp.append(event_minute)
 
-            # List with the entire class necessary to get the home and away team's names
-            gross_h_team = match.find('td', {'class':'rechts hauptlink no-border-rechts hide-for-small spieltagsansicht-vereinsname'})
-            gross_a_team = match.find('td', {'class':'hauptlink zentriert no-border-rechts no-border-links hide-for-small spieltagsansicht-wappen'})
+            # Convert Transfermarkt event icons into numeric event codes
+            if event_type == 'icon-tor-formation': temp.append(1) # Regular goal
+            elif event_type == 'icon-elfmeter-formation': temp.append(2) # Penalty Goal
+            elif event_type == 'icon-eigentor-formation': temp.append(3) # Own Goal
+            elif event_type == 'icon-verschossener-elfmeter-formation': temp.append(-1) # Missed penalty
+            elif event_type == 'icon-rotekarte-formation': temp.append(-2) # # Direct red card
+            elif event_type == 'icon-gelbrotekarte-formation': temp.append(-3) # Second yellow card
+            else: temp.append(0) # Unmapped or exceptional event
 
-            # Checking for a possible forum buttom
-            home_forum_check = gross_h_team.find('a').get('href')
-            away_forum_check = gross_a_team.find('a').get('href')
+            # Extract the player responsible for the event
+            player = row.find('a').get('title')
+            temp.append(player)    
 
-            # Different ways to get the title depending if it has the forum buttom
-            if 'forum' in home_forum_check and 'forum' in away_forum_check:
-                h_team = gross_h_team.find_all('a')[1].get('title')
-                a_team = gross_a_team.find_all('a')[1].get('title')
-            elif 'forum' in home_forum_check:
-                h_team = gross_h_team.find_all('a')[1].get('title')
-                a_team = gross_a_team.find('a').get('title')
-            elif 'forum' in away_forum_check:
-                h_team = gross_h_team.find('a').get('title')
-                a_team = gross_a_team.find_all('a')[1].get('title')
-            else:
-                h_team = gross_h_team.find('a').get('title')
-                a_team = gross_a_team.find('a').get('title')
+            # Add the completed event record to the output list
+            events_list.append(temp)
 
-            # Access one by one all match related events
-            for row in event:
-                # Temporary list to store events of a single match
-                temp = []
-                temp.append(season_id)
-                temp.append(match_id)
-
-                # Creating event identifier
-                count_event += 1
-                event_id = f"E-{n_season}-{n_round:02d}-{count_event:04d}"
-                temp.append(event_id)
-
-                # Transfermarkt separates home and away team events
-                # Home Team Events
-                try: 
-                    event_type = row.find('td', {'class':'rechts no-border-rechts spieltagsansicht'}).find_all('span')[2].get('class')[1]
-                    event_minute = row.find('td', {'class':'zentriert no-border-links'}).string
-                    temp.append(h_team)
-                    temp.append(event_minute)
-                
-                # Away Team Events
-                except: 
-                    event_type = row.find('td', {'class':'links no-border-links spieltagsansicht'}).find('span').get('class')[1]
-                    event_minute = row.find('td', {'class':'zentriert no-border-rechts'}).string
-                    temp.append(a_team)
-                    temp.append(event_minute)
-
-                # Event Type Information
-                if event_type == 'icon-tor-formation': temp.append(1) # Normal Goal
-                elif event_type == 'icon-elfmeter-formation': temp.append(2) # Penalty Goal
-                elif event_type == 'icon-eigentor-formation': temp.append(3) # Own Goal
-                elif event_type == 'icon-verschossener-elfmeter-formation': temp.append(-1) # Penalty Missed
-                elif event_type == 'icon-rotekarte-formation': temp.append(-2) # Red Card
-                elif event_type == 'icon-gelbrotekarte-formation': temp.append(-3) # second yellow
-                else: temp.append(0) # Exceptions
-
-                # Player wich made the action
-                player = row.find('a').get('title')
-                temp.append(player)    
-
-                # Inserting all events related to the match into the list
-                events_list.append(temp)
-
-        events_list.insert(0,['season_id', 'match_id', 'event_id','event_team','event_minute','event_type', 'event_player'])
-        return events_list
+    # Add column names as the first row of the returned dataset
+    events_list.insert(0,['season_id', 'match_id', 'event_id','event_team','event_minute','event_type', 'event_player'])
+    return events_list
 
 # ------------------------------------------------------------------
 # get_match() function
