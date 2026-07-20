@@ -255,9 +255,6 @@ def get_match(headers, league, n_season, n_round):
     all_rounds.insert(0,['season_id','round_id', 'match_id', 'home_team', 'final_score', 'away_team', 'date', 'referee', 'attendance'])
     return all_rounds
 
-# ------------------------------------------------------------------
-# get_placements() function
-# ------------------------------------------------------------------
 def get_placements(headers, league, n_season, n_round):
     """
     Scrape the league standings after a specific round.
@@ -336,36 +333,74 @@ def get_placements(headers, league, n_season, n_round):
     all_placements.insert(0,['season_id','round_id','placement','team_name','matches','wins','draws','losses','goals','goal_dif','points'])
     return all_placements
 
-# ------------------------------------------------------------------
-# get_squad() function
-# ------------------------------------------------------------------
 def get_squad(headers, league, n_season):
+    """
+    Scrape squad information for every team in a league season.
+
+    The function accesses the Transfermarkt league overview page and
+    extracts general squad information for each club, including the
+    estimated market value, squad size, average age, and number of
+    foreign players.
+
+    Market values are converted from Transfermarkt's abbreviated format
+    (e.g., €1.25m or €1.25bn) into numeric values.
+
+    Parameters
+    ----------
+    headers : dict
+        HTTP headers used in the request to Transfermarkt.
+
+    league : str
+        League name used in the Transfermarkt URL and as a key in the
+        all_leagues dictionary.
+
+    n_season : int
+        Starting year of the season.
+
+    Returns
+    -------
+    list
+        A list containing one record for each team. The first element
+        contains the column names, while the remaining elements contain
+        the extracted squad information.
+    """
+    # Initialize the output list
     all_squads = []
 
+    # Build the league overview URL and parse the page
     url = f'https://www.transfermarkt.com/{league}/startseite/wettbewerb/{all_leagues[league]}/plus/?saison_id={n_season}'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
 
+    # The first table contains the league overview
     tables = soup.find_all('table', {'class':'items'})
     main_table = tables[0]
 
+    # Team rows are split between "odd" and "even" classes
     even_info = main_table.find_all('tr', {'class':'even'})
     odd_info = main_table.find_all('tr', {'class':'odd'})
 
+    # Combine all rows into a single iterable
     info = odd_info + even_info
 
+    # Create the season identifier
     season_key = f'{all_leagues[league]}-{n_season}'
 
+    # Process each team
     for row in info:
         temp = []
-
         temp.append(season_key)
 
+        # Extract the team name
         team_name = row.find('a').get('title')
         
+        # The position of the market value link changes depending on whether an additional hidden link is present
         if row.find_all('a')[2].get('href') == '#': team_value = row.find_all('a')[-1].string
         else: team_value = row.find_all('a')[3].string
 
+        # Convert Transfermarkt abbreviations into numeric values
+        # 'm' -> millions (e.g., €1.25m)
+        # 'n' -> billions (e.g., €1.25bn)
         if team_value[-1] == 'm': 
             team_value = team_value[1:-1]+'0.000'
             team_value = float(team_value.replace(".", ""))
@@ -376,12 +411,17 @@ def get_squad(headers, league, n_season):
         temp.append(team_name)
         temp.append(team_value)
 
+        # Extract additional squad statistics:
+        # squad size, average age, and number of foreign players
         squad_info = row.find_all('td', {'class':'zentriert'})
         for i, item in enumerate(squad_info):
+            # Skip the first centered cell since it is not required
             if i != 0: temp.append(item.string)
 
+        # Store the completed team record
         all_squads.append(temp)
 
+    # Add the column names as the first row
     all_squads.insert(0, ['season_id', 'team_name','team_value','team_squad','team_avg_age','team_foreigners'])
     return all_squads
 
