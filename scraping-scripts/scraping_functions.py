@@ -574,49 +574,72 @@ def get_table(headers, league, n_season):
 # get_top_scorers() function
 # ------------------------------------------------------------------
 def get_top_scorers(headers, league, n_season):
+    """
+    Scrape the top scorers ranking for a specific league season.
+
+    The function accesses the Transfermarkt top scorers page and
+    extracts every player's ranking, nationality, age, club, matches
+    played, and goals scored. Since the ranking spans multiple pages,
+    the function first determines the total number of pages and then
+    iterates through each one.
+
+    Parameters
+    ----------
+    headers : dict
+        HTTP headers used in the request to Transfermarkt.
+
+    league : str
+        League name used in the Transfermarkt URL and as a key in the
+        all_leagues dictionary.
+
+    n_season : int
+        Starting year of the season.
+
+    Returns
+    -------
+    list
+        A list containing one record per player. The first element
+        contains the column names, while the remaining elements contain
+        the extracted top scorer information.
+    """
+    # Initialize the output list
     top_scorers = []
 
+    # Access the first page of the top scorers ranking
     url = f'https://www.transfermarkt.com/{league}/torschuetzenliste/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/altersklasse/alle/detailpos//page/1'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content,'lxml')
 
-    # --------------------------------------------------
-    # Finding the last page
-    # --------------------------------------------------
+    # Determine the total number of ranking pages
     pages_info = soup.find_all('div', {'class':'pager'})
     last_page_link = pages_info[0].find_all('li',{'class':'tm-pagination__list-item tm-pagination__list-item--icon-last-page'})
     last_page_number = last_page_link[0].find('a').get('href').split('/')[-1]
 
 
-    # --------------------------------------------------
-    # Getting information
-    # --------------------------------------------------
+    # Process every page of the ranking
     for n_page in range(1,int(last_page_number)+1):
         url = f'https://www.transfermarkt.com/{league}/torschuetzenliste/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/altersklasse/alle/detailpos//page/{n_page}'
         response = requests.get(url, headers=headers)
         soup = BeautifulSoup(response.content,'lxml')
         
-        # --------------------------------------------------
-        # Extrating only the usefull information in the transfermarkt source page
-        # --------------------------------------------------
+        # The second table contains the player rankings
         all_info = soup.find_all('table')
-        # Transfermarkt separates information by index (odd, even)
+
+        # Transfermarkt separates rows into "odd" and "even" classes
         odd_info = all_info[1].find_all('tr',{'class':'odd'})
         even_info = all_info[1].find_all('tr',{'class':'even'})
 
         player_list = [odd_info,even_info]
 
+        # Process every player on the current page
         for player in player_list:
             for row in player:
                 temp = []
 
-                # --------------------------------------------------
-                # Extracting data information
-                # --------------------------------------------------
-                # Creating a list containing only the main data points
+                # Extract the centered table cells containing the player's ranking statistics
                 data = row.find_all('td',{'class':'zentriert'})
 
-                # Extracting all relevant data and storing in different variables, mainly for better understanding
+                # Extract the relevant player information
                 pos = int(data[0].string)
                 country = data[1].find('img').get('alt')
                 age = int(data[2].string)
@@ -624,14 +647,14 @@ def get_top_scorers(headers, league, n_season):
                 matches = int(data[4].find('a').string)
                 goals = int(data[5].find('a').string)
 
-                # Some players scored for more than one club, that behaves differently in the transfermarkt source page
+                # Players who represented multiple clubs during the season have a different HTML structure
                 try:team = data[3].find('a').get('title')
                 except AttributeError: team = data[3].string
                 
-                # Creating the season key
+                # Create the season identifier
                 season_key = f'{all_leagues[league]}-{n_season}'
 
-                # Gathering all the information for one player
+                # Store the player's statistics
                 temp.append(season_key)
                 temp.append(pos)
                 temp.append(country)
@@ -641,10 +664,9 @@ def get_top_scorers(headers, league, n_season):
                 temp.append(matches)
                 temp.append(goals)
 
-                # Appending the payer information in the main list
+                # Add the completed player record to the output list
                 top_scorers.append(temp)
     
-    # Informing the headers of the list created
-    head = (['season_id','pos','country','age','player_name','team','matches','goals'])
-    top_scorers.insert(0,head)
+    # Add the column names as the first row
+    top_scorers.insert(0,['season_id','pos','country','age','player_name','team','matches','goals'])
     return top_scorers
