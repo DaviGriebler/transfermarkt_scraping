@@ -425,9 +425,6 @@ def get_squad(headers, league, n_season):
     all_squads.insert(0, ['season_id', 'team_name','team_value','team_squad','team_avg_age','team_foreigners'])
     return all_squads
 
-# ------------------------------------------------------------------
-# get_title() function
-# ------------------------------------------------------------------
 def get_title(headers, league):
     """
     Scrape league title winners by season.
@@ -501,39 +498,75 @@ def get_title(headers, league):
     titles.insert(0,['season_id', 'season_name','team_name', 'manager_name'])
     return titles
 
-# ------------------------------------------------------------------
-# get_table() function
-# ------------------------------------------------------------------
 def get_table(headers, league, n_season):
+    """
+    Scrape the final league table for a specific season.
+
+    The function accesses the Transfermarkt standings page and extracts
+    the final league position and season statistics for every team,
+    including matches played, wins, draws, losses, goals, goal
+    difference, and points.
+
+    Parameters
+    ----------
+    headers : dict
+        HTTP headers used in the request to Transfermarkt.
+
+    league : str
+        League name used in the Transfermarkt URL and as a key in the
+        all_leagues dictionary.
+
+    n_season : int
+        Starting year of the season.
+
+    Returns
+    -------
+    list
+        A list containing one record per team. The first element
+        contains the column names, while the remaining elements contain
+        the extracted final league table.
+    """
+    # Initialize the output list
     final_placement = []
 
+    # Build the final standings URL and parse the page
     url = f'https://www.transfermarkt.com/{league}/tabelle/wettbewerb/{all_leagues[league]}/saison_id/{n_season}'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
 
+    # The second table body contains the final league standings
     all_info = soup.find_all('tbody')
     info = all_info[1].find_all('tr')
 
+    # Create the season identifier
     season_key = f'{all_leagues[league]}-{n_season}'
 
+    # Process each team in the final league table
     for i,row in enumerate(info):
         temp = []
-
         temp.append(season_key)
 
+        # League position corresponds to the row order
         position = i+1
+        # Extract the team name
         team = row.find('a').get('title')
-        data_info = row.find_all('td', {'class':'zentriert'})
 
         temp.append(position)
         temp.append(team)
 
+        # Extract the team's season statistics:
+        # matches played, wins, draws, losses, goals, goal difference, and points
+        data_info = row.find_all('td', {'class':'zentriert'})
+
+        # Skip the first centered cell since it is not part of the desired statistics
         for i, item in enumerate(data_info):
             if i == 0: continue
             temp.append(item.string)
         
+        # Store the completed team record
         final_placement.append(temp)
 
+    # Add the column names as the first row
     final_placement.insert(0,['season_id', 'pos','team_name','played','wins','draws','losses','goals','goal_dif','points'])
     return final_placement
 
