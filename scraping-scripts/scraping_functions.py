@@ -343,7 +343,7 @@ def get_squad(headers, league, n_season):
     foreign players.
 
     Market values are converted from Transfermarkt's abbreviated format
-    (e.g., €1.25m or €1.25bn) into numeric values.
+    (e.g., €895.50m or €1.25bn) into numeric values.
 
     Parameters
     ----------
@@ -399,7 +399,7 @@ def get_squad(headers, league, n_season):
         else: team_value = row.find_all('a')[3].string
 
         # Convert Transfermarkt abbreviations into numeric values
-        # 'm' -> millions (e.g., €1.25m)
+        # 'm' -> millions (e.g., €895.50m)
         # 'n' -> billions (e.g., €1.25bn)
         if team_value[-1] == 'm': 
             team_value = team_value[1:-1]+'0.000'
@@ -429,36 +429,75 @@ def get_squad(headers, league, n_season):
 # get_title() function
 # ------------------------------------------------------------------
 def get_title(headers, league):
+    """
+    Scrape league title winners by season.
+
+    The function accesses the Transfermarkt honours page for a league
+    and extracts the champion club and its manager for every season.
+    The scraping stops at the 1991/92 season, which marks the beginning
+    of the current Premier League format.
+
+    Parameters
+    ----------
+    headers : dict
+        HTTP headers used in the request to Transfermarkt.
+
+    league : str
+        League name used in the Transfermarkt URL and as a key in the
+        all_leagues dictionary.
+
+    Returns
+    -------
+    list
+        A list containing one record per league title. The first
+        element contains the column names, while the remaining elements
+        contain the extracted title information.
+    """
+    # Initialize the output list
     titles = []
 
+    # Build the honours page URL and parse the page
     url = f'https://www.transfermarkt.com/{league}/erfolge/wettbewerb/{all_leagues[league]}'
     response = requests.get(url, headers=headers)
     soup = BeautifulSoup(response.content, "lxml")
 
+    # The first table body contains the list of league champions
     all_info = soup.find_all('tbody')
     info = all_info[0].find_all('tr')
 
+    # Process each championship-winning season
     for row in info:
         temp = []
 
+        # Extract the season label (e.g., "24/25")
         season = row.find('td', {'class':'zentriert'}).string
-        if season == '91/92': break # First season of the current format of the Premier League, maybe add a parameter to stop
+        # Stop at the first Premier League season of the current format
+        # (consider making this configurable for other leagues)
+        if season == '91/92': break
         
+        # Convert the abbreviated season into its starting year
         x = int(season.split('/')[0])
         if x > 90: n_season = x+1900
         else: n_season = x+2000
+
+        # Create the season identifier
         season_key = f'{all_leagues[league]}-{n_season}'
         
-        team_manager = row.find_all('a')
         temp.append(season_key)
         temp.append(season)
+
+        # Extract champions statistics:
+        # team name, manager name
+        team_manager = row.find_all('a')
 
         for i, item in enumerate(team_manager):
             if i == 0: continue
             temp.append(item.string)
         
+        # Store the completed title record
         titles.append(temp)
 
+    # Add the column names as the first row
     titles.insert(0,['season_id', 'season_name','team_name', 'manager_name'])
     return titles
 
