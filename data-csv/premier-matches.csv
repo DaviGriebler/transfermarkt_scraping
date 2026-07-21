@@ -1,0 +1,751 @@
+season_id,round_id,match_id,home_team,final_score,away_team,date,referee,attendance
+GB1-2024,R-2024-01,M-2024-01-001,Manchester United,1:0,Fulham FC,16/08/2024,Robert Jones,73.297
+GB1-2024,R-2024-01,M-2024-01-002,Ipswich Town,0:2,Liverpool FC,17/08/2024,Tim Robinson,30.014
+GB1-2024,R-2024-01,M-2024-01-003,Arsenal FC,2:0,Wolverhampton Wanderers,17/08/2024,Jarred Gillett,60.261
+GB1-2024,R-2024-01,M-2024-01-004,Everton FC,0:3,Brighton & Hove Albion,17/08/2024,Simon Hooper,39.571
+GB1-2024,R-2024-01,M-2024-01-005,Newcastle United,1:0,Southampton FC,17/08/2024,Craig Pawson,52.196
+GB1-2024,R-2024-01,M-2024-01-006,Nottingham Forest,1:1,AFC Bournemouth,17/08/2024,Michael Oliver,29.763
+GB1-2024,R-2024-01,M-2024-01-007,West Ham United,1:2,Aston Villa,17/08/2024,Tony Harrington,61.990
+GB1-2024,R-2024-01,M-2024-01-008,Brentford FC,2:1,Crystal Palace,18/08/2024,Samuel Barrott,16.988
+GB1-2024,R-2024-01,M-2024-01-009,Chelsea FC,0:2,Manchester City,18/08/2024,Anthony Taylor,39.818
+GB1-2024,R-2024-01,M-2024-01-010,Leicester City,1:1,Tottenham Hotspur,19/08/2024,Chris Kavanagh,31.977
+GB1-2024,R-2024-02,M-2024-02-001,Brighton & Hove Albion,2:1,Manchester United,24/08/2024,Craig Pawson,31.530
+GB1-2024,R-2024-02,M-2024-02-002,Crystal Palace,0:2,West Ham United,24/08/2024,Robert Jones,25.099
+GB1-2024,R-2024-02,M-2024-02-003,Fulham FC,2:1,Leicester City,24/08/2024,Darren Bond,25.401
+GB1-2024,R-2024-02,M-2024-02-004,Manchester City,4:1,Ipswich Town,24/08/2024,Sam Allison,55.017
+GB1-2024,R-2024-02,M-2024-02-005,Southampton FC,0:1,Nottingham Forest,24/08/2024,Samuel Barrott,31.150
+GB1-2024,R-2024-02,M-2024-02-006,Tottenham Hotspur,4:0,Everton FC,24/08/2024,Anthony Taylor,61.357
+GB1-2024,R-2024-02,M-2024-02-007,Aston Villa,0:2,Arsenal FC,24/08/2024,Michael Oliver,42.682
+GB1-2024,R-2024-02,M-2024-02-008,AFC Bournemouth,1:1,Newcastle United,25/08/2024,David Coote,11.161
+GB1-2024,R-2024-02,M-2024-02-009,Wolverhampton Wanderers,2:6,Chelsea FC,25/08/2024,Darren England,31.235
+GB1-2024,R-2024-02,M-2024-02-010,Liverpool FC,2:0,Brentford FC,25/08/2024,Stuart Attwell,60.725
+GB1-2024,R-2024-03,M-2024-03-001,Arsenal FC,1:1,Brighton & Hove Albion,31/08/2024,Chris Kavanagh,60.326
+GB1-2024,R-2024-03,M-2024-03-002,Brentford FC,3:1,Southampton FC,31/08/2024,Josh Smith,16.955
+GB1-2024,R-2024-03,M-2024-03-003,Everton FC,2:3,AFC Bournemouth,31/08/2024,Stuart Attwell,38.805
+GB1-2024,R-2024-03,M-2024-03-004,Ipswich Town,1:1,Fulham FC,31/08/2024,Lewis Smith,29.517
+GB1-2024,R-2024-03,M-2024-03-005,Leicester City,1:2,Aston Villa,31/08/2024,David Coote,31.725
+GB1-2024,R-2024-03,M-2024-03-006,Nottingham Forest,1:1,Wolverhampton Wanderers,31/08/2024,Simon Hooper,29.918
+GB1-2024,R-2024-03,M-2024-03-007,West Ham United,1:3,Manchester City,31/08/2024,Michael Oliver,62.500
+GB1-2024,R-2024-03,M-2024-03-008,Chelsea FC,1:1,Crystal Palace,01/09/2024,Jarred Gillett,40.853
+GB1-2024,R-2024-03,M-2024-03-009,Newcastle United,2:1,Tottenham Hotspur,01/09/2024,Robert Jones,52.211
+GB1-2024,R-2024-03,M-2024-03-010,Manchester United,0:3,Liverpool FC,01/09/2024,Anthony Taylor,73.738
+GB1-2024,R-2024-04,M-2024-04-001,Southampton FC,0:3,Manchester United,14/09/2024,Stuart Attwell,31.144
+GB1-2024,R-2024-04,M-2024-04-002,Brighton & Hove Albion,0:0,Ipswich Town,14/09/2024,Samuel Barrott,31.573
+GB1-2024,R-2024-04,M-2024-04-003,Crystal Palace,2:2,Leicester City,14/09/2024,Tony Harrington,26.047
+GB1-2024,R-2024-04,M-2024-04-004,Fulham FC,1:1,West Ham United,14/09/2024,Tim Robinson,26.528
+GB1-2024,R-2024-04,M-2024-04-005,Liverpool FC,0:1,Nottingham Forest,14/09/2024,Michael Oliver,60.725
+GB1-2024,R-2024-04,M-2024-04-006,Manchester City,2:1,Brentford FC,14/09/2024,Darren Bond,55.017
+GB1-2024,R-2024-04,M-2024-04-007,Aston Villa,3:2,Everton FC,14/09/2024,Craig Pawson,41.573
+GB1-2024,R-2024-04,M-2024-04-008,AFC Bournemouth,0:1,Chelsea FC,14/09/2024,Anthony Taylor,11.235
+GB1-2024,R-2024-04,M-2024-04-009,Tottenham Hotspur,0:1,Arsenal FC,15/09/2024,Jarred Gillett,61.645
+GB1-2024,R-2024-04,M-2024-04-010,Wolverhampton Wanderers,1:2,Newcastle United,15/09/2024,Chris Kavanagh,32.050
+GB1-2024,R-2024-05,M-2024-05-001,West Ham United,0:3,Chelsea FC,21/09/2024,Samuel Barrott,62.000
+GB1-2024,R-2024-05,M-2024-05-002,Aston Villa,3:1,Wolverhampton Wanderers,21/09/2024,Tim Robinson,39.978
+GB1-2024,R-2024-05,M-2024-05-003,Fulham FC,3:1,Newcastle United,21/09/2024,Peter Bankes,25.700
+GB1-2024,R-2024-05,M-2024-05-004,Leicester City,1:1,Everton FC,21/09/2024,Darren England,31.765
+GB1-2024,R-2024-05,M-2024-05-005,Liverpool FC,3:0,AFC Bournemouth,21/09/2024,Tony Harrington,60.005
+GB1-2024,R-2024-05,M-2024-05-006,Southampton FC,1:1,Ipswich Town,21/09/2024,Sam Allison,31.117
+GB1-2024,R-2024-05,M-2024-05-007,Tottenham Hotspur,3:1,Brentford FC,21/09/2024,John Brooks,61.246
+GB1-2024,R-2024-05,M-2024-05-008,Crystal Palace,0:0,Manchester United,21/09/2024,David Coote,25.172
+GB1-2024,R-2024-05,M-2024-05-009,Brighton & Hove Albion,2:2,Nottingham Forest,22/09/2024,Robert Jones,31.444
+GB1-2024,R-2024-05,M-2024-05-010,Manchester City,2:2,Arsenal FC,22/09/2024,Michael Oliver,52.846
+GB1-2024,R-2024-06,M-2024-06-001,Newcastle United,1:1,Manchester City,28/09/2024,Jarred Gillett,52.248
+GB1-2024,R-2024-06,M-2024-06-002,Arsenal FC,4:2,Leicester City,28/09/2024,Samuel Barrott,60.323
+GB1-2024,R-2024-06,M-2024-06-003,Brentford FC,1:1,West Ham United,28/09/2024,Simon Hooper,17.050
+GB1-2024,R-2024-06,M-2024-06-004,Chelsea FC,4:2,Brighton & Hove Albion,28/09/2024,Peter Bankes,40.853
+GB1-2024,R-2024-06,M-2024-06-005,Everton FC,2:1,Crystal Palace,28/09/2024,Andrew Madley,38.954
+GB1-2024,R-2024-06,M-2024-06-006,Nottingham Forest,0:1,Fulham FC,28/09/2024,Josh Smith,30.139
+GB1-2024,R-2024-06,M-2024-06-007,Wolverhampton Wanderers,1:2,Liverpool FC,28/09/2024,Anthony Taylor,31.413
+GB1-2024,R-2024-06,M-2024-06-008,Ipswich Town,2:2,Aston Villa,29/09/2024,Stuart Attwell,29.943
+GB1-2024,R-2024-06,M-2024-06-009,Manchester United,0:3,Tottenham Hotspur,29/09/2024,Chris Kavanagh,74.879
+GB1-2024,R-2024-06,M-2024-06-010,AFC Bournemouth,3:1,Southampton FC,30/09/2024,Michael Oliver,10.992
+GB1-2024,R-2024-07,M-2024-07-001,Crystal Palace,0:1,Liverpool FC,05/10/2024,Simon Hooper,25.185
+GB1-2024,R-2024-07,M-2024-07-002,Arsenal FC,3:1,Southampton FC,05/10/2024,Tony Harrington,60.326
+GB1-2024,R-2024-07,M-2024-07-003,Brentford FC,5:3,Wolverhampton Wanderers,05/10/2024,Andrew Madley,16.960
+GB1-2024,R-2024-07,M-2024-07-004,Leicester City,1:0,AFC Bournemouth,05/10/2024,Darren Bond,31.706
+GB1-2024,R-2024-07,M-2024-07-005,Manchester City,3:2,Fulham FC,05/10/2024,Peter Bankes,55.017
+GB1-2024,R-2024-07,M-2024-07-006,West Ham United,4:1,Ipswich Town,05/10/2024,Anthony Taylor,62.215
+GB1-2024,R-2024-07,M-2024-07-007,Everton FC,0:0,Newcastle United,05/10/2024,Craig Pawson,39.265
+GB1-2024,R-2024-07,M-2024-07-008,Aston Villa,0:0,Manchester United,06/10/2024,Robert Jones,42.682
+GB1-2024,R-2024-07,M-2024-07-009,Chelsea FC,1:1,Nottingham Forest,06/10/2024,Chris Kavanagh,40.853
+GB1-2024,R-2024-07,M-2024-07-010,Brighton & Hove Albion,3:2,Tottenham Hotspur,06/10/2024,David Coote,31.487
+GB1-2024,R-2024-08,M-2024-08-001,Tottenham Hotspur,4:1,West Ham United,19/10/2024,Andrew Madley,61.381
+GB1-2024,R-2024-08,M-2024-08-002,Fulham FC,1:3,Aston Villa,19/10/2024,Darren England,26.743
+GB1-2024,R-2024-08,M-2024-08-003,Manchester United,2:1,Brentford FC,19/10/2024,Samuel Barrott,73.738
+GB1-2024,R-2024-08,M-2024-08-004,Newcastle United,0:1,Brighton & Hove Albion,19/10/2024,Peter Bankes,52.220
+GB1-2024,R-2024-08,M-2024-08-005,Southampton FC,2:3,Leicester City,19/10/2024,Anthony Taylor,31.145
+GB1-2024,R-2024-08,M-2024-08-006,Ipswich Town,0:2,Everton FC,19/10/2024,Michael Oliver,29.862
+GB1-2024,R-2024-08,M-2024-08-007,AFC Bournemouth,2:0,Arsenal FC,19/10/2024,Robert Jones,11.235
+GB1-2024,R-2024-08,M-2024-08-008,Wolverhampton Wanderers,1:2,Manchester City,20/10/2024,Chris Kavanagh,31.319
+GB1-2024,R-2024-08,M-2024-08-009,Liverpool FC,2:1,Chelsea FC,20/10/2024,John Brooks,60.725
+GB1-2024,R-2024-08,M-2024-08-010,Nottingham Forest,1:0,Crystal Palace,21/10/2024,Tim Robinson,29.443
+GB1-2024,R-2024-09,M-2024-09-001,Leicester City,1:3,Nottingham Forest,25/10/2024,Craig Pawson,31.879
+GB1-2024,R-2024-09,M-2024-09-002,Aston Villa,1:1,AFC Bournemouth,26/10/2024,Chris Kavanagh,42.682
+GB1-2024,R-2024-09,M-2024-09-003,Brentford FC,4:3,Ipswich Town,26/10/2024,Lewis Smith,17.109
+GB1-2024,R-2024-09,M-2024-09-004,Brighton & Hove Albion,2:2,Wolverhampton Wanderers,26/10/2024,Michael Oliver,31.840
+GB1-2024,R-2024-09,M-2024-09-005,Manchester City,1:0,Southampton FC,26/10/2024,Tony Harrington,55.017
+GB1-2024,R-2024-09,M-2024-09-006,Everton FC,1:1,Fulham FC,26/10/2024,John Brooks,38.742
+GB1-2024,R-2024-09,M-2024-09-007,Chelsea FC,2:1,Newcastle United,27/10/2024,Simon Hooper,40.853
+GB1-2024,R-2024-09,M-2024-09-008,West Ham United,2:1,Manchester United,27/10/2024,David Coote,62.474
+GB1-2024,R-2024-09,M-2024-09-009,Crystal Palace,1:0,Tottenham Hotspur,27/10/2024,Darren Bond,25.180
+GB1-2024,R-2024-09,M-2024-09-010,Arsenal FC,2:2,Liverpool FC,27/10/2024,Anthony Taylor,60.383
+GB1-2024,R-2024-10,M-2024-10-001,Newcastle United,1:0,Arsenal FC,02/11/2024,John Brooks,52.249
+GB1-2024,R-2024-10,M-2024-10-002,AFC Bournemouth,2:1,Manchester City,02/11/2024,Michael Oliver,11.231
+GB1-2024,R-2024-10,M-2024-10-003,Ipswich Town,1:1,Leicester City,02/11/2024,Tim Robinson,29.874
+GB1-2024,R-2024-10,M-2024-10-004,Liverpool FC,2:1,Brighton & Hove Albion,02/11/2024,Tony Harrington,60.331
+GB1-2024,R-2024-10,M-2024-10-005,Nottingham Forest,3:0,West Ham United,02/11/2024,Peter Bankes,30.445
+GB1-2024,R-2024-10,M-2024-10-006,Southampton FC,1:0,Everton FC,02/11/2024,Andrew Madley,31.143
+GB1-2024,R-2024-10,M-2024-10-007,Wolverhampton Wanderers,2:2,Crystal Palace,02/11/2024,Anthony Taylor,29.505
+GB1-2024,R-2024-10,M-2024-10-008,Tottenham Hotspur,4:1,Aston Villa,03/11/2024,Craig Pawson,61.253
+GB1-2024,R-2024-10,M-2024-10-009,Manchester United,1:1,Chelsea FC,03/11/2024,Robert Jones,73.813
+GB1-2024,R-2024-10,M-2024-10-010,Fulham FC,2:1,Brentford FC,04/11/2024,Stuart Attwell,24.931
+GB1-2024,R-2024-11,M-2024-11-001,Brentford FC,3:2,AFC Bournemouth,09/11/2024,Darren Bond,16.993
+GB1-2024,R-2024-11,M-2024-11-002,Crystal Palace,0:2,Fulham FC,09/11/2024,Michael Salisbury,25.142
+GB1-2024,R-2024-11,M-2024-11-003,West Ham United,0:0,Everton FC,09/11/2024,Stuart Attwell,62.463
+GB1-2024,R-2024-11,M-2024-11-004,Wolverhampton Wanderers,2:0,Southampton FC,09/11/2024,Thomas Bramall,31.403
+GB1-2024,R-2024-11,M-2024-11-005,Brighton & Hove Albion,2:1,Manchester City,09/11/2024,Samuel Barrott,31.715
+GB1-2024,R-2024-11,M-2024-11-006,Liverpool FC,2:0,Aston Villa,09/11/2024,David Coote,60.292
+GB1-2024,R-2024-11,M-2024-11-007,Manchester United,3:0,Leicester City,10/11/2024,Peter Bankes,73.829
+GB1-2024,R-2024-11,M-2024-11-008,Nottingham Forest,1:3,Newcastle United,10/11/2024,Anthony Taylor,30.145
+GB1-2024,R-2024-11,M-2024-11-009,Tottenham Hotspur,1:2,Ipswich Town,10/11/2024,Darren England,61.505
+GB1-2024,R-2024-11,M-2024-11-010,Chelsea FC,1:1,Arsenal FC,10/11/2024,Michael Oliver,40.853
+GB1-2024,R-2024-12,M-2024-12-001,Leicester City,1:2,Chelsea FC,23/11/2024,Andrew Madley,31.880
+GB1-2024,R-2024-12,M-2024-12-002,AFC Bournemouth,1:2,Brighton & Hove Albion,23/11/2024,Stuart Attwell,11.196
+GB1-2024,R-2024-12,M-2024-12-003,Arsenal FC,3:0,Nottingham Forest,23/11/2024,Simon Hooper,60.298
+GB1-2024,R-2024-12,M-2024-12-004,Aston Villa,2:2,Crystal Palace,23/11/2024,Tim Robinson,42.682
+GB1-2024,R-2024-12,M-2024-12-005,Everton FC,0:0,Brentford FC,23/11/2024,Chris Kavanagh,38.915
+GB1-2024,R-2024-12,M-2024-12-006,Fulham FC,1:4,Wolverhampton Wanderers,23/11/2024,Robert Jones,26.685
+GB1-2024,R-2024-12,M-2024-12-007,Manchester City,0:4,Tottenham Hotspur,23/11/2024,John Brooks,55.097
+GB1-2024,R-2024-12,M-2024-12-008,Southampton FC,2:3,Liverpool FC,24/11/2024,Samuel Barrott,31.278
+GB1-2024,R-2024-12,M-2024-12-009,Ipswich Town,1:1,Manchester United,24/11/2024,Anthony Taylor,30.017
+GB1-2024,R-2024-12,M-2024-12-010,Newcastle United,0:2,West Ham United,25/11/2024,Craig Pawson,52.094
+GB1-2024,R-2024-13,M-2024-13-001,Brighton & Hove Albion,1:1,Southampton FC,29/11/2024,Robert Jones,31.542
+GB1-2024,R-2024-13,M-2024-13-002,Brentford FC,4:1,Leicester City,30/11/2024,Michael Oliver,17.084
+GB1-2024,R-2024-13,M-2024-13-003,Crystal Palace,1:1,Newcastle United,30/11/2024,Darren England,25.101
+GB1-2024,R-2024-13,M-2024-13-004,Nottingham Forest,1:0,Ipswich Town,30/11/2024,Tony Harrington,30.237
+GB1-2024,R-2024-13,M-2024-13-005,Wolverhampton Wanderers,2:4,AFC Bournemouth,30/11/2024,Peter Bankes,26.685
+GB1-2024,R-2024-13,M-2024-13-006,West Ham United,2:5,Arsenal FC,30/11/2024,Anthony Taylor,62.475
+GB1-2024,R-2024-13,M-2024-13-007,Chelsea FC,3:0,Aston Villa,01/12/2024,Stuart Attwell,39.689
+GB1-2024,R-2024-13,M-2024-13-008,Manchester United,4:0,Everton FC,01/12/2024,John Brooks,73.817
+GB1-2024,R-2024-13,M-2024-13-009,Tottenham Hotspur,1:1,Fulham FC,01/12/2024,Darren Bond,61.141
+GB1-2024,R-2024-13,M-2024-13-010,Liverpool FC,2:0,Manchester City,01/12/2024,Chris Kavanagh,60.248
+GB1-2024,R-2024-14,M-2024-14-001,Ipswich Town,0:1,Crystal Palace,03/12/2024,Craig Pawson,29.533
+GB1-2024,R-2024-14,M-2024-14-002,Leicester City,3:1,West Ham United,03/12/2024,Josh Smith,30.947
+GB1-2024,R-2024-14,M-2024-14-003,Everton FC,4:0,Wolverhampton Wanderers,04/12/2024,Michael Salisbury,38.820
+GB1-2024,R-2024-14,M-2024-14-004,Manchester City,3:0,Nottingham Forest,04/12/2024,Michael Oliver,51.764
+GB1-2024,R-2024-14,M-2024-14-005,Newcastle United,3:3,Liverpool FC,04/12/2024,Andrew Madley,52.237
+GB1-2024,R-2024-14,M-2024-14-006,Southampton FC,1:5,Chelsea FC,04/12/2024,Tony Harrington,31.193
+GB1-2024,R-2024-14,M-2024-14-007,Arsenal FC,2:0,Manchester United,04/12/2024,Samuel Barrott,60.256
+GB1-2024,R-2024-14,M-2024-14-008,Aston Villa,3:1,Brentford FC,04/12/2024,Lewis Smith,37.890
+GB1-2024,R-2024-14,M-2024-14-009,Fulham FC,3:1,Brighton & Hove Albion,05/12/2024,Peter Bankes,26.368
+GB1-2024,R-2024-14,M-2024-14-010,AFC Bournemouth,1:0,Tottenham Hotspur,05/12/2024,Simon Hooper,11.234
+GB1-2024,R-2024-15,M-2024-15-001,Aston Villa,1:0,Southampton FC,07/12/2024,Darren Bond,42.453
+GB1-2024,R-2024-15,M-2024-15-002,Brentford FC,4:2,Newcastle United,07/12/2024,Simon Hooper,17.078
+GB1-2024,R-2024-15,M-2024-15-003,Crystal Palace,2:2,Manchester City,07/12/2024,Robert Jones,25.142
+GB1-2024,R-2024-15,M-2024-15-004,Manchester United,2:3,Nottingham Forest,07/12/2024,Darren England,73.778
+GB1-2024,R-2024-15,M-2024-15-005,Fulham FC,1:1,Arsenal FC,08/12/2024,Chris Kavanagh,26.954
+GB1-2024,R-2024-15,M-2024-15-006,Ipswich Town,1:2,AFC Bournemouth,08/12/2024,Michael Salisbury,29.180
+GB1-2024,R-2024-15,M-2024-15-007,Leicester City,2:2,Brighton & Hove Albion,08/12/2024,Stuart Attwell,31.647
+GB1-2024,R-2024-15,M-2024-15-008,Tottenham Hotspur,3:4,Chelsea FC,08/12/2024,Anthony Taylor,61.184
+GB1-2024,R-2024-15,M-2024-15-009,West Ham United,2:1,Wolverhampton Wanderers,09/12/2024,John Brooks,62.435
+GB1-2024,R-2024-15,M-2024-15-010,Everton FC,2:2,Liverpool FC,12/02/2025,Michael Oliver,39.280
+GB1-2024,R-2024-16,M-2024-16-001,Arsenal FC,0:0,Everton FC,14/12/2024,Craig Pawson,60.176
+GB1-2024,R-2024-16,M-2024-16-002,Liverpool FC,2:2,Fulham FC,14/12/2024,Tony Harrington,60.333
+GB1-2024,R-2024-16,M-2024-16-003,Newcastle United,4:0,Leicester City,14/12/2024,Thomas Bramall,52.235
+GB1-2024,R-2024-16,M-2024-16-004,Wolverhampton Wanderers,1:2,Ipswich Town,14/12/2024,Simon Hooper,30.866
+GB1-2024,R-2024-16,M-2024-16-005,Nottingham Forest,2:1,Aston Villa,14/12/2024,Samuel Barrott,30.117
+GB1-2024,R-2024-16,M-2024-16-006,Brighton & Hove Albion,1:3,Crystal Palace,15/12/2024,Michael Oliver,30.893
+GB1-2024,R-2024-16,M-2024-16-007,Manchester City,1:2,Manchester United,15/12/2024,Anthony Taylor,55.097
+GB1-2024,R-2024-16,M-2024-16-008,Chelsea FC,2:1,Brentford FC,15/12/2024,Peter Bankes,39.571
+GB1-2024,R-2024-16,M-2024-16-009,Southampton FC,0:5,Tottenham Hotspur,15/12/2024,Darren England,31.090
+GB1-2024,R-2024-16,M-2024-16-010,AFC Bournemouth,1:1,West Ham United,16/12/2024,Chris Kavanagh,11.204
+GB1-2024,R-2024-17,M-2024-17-001,Aston Villa,2:1,Manchester City,21/12/2024,Peter Bankes,42.345
+GB1-2024,R-2024-17,M-2024-17-002,Brentford FC,0:2,Nottingham Forest,21/12/2024,Michael Oliver,17.115
+GB1-2024,R-2024-17,M-2024-17-003,Ipswich Town,0:4,Newcastle United,21/12/2024,Stuart Attwell,29.774
+GB1-2024,R-2024-17,M-2024-17-004,West Ham United,1:1,Brighton & Hove Albion,21/12/2024,Robert Jones,62.500
+GB1-2024,R-2024-17,M-2024-17-005,Crystal Palace,1:5,Arsenal FC,21/12/2024,Simon Hooper,25.167
+GB1-2024,R-2024-17,M-2024-17-006,Everton FC,0:0,Chelsea FC,22/12/2024,Chris Kavanagh,39.358
+GB1-2024,R-2024-17,M-2024-17-007,Fulham FC,0:0,Southampton FC,22/12/2024,Tim Robinson,26.819
+GB1-2024,R-2024-17,M-2024-17-008,Leicester City,0:3,Wolverhampton Wanderers,22/12/2024,Anthony Taylor,31.818
+GB1-2024,R-2024-17,M-2024-17-009,Manchester United,0:3,AFC Bournemouth,22/12/2024,Craig Pawson,73.720
+GB1-2024,R-2024-17,M-2024-17-010,Tottenham Hotspur,3:6,Liverpool FC,22/12/2024,Samuel Barrott,61.439
+GB1-2024,R-2024-18,M-2024-18-001,Manchester City,1:1,Everton FC,26/12/2024,Simon Hooper,55.097
+GB1-2024,R-2024-18,M-2024-18-002,AFC Bournemouth,0:0,Crystal Palace,26/12/2024,Thomas Bramall,11.129
+GB1-2024,R-2024-18,M-2024-18-003,Chelsea FC,1:2,Fulham FC,26/12/2024,Samuel Barrott,40.173
+GB1-2024,R-2024-18,M-2024-18-004,Newcastle United,3:0,Aston Villa,26/12/2024,Anthony Taylor,52.168
+GB1-2024,R-2024-18,M-2024-18-005,Nottingham Forest,1:0,Tottenham Hotspur,26/12/2024,Craig Pawson,30.200
+GB1-2024,R-2024-18,M-2024-18-006,Southampton FC,0:1,West Ham United,26/12/2024,Lewis Smith,31.059
+GB1-2024,R-2024-18,M-2024-18-007,Wolverhampton Wanderers,2:0,Manchester United,26/12/2024,Tony Harrington,31.407
+GB1-2024,R-2024-18,M-2024-18-008,Liverpool FC,3:1,Leicester City,26/12/2024,Darren Bond,61.276
+GB1-2024,R-2024-18,M-2024-18-009,Brighton & Hove Albion,0:0,Brentford FC,27/12/2024,Andrew Madley,31.548
+GB1-2024,R-2024-18,M-2024-18-010,Arsenal FC,1:0,Ipswich Town,27/12/2024,Darren England,60.271
+GB1-2024,R-2024-19,M-2024-19-001,Leicester City,0:2,Manchester City,29/12/2024,Michael Oliver,32.057
+GB1-2024,R-2024-19,M-2024-19-002,Crystal Palace,2:1,Southampton FC,29/12/2024,Michael Salisbury,25.130
+GB1-2024,R-2024-19,M-2024-19-003,Everton FC,0:2,Nottingham Forest,29/12/2024,Tony Harrington,39.352
+GB1-2024,R-2024-19,M-2024-19-004,Fulham FC,2:2,AFC Bournemouth,29/12/2024,Robert Jones,27.301
+GB1-2024,R-2024-19,M-2024-19-005,Tottenham Hotspur,2:2,Wolverhampton Wanderers,29/12/2024,Chris Kavanagh,61.284
+GB1-2024,R-2024-19,M-2024-19-006,West Ham United,0:5,Liverpool FC,29/12/2024,Anthony Taylor,62.476
+GB1-2024,R-2024-19,M-2024-19-007,Aston Villa,2:2,Brighton & Hove Albion,30/12/2024,Craig Pawson,41.414
+GB1-2024,R-2024-19,M-2024-19-008,Ipswich Town,2:0,Chelsea FC,30/12/2024,John Brooks,29.968
+GB1-2024,R-2024-19,M-2024-19-009,Manchester United,0:2,Newcastle United,30/12/2024,Simon Hooper,73.809
+GB1-2024,R-2024-19,M-2024-19-010,Brentford FC,1:3,Arsenal FC,01/01/2025,Peter Bankes,17.190
+GB1-2024,R-2024-20,M-2024-20-001,Tottenham Hotspur,1:2,Newcastle United,04/01/2025,Andrew Madley,61.293
+GB1-2024,R-2024-20,M-2024-20-002,AFC Bournemouth,1:0,Everton FC,04/01/2025,John Brooks,11.223
+GB1-2024,R-2024-20,M-2024-20-003,Aston Villa,2:1,Leicester City,04/01/2025,Jarred Gillett,42.386
+GB1-2024,R-2024-20,M-2024-20-004,Manchester City,4:1,West Ham United,04/01/2025,Michael Salisbury,52.737
+GB1-2024,R-2024-20,M-2024-20-005,Crystal Palace,1:1,Chelsea FC,04/01/2025,Tim Robinson,25.179
+GB1-2024,R-2024-20,M-2024-20-006,Southampton FC,0:5,Brentford FC,04/01/2025,Stuart Attwell,31.001
+GB1-2024,R-2024-20,M-2024-20-007,Brighton & Hove Albion,1:1,Arsenal FC,04/01/2025,Anthony Taylor,31.714
+GB1-2024,R-2024-20,M-2024-20-008,Fulham FC,2:2,Ipswich Town,05/01/2025,Darren Bond,27.042
+GB1-2024,R-2024-20,M-2024-20-009,Liverpool FC,2:2,Manchester United,05/01/2025,Michael Oliver,60.275
+GB1-2024,R-2024-20,M-2024-20-010,Wolverhampton Wanderers,0:3,Nottingham Forest,06/01/2025,Peter Bankes,29.940
+GB1-2024,R-2024-22,M-2024-22-001,Newcastle United,1:4,AFC Bournemouth,18/01/2025,Stuart Attwell,52.227
+GB1-2024,R-2024-22,M-2024-22-002,Brentford FC,0:2,Liverpool FC,18/01/2025,Andrew Madley,17.215
+GB1-2024,R-2024-22,M-2024-22-003,Leicester City,0:2,Fulham FC,18/01/2025,Michael Salisbury,31.500
+GB1-2024,R-2024-22,M-2024-22-004,West Ham United,0:2,Crystal Palace,18/01/2025,Thomas Bramall,62.469
+GB1-2024,R-2024-22,M-2024-22-005,Arsenal FC,2:2,Aston Villa,18/01/2025,Chris Kavanagh,60.067
+GB1-2024,R-2024-22,M-2024-22-006,Everton FC,3:2,Tottenham Hotspur,19/01/2025,Darren England,39.326
+GB1-2024,R-2024-22,M-2024-22-007,Manchester United,1:3,Brighton & Hove Albion,19/01/2025,Peter Bankes,73.758
+GB1-2024,R-2024-22,M-2024-22-008,Nottingham Forest,3:2,Southampton FC,19/01/2025,Anthony Taylor,30.180
+GB1-2024,R-2024-22,M-2024-22-009,Ipswich Town,0:6,Manchester City,19/01/2025,Samuel Barrott,29.841
+GB1-2024,R-2024-22,M-2024-22-010,Chelsea FC,3:1,Wolverhampton Wanderers,20/01/2025,Simon Hooper,39.221
+GB1-2024,R-2024-23,M-2024-23-001,AFC Bournemouth,5:0,Nottingham Forest,25/01/2025,Craig Pawson,11.228
+GB1-2024,R-2024-23,M-2024-23-002,Brighton & Hove Albion,0:1,Everton FC,25/01/2025,Tim Robinson,31.567
+GB1-2024,R-2024-23,M-2024-23-003,Liverpool FC,4:1,Ipswich Town,25/01/2025,Michael Salisbury,60.420
+GB1-2024,R-2024-23,M-2024-23-004,Southampton FC,1:3,Newcastle United,25/01/2025,Samuel Barrott,31.141
+GB1-2024,R-2024-23,M-2024-23-005,Wolverhampton Wanderers,0:1,Arsenal FC,25/01/2025,Michael Oliver,31.503
+GB1-2024,R-2024-23,M-2024-23-006,Manchester City,3:1,Chelsea FC,25/01/2025,John Brooks,55.097
+GB1-2024,R-2024-23,M-2024-23-007,Crystal Palace,1:2,Brentford FC,26/01/2025,Tony Harrington,25.066
+GB1-2024,R-2024-23,M-2024-23-008,Tottenham Hotspur,1:2,Leicester City,26/01/2025,Robert Jones,61.295
+GB1-2024,R-2024-23,M-2024-23-009,Aston Villa,1:1,West Ham United,26/01/2025,Peter Bankes,42.918
+GB1-2024,R-2024-23,M-2024-23-010,Fulham FC,0:1,Manchester United,26/01/2025,Anthony Taylor,27.288
+GB1-2024,R-2024-24,M-2024-24-001,Nottingham Forest,7:0,Brighton & Hove Albion,01/02/2025,Simon Hooper,30.164
+GB1-2024,R-2024-24,M-2024-24-002,AFC Bournemouth,0:2,Liverpool FC,01/02/2025,Darren England,11.239
+GB1-2024,R-2024-24,M-2024-24-003,Everton FC,4:0,Leicester City,01/02/2025,Darren Bond,39.376
+GB1-2024,R-2024-24,M-2024-24-004,Ipswich Town,1:2,Southampton FC,01/02/2025,Michael Oliver,29.902
+GB1-2024,R-2024-24,M-2024-24-005,Newcastle United,1:2,Fulham FC,01/02/2025,Chris Kavanagh,52.173
+GB1-2024,R-2024-24,M-2024-24-006,Wolverhampton Wanderers,2:0,Aston Villa,01/02/2025,Andrew Madley,31.385
+GB1-2024,R-2024-24,M-2024-24-007,Brentford FC,0:2,Tottenham Hotspur,02/02/2025,Jarred Gillett,17.154
+GB1-2024,R-2024-24,M-2024-24-008,Manchester United,0:2,Crystal Palace,02/02/2025,John Brooks,73.751
+GB1-2024,R-2024-24,M-2024-24-009,Arsenal FC,5:1,Manchester City,02/02/2025,Peter Bankes,60.355
+GB1-2024,R-2024-24,M-2024-24-010,Chelsea FC,2:1,West Ham United,03/02/2025,Stuart Attwell,39.459
+GB1-2024,R-2024-25,M-2024-25-001,Brighton & Hove Albion,3:0,Chelsea FC,14/02/2025,Chris Kavanagh,31.503
+GB1-2024,R-2024-25,M-2024-25-002,Leicester City,0:2,Arsenal FC,15/02/2025,Samuel Barrott,31.968
+GB1-2024,R-2024-25,M-2024-25-003,Aston Villa,1:1,Ipswich Town,15/02/2025,Robert Jones,42.510
+GB1-2024,R-2024-25,M-2024-25-004,Fulham FC,2:1,Nottingham Forest,15/02/2025,Thomas Bramall,27.164
+GB1-2024,R-2024-25,M-2024-25-005,Manchester City,4:0,Newcastle United,15/02/2025,Andrew Madley,52.432
+GB1-2024,R-2024-25,M-2024-25-006,Southampton FC,1:3,AFC Bournemouth,15/02/2025,Jarred Gillett,31.037
+GB1-2024,R-2024-25,M-2024-25-007,West Ham United,0:1,Brentford FC,15/02/2025,Darren England,62.467
+GB1-2024,R-2024-25,M-2024-25-008,Crystal Palace,1:2,Everton FC,15/02/2025,Anthony Taylor,25.108
+GB1-2024,R-2024-25,M-2024-25-009,Liverpool FC,2:1,Wolverhampton Wanderers,16/02/2025,Simon Hooper,60.401
+GB1-2024,R-2024-25,M-2024-25-010,Tottenham Hotspur,1:0,Manchester United,16/02/2025,Peter Bankes,61.383
+GB1-2024,R-2024-26,M-2024-26-001,Leicester City,0:4,Brentford FC,21/02/2025,Tony Harrington,31.077
+GB1-2024,R-2024-26,M-2024-26-002,Everton FC,2:2,Manchester United,22/02/2025,Andrew Madley,39.290
+GB1-2024,R-2024-26,M-2024-26-003,AFC Bournemouth,0:1,Wolverhampton Wanderers,22/02/2025,Michael Salisbury,11.206
+GB1-2024,R-2024-26,M-2024-26-004,Arsenal FC,0:1,West Ham United,22/02/2025,Craig Pawson,60.262
+GB1-2024,R-2024-26,M-2024-26-005,Fulham FC,0:2,Crystal Palace,22/02/2025,Robert Jones,26.777
+GB1-2024,R-2024-26,M-2024-26-006,Ipswich Town,1:4,Tottenham Hotspur,22/02/2025,Tim Robinson,30.003
+GB1-2024,R-2024-26,M-2024-26-007,Southampton FC,0:4,Brighton & Hove Albion,22/02/2025,Darren Bond,30.775
+GB1-2024,R-2024-26,M-2024-26-008,Aston Villa,2:1,Chelsea FC,22/02/2025,Michael Oliver,42.423
+GB1-2024,R-2024-26,M-2024-26-009,Newcastle United,4:3,Nottingham Forest,23/02/2025,Jarred Gillett,52.223
+GB1-2024,R-2024-26,M-2024-26-010,Manchester City,0:2,Liverpool FC,23/02/2025,Anthony Taylor,52.803
+GB1-2024,R-2024-27,M-2024-27-001,Brighton & Hove Albion,2:1,AFC Bournemouth,25/02/2025,Michael Oliver,31.138
+GB1-2024,R-2024-27,M-2024-27-002,Wolverhampton Wanderers,1:2,Fulham FC,25/02/2025,Peter Bankes,28.708
+GB1-2024,R-2024-27,M-2024-27-003,Crystal Palace,4:1,Aston Villa,25/02/2025,Samuel Barrott,24.712
+GB1-2024,R-2024-27,M-2024-27-004,Chelsea FC,4:0,Southampton FC,25/02/2025,Thomas Bramall,39.485
+GB1-2024,R-2024-27,M-2024-27-005,Brentford FC,1:1,Everton FC,26/02/2025,Simon Hooper,17.082
+GB1-2024,R-2024-27,M-2024-27-006,Nottingham Forest,0:0,Arsenal FC,26/02/2025,Andrew Madley,30.200
+GB1-2024,R-2024-27,M-2024-27-007,Tottenham Hotspur,0:1,Manchester City,26/02/2025,Jarred Gillett,60.820
+GB1-2024,R-2024-27,M-2024-27-008,Manchester United,3:2,Ipswich Town,26/02/2025,Darren England,73.827
+GB1-2024,R-2024-27,M-2024-27-009,Liverpool FC,2:0,Newcastle United,26/02/2025,Stuart Attwell,60.374
+GB1-2024,R-2024-27,M-2024-27-010,West Ham United,2:0,Leicester City,27/02/2025,Anthony Taylor,62.455
+GB1-2024,R-2024-28,M-2024-28-001,Nottingham Forest,1:0,Manchester City,08/03/2025,Chris Kavanagh,30.252
+GB1-2024,R-2024-28,M-2024-28-002,Brighton & Hove Albion,2:1,Fulham FC,08/03/2025,Samuel Barrott,31.584
+GB1-2024,R-2024-28,M-2024-28-003,Crystal Palace,1:0,Ipswich Town,08/03/2025,Simon Hooper,25.155
+GB1-2024,R-2024-28,M-2024-28-004,Liverpool FC,3:1,Southampton FC,08/03/2025,Lewis Smith,61.276
+GB1-2024,R-2024-28,M-2024-28-005,Brentford FC,0:1,Aston Villa,08/03/2025,Jarred Gillett,17.171
+GB1-2024,R-2024-28,M-2024-28-006,Wolverhampton Wanderers,1:1,Everton FC,08/03/2025,Stuart Attwell,30.738
+GB1-2024,R-2024-28,M-2024-28-007,Chelsea FC,1:0,Leicester City,09/03/2025,Tim Robinson,39.750
+GB1-2024,R-2024-28,M-2024-28-008,Tottenham Hotspur,2:2,AFC Bournemouth,09/03/2025,John Brooks,61.178
+GB1-2024,R-2024-28,M-2024-28-009,Manchester United,1:1,Arsenal FC,09/03/2025,Anthony Taylor,73.812
+GB1-2024,R-2024-28,M-2024-28-010,West Ham United,0:1,Newcastle United,10/03/2025,Michael Salisbury,62.500
+GB1-2024,R-2024-29,M-2024-29-001,Aston Villa,2:2,Liverpool FC,19/02/2025,Craig Pawson,41.910
+GB1-2024,R-2024-29,M-2024-29-002,Everton FC,1:1,West Ham United,15/03/2025,Darren Bond,39.343
+GB1-2024,R-2024-29,M-2024-29-003,Ipswich Town,2:4,Nottingham Forest,15/03/2025,Michael Salisbury,29.878
+GB1-2024,R-2024-29,M-2024-29-004,Manchester City,2:2,Brighton & Hove Albion,15/03/2025,Simon Hooper,52.471
+GB1-2024,R-2024-29,M-2024-29-005,Southampton FC,1:2,Wolverhampton Wanderers,15/03/2025,Robert Jones,30.950
+GB1-2024,R-2024-29,M-2024-29-006,AFC Bournemouth,1:2,Brentford FC,15/03/2025,Craig Pawson,11.180
+GB1-2024,R-2024-29,M-2024-29-007,Arsenal FC,1:0,Chelsea FC,16/03/2025,Chris Kavanagh,60.311
+GB1-2024,R-2024-29,M-2024-29-008,Fulham FC,2:0,Tottenham Hotspur,16/03/2025,Andrew Madley,27.182
+GB1-2024,R-2024-29,M-2024-29-009,Leicester City,0:3,Manchester United,16/03/2025,Thomas Bramall,31.773
+GB1-2024,R-2024-29,M-2024-29-010,Newcastle United,5:0,Crystal Palace,16/04/2025,Darren England,52.197
+GB1-2024,R-2024-30,M-2024-30-001,Arsenal FC,2:1,Fulham FC,01/04/2025,John Brooks,60.256
+GB1-2024,R-2024-30,M-2024-30-002,Wolverhampton Wanderers,1:0,West Ham United,01/04/2025,Tony Harrington,30.537
+GB1-2024,R-2024-30,M-2024-30-003,Nottingham Forest,1:0,Manchester United,01/04/2025,Jarred Gillett,30.249
+GB1-2024,R-2024-30,M-2024-30-004,AFC Bournemouth,1:2,Ipswich Town,02/04/2025,Robert Jones,11.192
+GB1-2024,R-2024-30,M-2024-30-005,Brighton & Hove Albion,0:3,Aston Villa,02/04/2025,Stuart Attwell,31.230
+GB1-2024,R-2024-30,M-2024-30-006,Manchester City,2:0,Leicester City,02/04/2025,Darren England,51.983
+GB1-2024,R-2024-30,M-2024-30-007,Newcastle United,2:1,Brentford FC,02/04/2025,Peter Bankes,52.021
+GB1-2024,R-2024-30,M-2024-30-008,Southampton FC,1:1,Crystal Palace,02/04/2025,Andrew Madley,29.366
+GB1-2024,R-2024-30,M-2024-30-009,Liverpool FC,1:0,Everton FC,02/04/2025,Samuel Barrott,60.331
+GB1-2024,R-2024-30,M-2024-30-010,Chelsea FC,1:0,Tottenham Hotspur,03/04/2025,Craig Pawson,39.852
+GB1-2024,R-2024-31,M-2024-31-001,Everton FC,1:1,Arsenal FC,05/04/2025,Darren England,39.316
+GB1-2024,R-2024-31,M-2024-31-002,Crystal Palace,2:1,Brighton & Hove Albion,05/04/2025,Anthony Taylor,24.564
+GB1-2024,R-2024-31,M-2024-31-003,Ipswich Town,1:2,Wolverhampton Wanderers,05/04/2025,Peter Bankes,29.549
+GB1-2024,R-2024-31,M-2024-31-004,West Ham United,2:2,AFC Bournemouth,05/04/2025,Tim Robinson,62.459
+GB1-2024,R-2024-31,M-2024-31-005,Aston Villa,2:1,Nottingham Forest,05/04/2025,Simon Hooper,42.743
+GB1-2024,R-2024-31,M-2024-31-006,Brentford FC,0:0,Chelsea FC,06/04/2025,Michael Oliver,17.183
+GB1-2024,R-2024-31,M-2024-31-007,Fulham FC,3:2,Liverpool FC,06/04/2025,Chris Kavanagh,27.770
+GB1-2024,R-2024-31,M-2024-31-008,Tottenham Hotspur,3:1,Southampton FC,06/04/2025,Michael Salisbury,60.984
+GB1-2024,R-2024-31,M-2024-31-009,Manchester United,0:0,Manchester City,06/04/2025,John Brooks,73.738
+GB1-2024,R-2024-31,M-2024-31-010,Leicester City,0:3,Newcastle United,07/04/2025,Robert Jones,30.403
+GB1-2024,R-2024-32,M-2024-32-001,Manchester City,5:2,Crystal Palace,12/04/2025,Jarred Gillett,52.489
+GB1-2024,R-2024-32,M-2024-32-002,Brighton & Hove Albion,2:2,Leicester City,12/04/2025,Darren Bond,31.150
+GB1-2024,R-2024-32,M-2024-32-003,Nottingham Forest,0:1,Everton FC,12/04/2025,Craig Pawson,30.199
+GB1-2024,R-2024-32,M-2024-32-004,Southampton FC,0:3,Aston Villa,12/04/2025,Thomas Bramall,30.673
+GB1-2024,R-2024-32,M-2024-32-005,Arsenal FC,1:1,Brentford FC,12/04/2025,Simon Hooper,60.184
+GB1-2024,R-2024-32,M-2024-32-006,Chelsea FC,2:2,Ipswich Town,13/04/2025,Stuart Attwell,39.805
+GB1-2024,R-2024-32,M-2024-32-007,Liverpool FC,2:1,West Ham United,13/04/2025,Andrew Madley,60.376
+GB1-2024,R-2024-32,M-2024-32-008,Wolverhampton Wanderers,4:2,Tottenham Hotspur,13/04/2025,Anthony Taylor,31.463
+GB1-2024,R-2024-32,M-2024-32-009,Newcastle United,4:1,Manchester United,13/04/2025,Chris Kavanagh,52.252
+GB1-2024,R-2024-32,M-2024-32-010,AFC Bournemouth,1:0,Fulham FC,14/04/2025,Michael Oliver,11.195
+GB1-2024,R-2024-33,M-2024-33-001,Brentford FC,4:2,Brighton & Hove Albion,19/04/2025,Tim Robinson,17.083
+GB1-2024,R-2024-33,M-2024-33-002,Crystal Palace,0:0,AFC Bournemouth,19/04/2025,Samuel Barrott,25.185
+GB1-2024,R-2024-33,M-2024-33-003,Everton FC,0:2,Manchester City,19/04/2025,Simon Hooper,39.332
+GB1-2024,R-2024-33,M-2024-33-004,West Ham United,1:1,Southampton FC,19/04/2025,Andrew Kitchen,62.461
+GB1-2024,R-2024-33,M-2024-33-005,Aston Villa,4:1,Newcastle United,19/04/2025,Jarred Gillett,42.618
+GB1-2024,R-2024-33,M-2024-33-006,Fulham FC,1:2,Chelsea FC,20/04/2025,Anthony Taylor,27.712
+GB1-2024,R-2024-33,M-2024-33-007,Ipswich Town,0:4,Arsenal FC,20/04/2025,Chris Kavanagh,29.549
+GB1-2024,R-2024-33,M-2024-33-008,Manchester United,0:1,Wolverhampton Wanderers,20/04/2025,Robert Jones,73.819
+GB1-2024,R-2024-33,M-2024-33-009,Leicester City,0:1,Liverpool FC,20/04/2025,Stuart Attwell,30.402
+GB1-2024,R-2024-33,M-2024-33-010,Tottenham Hotspur,1:2,Nottingham Forest,21/04/2025,Peter Bankes,59.314
+GB1-2024,R-2024-34,M-2024-34-001,Manchester City,2:1,Aston Villa,22/04/2025,Craig Pawson,52.192
+GB1-2024,R-2024-34,M-2024-34-002,Arsenal FC,2:2,Crystal Palace,23/04/2025,Michael Salisbury,60.167
+GB1-2024,R-2024-34,M-2024-34-003,Chelsea FC,1:0,Everton FC,26/04/2025,Chris Kavanagh,39.894
+GB1-2024,R-2024-34,M-2024-34-004,Brighton & Hove Albion,3:2,West Ham United,26/04/2025,Darren England,31.499
+GB1-2024,R-2024-34,M-2024-34-005,Newcastle United,3:0,Ipswich Town,26/04/2025,Michael Salisbury,52.171
+GB1-2024,R-2024-34,M-2024-34-006,Southampton FC,1:2,Fulham FC,26/04/2025,Tony Harrington,28.946
+GB1-2024,R-2024-34,M-2024-34-007,Wolverhampton Wanderers,3:0,Leicester City,26/04/2025,Samuel Barrott,31.518
+GB1-2024,R-2024-34,M-2024-34-008,AFC Bournemouth,1:1,Manchester United,27/04/2025,Peter Bankes,11.241
+GB1-2024,R-2024-34,M-2024-34-009,Liverpool FC,5:1,Tottenham Hotspur,27/04/2025,Thomas Bramall,60.415
+GB1-2024,R-2024-34,M-2024-34-010,Nottingham Forest,0:2,Brentford FC,01/05/2025,Darren England,29.040
+GB1-2024,R-2024-35,M-2024-35-001,Manchester City,1:0,Wolverhampton Wanderers,02/05/2025,Peter Bankes,53.282
+GB1-2024,R-2024-35,M-2024-35-002,Aston Villa,1:0,Fulham FC,03/05/2025,Robert Jones,42.515
+GB1-2024,R-2024-35,M-2024-35-003,Everton FC,2:2,Ipswich Town,03/05/2025,Lewis Smith,39.305
+GB1-2024,R-2024-35,M-2024-35-004,Leicester City,2:0,Southampton FC,03/05/2025,David Webb,31.240
+GB1-2024,R-2024-35,M-2024-35-005,Arsenal FC,1:2,AFC Bournemouth,03/05/2025,Jarred Gillett,60.110
+GB1-2024,R-2024-35,M-2024-35-006,Brentford FC,4:3,Manchester United,04/05/2025,Anthony Taylor,18.915
+GB1-2024,R-2024-35,M-2024-35-007,Brighton & Hove Albion,1:1,Newcastle United,04/05/2025,Craig Pawson,31.580
+GB1-2024,R-2024-35,M-2024-35-008,West Ham United,1:1,Tottenham Hotspur,04/05/2025,Michael Oliver,62.468
+GB1-2024,R-2024-35,M-2024-35-009,Chelsea FC,3:1,Liverpool FC,04/05/2025,Simon Hooper,39.829
+GB1-2024,R-2024-35,M-2024-35-010,Crystal Palace,1:1,Nottingham Forest,05/05/2025,Andrew Madley,25.096
+GB1-2024,R-2024-36,M-2024-36-001,AFC Bournemouth,0:1,Aston Villa,10/05/2025,Stuart Attwell,11.248
+GB1-2024,R-2024-36,M-2024-36-002,Fulham FC,1:3,Everton FC,10/05/2025,Darren England,27.653
+GB1-2024,R-2024-36,M-2024-36-003,Ipswich Town,0:1,Brentford FC,10/05/2025,Samuel Barrott,29.511
+GB1-2024,R-2024-36,M-2024-36-004,Southampton FC,0:0,Manchester City,10/05/2025,Tim Robinson,30.937
+GB1-2024,R-2024-36,M-2024-36-005,Wolverhampton Wanderers,0:2,Brighton & Hove Albion,10/05/2025,Michael Oliver,31.279
+GB1-2024,R-2024-36,M-2024-36-006,Newcastle United,2:0,Chelsea FC,11/05/2025,John Brooks,52.231
+GB1-2024,R-2024-36,M-2024-36-007,Manchester United,0:2,West Ham United,11/05/2025,Jarred Gillett,73.804
+GB1-2024,R-2024-36,M-2024-36-008,Nottingham Forest,2:2,Leicester City,11/05/2025,Tony Harrington,30.245
+GB1-2024,R-2024-36,M-2024-36-009,Tottenham Hotspur,0:2,Crystal Palace,11/05/2025,Chris Kavanagh,60.254
+GB1-2024,R-2024-36,M-2024-36-010,Liverpool FC,2:2,Arsenal FC,11/05/2025,Anthony Taylor,60.324
+GB1-2024,R-2024-37,M-2024-37-001,Aston Villa,2:0,Tottenham Hotspur,16/05/2025,Peter Bankes,37.261
+GB1-2024,R-2024-37,M-2024-37-002,Chelsea FC,1:0,Manchester United,16/05/2025,Chris Kavanagh,39.849
+GB1-2024,R-2024-37,M-2024-37-003,Everton FC,2:0,Southampton FC,18/05/2025,Michael Oliver,39.201
+GB1-2024,R-2024-37,M-2024-37-004,West Ham United,1:2,Nottingham Forest,18/05/2025,Samuel Barrott,62.466
+GB1-2024,R-2024-37,M-2024-37-005,Brentford FC,2:3,Fulham FC,18/05/2025,Jarred Gillett,17.136
+GB1-2024,R-2024-37,M-2024-37-006,Leicester City,2:0,Ipswich Town,18/05/2025,Andrew Kitchen,31.986
+GB1-2024,R-2024-37,M-2024-37-007,Arsenal FC,1:0,Newcastle United,18/05/2025,Simon Hooper,60.160
+GB1-2024,R-2024-37,M-2024-37-008,Brighton & Hove Albion,3:2,Liverpool FC,19/05/2025,Andrew Madley,31.611
+GB1-2024,R-2024-37,M-2024-37-009,Crystal Palace,4:2,Wolverhampton Wanderers,20/05/2025,David Webb,24.766
+GB1-2024,R-2024-37,M-2024-37-010,Manchester City,3:1,AFC Bournemouth,20/05/2025,Thomas Bramall,52.487
+GB1-2024,R-2024-38,M-2024-38-001,AFC Bournemouth,2:0,Leicester City,25/05/2025,Lewis Smith,11.238
+GB1-2024,R-2024-38,M-2024-38-002,Fulham FC,0:2,Manchester City,25/05/2025,Andrew Madley,27.671
+GB1-2024,R-2024-38,M-2024-38-003,Ipswich Town,1:3,West Ham United,25/05/2025,Tim Robinson,29.771
+GB1-2024,R-2024-38,M-2024-38-004,Liverpool FC,1:1,Crystal Palace,25/05/2025,Darren England,60.382
+GB1-2024,R-2024-38,M-2024-38-005,Manchester United,2:0,Aston Villa,25/05/2025,Thomas Bramall,73.839
+GB1-2024,R-2024-38,M-2024-38-006,Newcastle United,0:1,Everton FC,25/05/2025,Tony Harrington,52.221
+GB1-2024,R-2024-38,M-2024-38-007,Nottingham Forest,0:1,Chelsea FC,25/05/2025,Anthony Taylor,30.263
+GB1-2024,R-2024-38,M-2024-38-008,Southampton FC,1:2,Arsenal FC,25/05/2025,Darren Bond,31.289
+GB1-2024,R-2024-38,M-2024-38-009,Tottenham Hotspur,1:4,Brighton & Hove Albion,25/05/2025,Robert Jones,61.449
+GB1-2024,R-2024-38,M-2024-38-010,Wolverhampton Wanderers,1:1,Brentford FC,25/05/2025,Craig Pawson,31.382
+GB1-2025,R-2025-01,M-2025-01-001,Liverpool FC,4:2,AFC Bournemouth,15/08/2025,Anthony Taylor,60.315
+GB1-2025,R-2025-01,M-2025-01-002,Aston Villa,0:0,Newcastle United,16/08/2025,Craig Pawson,42.526
+GB1-2025,R-2025-01,M-2025-01-003,Brighton & Hove Albion,1:1,Fulham FC,16/08/2025,Samuel Barrott,31.478
+GB1-2025,R-2025-01,M-2025-01-004,Sunderland AFC,3:0,West Ham United,16/08/2025,Robert Jones,46.233
+GB1-2025,R-2025-01,M-2025-01-005,Tottenham Hotspur,3:0,Burnley FC,16/08/2025,Michael Oliver,61.077
+GB1-2025,R-2025-01,M-2025-01-006,Wolverhampton Wanderers,0:4,Manchester City,16/08/2025,Jarred Gillett,31.118
+GB1-2025,R-2025-01,M-2025-01-007,Nottingham Forest,3:1,Brentford FC,17/08/2025,Peter Bankes,29.949
+GB1-2025,R-2025-01,M-2025-01-008,Chelsea FC,0:0,Crystal Palace,17/08/2025,Darren England,39.678
+GB1-2025,R-2025-01,M-2025-01-009,Manchester United,0:1,Arsenal FC,17/08/2025,Simon Hooper,73.475
+GB1-2025,R-2025-01,M-2025-01-010,Leeds United,1:0,Everton FC,18/08/2025,Chris Kavanagh,36.820
+GB1-2025,R-2025-02,M-2025-02-001,West Ham United,1:5,Chelsea FC,22/08/2025,Michael Oliver,62.462
+GB1-2025,R-2025-02,M-2025-02-002,Manchester City,0:2,Tottenham Hotspur,23/08/2025,Peter Bankes,51.785
+GB1-2025,R-2025-02,M-2025-02-003,AFC Bournemouth,1:0,Wolverhampton Wanderers,23/08/2025,Thomas Bramall,11.070
+GB1-2025,R-2025-02,M-2025-02-004,Brentford FC,1:0,Aston Villa,23/08/2025,Tony Harrington,16.838
+GB1-2025,R-2025-02,M-2025-02-005,Burnley FC,2:0,Sunderland AFC,23/08/2025,Michael Salisbury,21.285
+GB1-2025,R-2025-02,M-2025-02-006,Arsenal FC,5:0,Leeds United,23/08/2025,Jarred Gillett,60.110
+GB1-2025,R-2025-02,M-2025-02-007,Everton FC,2:0,Brighton & Hove Albion,24/08/2025,Stuart Attwell,51.759
+GB1-2025,R-2025-02,M-2025-02-008,Crystal Palace,1:1,Nottingham Forest,24/08/2025,Anthony Taylor,24.876
+GB1-2025,R-2025-02,M-2025-02-009,Fulham FC,1:1,Manchester United,24/08/2025,Chris Kavanagh,27.512
+GB1-2025,R-2025-02,M-2025-02-010,Newcastle United,2:3,Liverpool FC,25/08/2025,Simon Hooper,52.230
+GB1-2025,R-2025-03,M-2025-03-001,Chelsea FC,2:0,Fulham FC,30/08/2025,Robert Jones,39.745
+GB1-2025,R-2025-03,M-2025-03-002,Manchester United,3:2,Burnley FC,30/08/2025,Samuel Barrott,74.257
+GB1-2025,R-2025-03,M-2025-03-003,Sunderland AFC,2:1,Brentford FC,30/08/2025,Anthony Taylor,46.267
+GB1-2025,R-2025-03,M-2025-03-004,Tottenham Hotspur,0:1,AFC Bournemouth,30/08/2025,Simon Hooper,61.250
+GB1-2025,R-2025-03,M-2025-03-005,Wolverhampton Wanderers,2:3,Everton FC,30/08/2025,Michael Oliver,30.271
+GB1-2025,R-2025-03,M-2025-03-006,Leeds United,0:0,Newcastle United,30/08/2025,Peter Bankes,36.727
+GB1-2025,R-2025-03,M-2025-03-007,Brighton & Hove Albion,2:1,Manchester City,31/08/2025,Darren England,31.485
+GB1-2025,R-2025-03,M-2025-03-008,Nottingham Forest,0:3,West Ham United,31/08/2025,Craig Pawson,30.215
+GB1-2025,R-2025-03,M-2025-03-009,Liverpool FC,1:0,Arsenal FC,31/08/2025,Chris Kavanagh,60.455
+GB1-2025,R-2025-03,M-2025-03-010,Aston Villa,0:3,Crystal Palace,31/08/2025,Stuart Attwell,41.036
+GB1-2025,R-2025-04,M-2025-04-001,Arsenal FC,3:0,Nottingham Forest,13/09/2025,Darren England,60.167
+GB1-2025,R-2025-04,M-2025-04-002,AFC Bournemouth,2:1,Brighton & Hove Albion,13/09/2025,Peter Bankes,11.167
+GB1-2025,R-2025-04,M-2025-04-003,Crystal Palace,0:0,Sunderland AFC,13/09/2025,Thomas Bramall,25.154
+GB1-2025,R-2025-04,M-2025-04-004,Everton FC,0:0,Aston Villa,13/09/2025,Simon Hooper,52.114
+GB1-2025,R-2025-04,M-2025-04-005,Fulham FC,1:0,Leeds United,13/09/2025,Craig Pawson,27.327
+GB1-2025,R-2025-04,M-2025-04-006,Newcastle United,1:0,Wolverhampton Wanderers,13/09/2025,Chris Kavanagh,52.145
+GB1-2025,R-2025-04,M-2025-04-007,West Ham United,0:3,Tottenham Hotspur,13/09/2025,Jarred Gillett,62.459
+GB1-2025,R-2025-04,M-2025-04-008,Brentford FC,2:2,Chelsea FC,13/09/2025,Stuart Attwell,16.795
+GB1-2025,R-2025-04,M-2025-04-009,Burnley FC,0:1,Liverpool FC,14/09/2025,Michael Oliver,21.678
+GB1-2025,R-2025-04,M-2025-04-010,Manchester City,3:0,Manchester United,14/09/2025,Anthony Taylor,52.534
+GB1-2025,R-2025-05,M-2025-05-001,Liverpool FC,2:1,Everton FC,20/09/2025,Darren England,60.342
+GB1-2025,R-2025-05,M-2025-05-002,Brighton & Hove Albion,2:2,Tottenham Hotspur,20/09/2025,Chris Kavanagh,31.488
+GB1-2025,R-2025-05,M-2025-05-003,Burnley FC,1:1,Nottingham Forest,20/09/2025,Thomas Bramall,21.475
+GB1-2025,R-2025-05,M-2025-05-004,West Ham United,1:2,Crystal Palace,20/09/2025,Tony Harrington,62.455
+GB1-2025,R-2025-05,M-2025-05-005,Wolverhampton Wanderers,1:3,Leeds United,20/09/2025,Anthony Taylor,30.807
+GB1-2025,R-2025-05,M-2025-05-006,Manchester United,2:1,Chelsea FC,20/09/2025,Peter Bankes,74.124
+GB1-2025,R-2025-05,M-2025-05-007,Fulham FC,3:1,Brentford FC,20/09/2025,Michael Oliver,26.113
+GB1-2025,R-2025-05,M-2025-05-008,AFC Bournemouth,0:0,Newcastle United,21/09/2025,Robert Jones,11.212
+GB1-2025,R-2025-05,M-2025-05-009,Sunderland AFC,1:1,Aston Villa,21/09/2025,Samuel Barrott,46.261
+GB1-2025,R-2025-05,M-2025-05-010,Arsenal FC,1:1,Manchester City,21/09/2025,Stuart Attwell,60.161
+GB1-2025,R-2025-06,M-2025-06-001,Brentford FC,3:1,Manchester United,27/09/2025,Craig Pawson,17.193
+GB1-2025,R-2025-06,M-2025-06-002,Chelsea FC,1:3,Brighton & Hove Albion,27/09/2025,Simon Hooper,39.597
+GB1-2025,R-2025-06,M-2025-06-003,Crystal Palace,2:1,Liverpool FC,27/09/2025,Chris Kavanagh,25.118
+GB1-2025,R-2025-06,M-2025-06-004,Leeds United,2:2,AFC Bournemouth,27/09/2025,Michael Oliver,36.574
+GB1-2025,R-2025-06,M-2025-06-005,Manchester City,5:1,Burnley FC,27/09/2025,Robert Jones,52.427
+GB1-2025,R-2025-06,M-2025-06-006,Nottingham Forest,0:1,Sunderland AFC,27/09/2025,Tony Harrington,30.226
+GB1-2025,R-2025-06,M-2025-06-007,Tottenham Hotspur,1:1,Wolverhampton Wanderers,27/09/2025,Michael Salisbury,60.537
+GB1-2025,R-2025-06,M-2025-06-008,Aston Villa,3:1,Fulham FC,28/09/2025,Andrew Madley,40.350
+GB1-2025,R-2025-06,M-2025-06-009,Newcastle United,1:2,Arsenal FC,28/09/2025,Jarred Gillett,52.199
+GB1-2025,R-2025-06,M-2025-06-010,Everton FC,1:1,West Ham United,29/09/2025,Samuel Barrott,51.890
+GB1-2025,R-2025-07,M-2025-07-001,AFC Bournemouth,3:1,Fulham FC,03/10/2025,Simon Hooper,11.165
+GB1-2025,R-2025-07,M-2025-07-002,Leeds United,1:2,Tottenham Hotspur,04/10/2025,Thomas Bramall,36.703
+GB1-2025,R-2025-07,M-2025-07-003,Arsenal FC,2:0,West Ham United,04/10/2025,John Brooks,60.181
+GB1-2025,R-2025-07,M-2025-07-004,Manchester United,2:0,Sunderland AFC,04/10/2025,Stuart Attwell,74.004
+GB1-2025,R-2025-07,M-2025-07-005,Chelsea FC,2:1,Liverpool FC,04/10/2025,Anthony Taylor,39.769
+GB1-2025,R-2025-07,M-2025-07-006,Aston Villa,2:1,Burnley FC,05/10/2025,Andrew Kitchen,40.308
+GB1-2025,R-2025-07,M-2025-07-007,Everton FC,2:1,Crystal Palace,05/10/2025,Michael Salisbury,51.770
+GB1-2025,R-2025-07,M-2025-07-008,Newcastle United,2:0,Nottingham Forest,05/10/2025,Peter Bankes,52.189
+GB1-2025,R-2025-07,M-2025-07-009,Wolverhampton Wanderers,1:1,Brighton & Hove Albion,05/10/2025,Jarred Gillett,29.504
+GB1-2025,R-2025-07,M-2025-07-010,Brentford FC,0:1,Manchester City,05/10/2025,Darren England,17.140
+GB1-2025,R-2025-08,M-2025-08-001,Nottingham Forest,0:3,Chelsea FC,18/10/2025,Chris Kavanagh,30.404
+GB1-2025,R-2025-08,M-2025-08-002,Brighton & Hove Albion,2:1,Newcastle United,18/10/2025,Craig Pawson,31.620
+GB1-2025,R-2025-08,M-2025-08-003,Burnley FC,2:0,Leeds United,18/10/2025,Tim Robinson,21.646
+GB1-2025,R-2025-08,M-2025-08-004,Crystal Palace,3:3,AFC Bournemouth,18/10/2025,Jarred Gillett,25.125
+GB1-2025,R-2025-08,M-2025-08-005,Manchester City,2:0,Everton FC,18/10/2025,Tony Harrington,52.498
+GB1-2025,R-2025-08,M-2025-08-006,Sunderland AFC,2:0,Wolverhampton Wanderers,18/10/2025,Robert Jones,46.578
+GB1-2025,R-2025-08,M-2025-08-007,Fulham FC,0:1,Arsenal FC,18/10/2025,Anthony Taylor,27.736
+GB1-2025,R-2025-08,M-2025-08-008,Tottenham Hotspur,1:2,Aston Villa,19/10/2025,Simon Hooper,61.291
+GB1-2025,R-2025-08,M-2025-08-009,Liverpool FC,1:2,Manchester United,19/10/2025,Michael Oliver,60.337
+GB1-2025,R-2025-08,M-2025-08-010,West Ham United,0:2,Brentford FC,20/10/2025,Andrew Madley,62.452
+GB1-2025,R-2025-09,M-2025-09-001,Leeds United,2:1,West Ham United,24/10/2025,Stuart Attwell,36.788
+GB1-2025,R-2025-09,M-2025-09-002,Chelsea FC,1:2,Sunderland AFC,25/10/2025,Andrew Madley,40.341
+GB1-2025,R-2025-09,M-2025-09-003,Newcastle United,2:1,Fulham FC,25/10/2025,Peter Bankes,52.152
+GB1-2025,R-2025-09,M-2025-09-004,Manchester United,4:2,Brighton & Hove Albion,25/10/2025,Anthony Taylor,73.987
+GB1-2025,R-2025-09,M-2025-09-005,Brentford FC,3:2,Liverpool FC,25/10/2025,Simon Hooper,17.214
+GB1-2025,R-2025-09,M-2025-09-006,Arsenal FC,1:0,Crystal Palace,26/10/2025,Thomas Bramall,60.103
+GB1-2025,R-2025-09,M-2025-09-007,Aston Villa,1:0,Manchester City,26/10/2025,Michael Oliver,41.988
+GB1-2025,R-2025-09,M-2025-09-008,AFC Bournemouth,2:0,Nottingham Forest,26/10/2025,Samuel Barrott,11.204
+GB1-2025,R-2025-09,M-2025-09-009,Wolverhampton Wanderers,2:3,Burnley FC,26/10/2025,Tony Harrington,29.116
+GB1-2025,R-2025-09,M-2025-09-010,Everton FC,0:3,Tottenham Hotspur,26/10/2025,Craig Pawson,52.501
+GB1-2025,R-2025-10,M-2025-10-001,Brighton & Hove Albion,3:0,Leeds United,01/11/2025,Michael Oliver,31.512
+GB1-2025,R-2025-10,M-2025-10-002,Burnley FC,0:2,Arsenal FC,01/11/2025,Chris Kavanagh,21.538
+GB1-2025,R-2025-10,M-2025-10-003,Crystal Palace,2:0,Brentford FC,01/11/2025,Peter Bankes,25.083
+GB1-2025,R-2025-10,M-2025-10-004,Fulham FC,3:0,Wolverhampton Wanderers,01/11/2025,John Brooks,26.413
+GB1-2025,R-2025-10,M-2025-10-005,Nottingham Forest,2:2,Manchester United,01/11/2025,Darren England,30.778
+GB1-2025,R-2025-10,M-2025-10-006,Tottenham Hotspur,0:1,Chelsea FC,01/11/2025,Jarred Gillett,61.202
+GB1-2025,R-2025-10,M-2025-10-007,Liverpool FC,2:0,Aston Villa,01/11/2025,Stuart Attwell,60.407
+GB1-2025,R-2025-10,M-2025-10-008,West Ham United,3:1,Newcastle United,02/11/2025,Robert Jones,62.441
+GB1-2025,R-2025-10,M-2025-10-009,Manchester City,3:1,AFC Bournemouth,02/11/2025,Anthony Taylor,52.387
+GB1-2025,R-2025-10,M-2025-10-010,Sunderland AFC,1:1,Everton FC,03/11/2025,Thomas Bramall,41.476
+GB1-2025,R-2025-11,M-2025-11-001,Tottenham Hotspur,2:2,Manchester United,08/11/2025,Samuel Barrott,61.210
+GB1-2025,R-2025-11,M-2025-11-002,Everton FC,2:0,Fulham FC,08/11/2025,Andrew Madley,52.491
+GB1-2025,R-2025-11,M-2025-11-003,West Ham United,3:2,Burnley FC,08/11/2025,Michael Salisbury,62.449
+GB1-2025,R-2025-11,M-2025-11-004,Sunderland AFC,2:2,Arsenal FC,08/11/2025,Craig Pawson,46.799
+GB1-2025,R-2025-11,M-2025-11-005,Chelsea FC,3:0,Wolverhampton Wanderers,08/11/2025,Andrew Kitchen,39.467
+GB1-2025,R-2025-11,M-2025-11-006,Aston Villa,4:0,AFC Bournemouth,09/11/2025,John Brooks,40.792
+GB1-2025,R-2025-11,M-2025-11-007,Brentford FC,3:1,Newcastle United,09/11/2025,Stuart Attwell,17.207
+GB1-2025,R-2025-11,M-2025-11-008,Crystal Palace,0:0,Brighton & Hove Albion,09/11/2025,Tim Robinson,24.326
+GB1-2025,R-2025-11,M-2025-11-009,Nottingham Forest,3:1,Leeds United,09/11/2025,Jarred Gillett,30.708
+GB1-2025,R-2025-11,M-2025-11-010,Manchester City,3:0,Liverpool FC,09/11/2025,Chris Kavanagh,52.511
+GB1-2025,R-2025-12,M-2025-12-001,Burnley FC,0:2,Chelsea FC,22/11/2025,Peter Bankes,21.499
+GB1-2025,R-2025-12,M-2025-12-002,AFC Bournemouth,2:2,West Ham United,22/11/2025,Thomas Bramall,11.216
+GB1-2025,R-2025-12,M-2025-12-003,Brighton & Hove Albion,2:1,Brentford FC,22/11/2025,Chris Kavanagh,31.358
+GB1-2025,R-2025-12,M-2025-12-004,Fulham FC,1:0,Sunderland AFC,22/11/2025,Darren England,27.560
+GB1-2025,R-2025-12,M-2025-12-005,Liverpool FC,0:3,Nottingham Forest,22/11/2025,Andrew Madley,60.419
+GB1-2025,R-2025-12,M-2025-12-006,Wolverhampton Wanderers,0:2,Crystal Palace,22/11/2025,Anthony Taylor,29.976
+GB1-2025,R-2025-12,M-2025-12-007,Newcastle United,2:1,Manchester City,22/11/2025,Samuel Barrott,52.181
+GB1-2025,R-2025-12,M-2025-12-008,Leeds United,1:2,Aston Villa,23/11/2025,Robert Jones,36.819
+GB1-2025,R-2025-12,M-2025-12-009,Arsenal FC,4:1,Tottenham Hotspur,23/11/2025,Michael Oliver,60.345
+GB1-2025,R-2025-12,M-2025-12-010,Manchester United,0:1,Everton FC,24/11/2025,Tony Harrington,74.158
+GB1-2025,R-2025-13,M-2025-13-001,Brentford FC,3:1,Burnley FC,29/11/2025,Samuel Barrott,17.176
+GB1-2025,R-2025-13,M-2025-13-002,Manchester City,3:2,Leeds United,29/11/2025,Peter Bankes,52.483
+GB1-2025,R-2025-13,M-2025-13-003,Sunderland AFC,3:2,AFC Bournemouth,29/11/2025,Tim Robinson,46.973
+GB1-2025,R-2025-13,M-2025-13-004,Everton FC,1:4,Newcastle United,29/11/2025,Craig Pawson,52.244
+GB1-2025,R-2025-13,M-2025-13-005,Tottenham Hotspur,1:2,Fulham FC,29/11/2025,Stuart Attwell,60.546
+GB1-2025,R-2025-13,M-2025-13-006,Crystal Palace,1:2,Manchester United,30/11/2025,Robert Jones,25.189
+GB1-2025,R-2025-13,M-2025-13-007,Aston Villa,1:0,Wolverhampton Wanderers,30/11/2025,Chris Kavanagh,42.139
+GB1-2025,R-2025-13,M-2025-13-008,Nottingham Forest,0:2,Brighton & Hove Albion,30/11/2025,Michael Oliver,30.522
+GB1-2025,R-2025-13,M-2025-13-009,West Ham United,0:2,Liverpool FC,30/11/2025,Darren England,62.469
+GB1-2025,R-2025-13,M-2025-13-010,Chelsea FC,1:1,Arsenal FC,30/11/2025,Anthony Taylor,39.820
+GB1-2025,R-2025-14,M-2025-14-001,AFC Bournemouth,0:1,Everton FC,02/12/2025,Michael Salisbury,11.161
+GB1-2025,R-2025-14,M-2025-14-002,Fulham FC,4:5,Manchester City,02/12/2025,Craig Pawson,26.700
+GB1-2025,R-2025-14,M-2025-14-003,Newcastle United,2:2,Tottenham Hotspur,02/12/2025,Thomas Bramall,52.007
+GB1-2025,R-2025-14,M-2025-14-004,Arsenal FC,2:0,Brentford FC,03/12/2025,Tony Harrington,60.110
+GB1-2025,R-2025-14,M-2025-14-005,Burnley FC,0:1,Crystal Palace,03/12/2025,Thomas Kirk,19.365
+GB1-2025,R-2025-14,M-2025-14-006,Brighton & Hove Albion,3:4,Aston Villa,03/12/2025,Andrew Madley,31.180
+GB1-2025,R-2025-14,M-2025-14-007,Leeds United,3:1,Chelsea FC,03/12/2025,Darren England,36.767
+GB1-2025,R-2025-14,M-2025-14-008,Liverpool FC,1:1,Sunderland AFC,03/12/2025,Stuart Attwell,60.414
+GB1-2025,R-2025-14,M-2025-14-009,Wolverhampton Wanderers,0:1,Nottingham Forest,03/12/2025,Tim Robinson,28.646
+GB1-2025,R-2025-14,M-2025-14-010,Manchester United,1:1,West Ham United,04/12/2025,Andrew Kitchen,73.938
+GB1-2025,R-2025-15,M-2025-15-001,Aston Villa,2:1,Arsenal FC,06/12/2025,Peter Bankes,42.888
+GB1-2025,R-2025-15,M-2025-15-002,AFC Bournemouth,0:0,Chelsea FC,06/12/2025,Michael Oliver,11.240
+GB1-2025,R-2025-15,M-2025-15-003,Everton FC,3:0,Nottingham Forest,06/12/2025,Chris Kavanagh,52.501
+GB1-2025,R-2025-15,M-2025-15-004,Manchester City,3:0,Sunderland AFC,06/12/2025,Andrew Madley,52.436
+GB1-2025,R-2025-15,M-2025-15-005,Newcastle United,2:1,Burnley FC,06/12/2025,Stuart Attwell,52.041
+GB1-2025,R-2025-15,M-2025-15-006,Tottenham Hotspur,2:0,Brentford FC,06/12/2025,Robert Jones,60.759
+GB1-2025,R-2025-15,M-2025-15-007,Leeds United,3:3,Liverpool FC,06/12/2025,Anthony Taylor,36.842
+GB1-2025,R-2025-15,M-2025-15-008,Brighton & Hove Albion,1:1,West Ham United,07/12/2025,Simon Hooper,31.293
+GB1-2025,R-2025-15,M-2025-15-009,Fulham FC,1:2,Crystal Palace,07/12/2025,Samuel Barrott,27.283
+GB1-2025,R-2025-15,M-2025-15-010,Wolverhampton Wanderers,1:4,Manchester United,08/12/2025,Michael Salisbury,30.338
+GB1-2025,R-2025-16,M-2025-16-001,Chelsea FC,2:0,Everton FC,13/12/2025,Thomas Bramall,39.552
+GB1-2025,R-2025-16,M-2025-16-002,Liverpool FC,2:0,Brighton & Hove Albion,13/12/2025,Craig Pawson,60.429
+GB1-2025,R-2025-16,M-2025-16-003,Burnley FC,2:3,Fulham FC,13/12/2025,Michael Oliver,19.739
+GB1-2025,R-2025-16,M-2025-16-004,Arsenal FC,2:1,Wolverhampton Wanderers,13/12/2025,Robert Jones,60.242
+GB1-2025,R-2025-16,M-2025-16-005,Crystal Palace,0:3,Manchester City,14/12/2025,Darren England,25.166
+GB1-2025,R-2025-16,M-2025-16-006,Nottingham Forest,3:0,Tottenham Hotspur,14/12/2025,Samuel Barrott,30.579
+GB1-2025,R-2025-16,M-2025-16-007,Sunderland AFC,1:0,Newcastle United,14/12/2025,Peter Bankes,47.158
+GB1-2025,R-2025-16,M-2025-16-008,West Ham United,2:3,Aston Villa,14/12/2025,Anthony Taylor,62.447
+GB1-2025,R-2025-16,M-2025-16-009,Brentford FC,1:1,Leeds United,14/12/2025,John Brooks,17.159
+GB1-2025,R-2025-16,M-2025-16-010,Manchester United,4:4,AFC Bournemouth,15/12/2025,Simon Hooper,73.951
+GB1-2025,R-2025-17,M-2025-17-001,Newcastle United,2:2,Chelsea FC,20/12/2025,Andrew Madley,52.226
+GB1-2025,R-2025-17,M-2025-17-002,AFC Bournemouth,1:1,Burnley FC,20/12/2025,Chris Kavanagh,10.762
+GB1-2025,R-2025-17,M-2025-17-003,Brighton & Hove Albion,0:0,Sunderland AFC,20/12/2025,Darren England,31.426
+GB1-2025,R-2025-17,M-2025-17-004,Manchester City,3:0,West Ham United,20/12/2025,Paul Tierney,52.454
+GB1-2025,R-2025-17,M-2025-17-005,Wolverhampton Wanderers,0:2,Brentford FC,20/12/2025,Matthew Donohue,27.662
+GB1-2025,R-2025-17,M-2025-17-006,Tottenham Hotspur,1:2,Liverpool FC,20/12/2025,John Brooks,61.138
+GB1-2025,R-2025-17,M-2025-17-007,Everton FC,0:1,Arsenal FC,20/12/2025,Samuel Barrott,52.513
+GB1-2025,R-2025-17,M-2025-17-008,Leeds United,4:1,Crystal Palace,20/12/2025,Thomas Bramall,36.334
+GB1-2025,R-2025-17,M-2025-17-009,Aston Villa,2:1,Manchester United,21/12/2025,Michael Oliver,43.157
+GB1-2025,R-2025-17,M-2025-17-010,Fulham FC,1:0,Nottingham Forest,22/12/2025,Anthony Taylor,27.136
+GB1-2025,R-2025-18,M-2025-18-001,Manchester United,1:0,Newcastle United,26/12/2025,Anthony Taylor,73.996
+GB1-2025,R-2025-18,M-2025-18-002,Nottingham Forest,1:2,Manchester City,27/12/2025,Robert Jones,30.778
+GB1-2025,R-2025-18,M-2025-18-003,Arsenal FC,2:1,Brighton & Hove Albion,27/12/2025,John Brooks,60.209
+GB1-2025,R-2025-18,M-2025-18-004,Brentford FC,4:1,AFC Bournemouth,27/12/2025,Peter Bankes,17.152
+GB1-2025,R-2025-18,M-2025-18-005,Burnley FC,0:0,Everton FC,27/12/2025,Craig Pawson,21.637
+GB1-2025,R-2025-18,M-2025-18-006,Liverpool FC,2:1,Wolverhampton Wanderers,27/12/2025,Simon Hooper,60.466
+GB1-2025,R-2025-18,M-2025-18-007,West Ham United,0:1,Fulham FC,27/12/2025,Chris Kavanagh,62.464
+GB1-2025,R-2025-18,M-2025-18-008,Chelsea FC,1:2,Aston Villa,27/12/2025,Stuart Attwell,39.765
+GB1-2025,R-2025-18,M-2025-18-009,Sunderland AFC,1:1,Leeds United,28/12/2025,Tony Harrington,46.675
+GB1-2025,R-2025-18,M-2025-18-010,Crystal Palace,0:1,Tottenham Hotspur,28/12/2025,Jarred Gillett,25.186
+GB1-2025,R-2025-19,M-2025-19-001,Burnley FC,1:3,Newcastle United,30/12/2025,Robert Jones,21.020
+GB1-2025,R-2025-19,M-2025-19-002,Chelsea FC,2:2,AFC Bournemouth,30/12/2025,Samuel Barrott,39.622
+GB1-2025,R-2025-19,M-2025-19-003,Nottingham Forest,0:2,Everton FC,30/12/2025,Michael Oliver,30.617
+GB1-2025,R-2025-19,M-2025-19-004,West Ham United,2:2,Brighton & Hove Albion,30/12/2025,Michael Salisbury,62.438
+GB1-2025,R-2025-19,M-2025-19-005,Arsenal FC,4:1,Aston Villa,30/12/2025,Darren England,60.279
+GB1-2025,R-2025-19,M-2025-19-006,Manchester United,1:1,Wolverhampton Wanderers,30/12/2025,Thomas Bramall,73.941
+GB1-2025,R-2025-19,M-2025-19-007,Crystal Palace,1:1,Fulham FC,01/01/2026,Tony Harrington,25.111
+GB1-2025,R-2025-19,M-2025-19-008,Liverpool FC,0:0,Leeds United,01/01/2026,Chris Kavanagh,60.343
+GB1-2025,R-2025-19,M-2025-19-009,Brentford FC,0:0,Tottenham Hotspur,01/01/2026,Andrew Madley,17.141
+GB1-2025,R-2025-19,M-2025-19-010,Sunderland AFC,0:0,Manchester City,01/01/2026,Jarred Gillett,46.920
+GB1-2025,R-2025-20,M-2025-20-001,Aston Villa,3:1,Nottingham Forest,03/01/2026,Simon Hooper,43.039
+GB1-2025,R-2025-20,M-2025-20-002,Brighton & Hove Albion,2:0,Burnley FC,03/01/2026,Tim Robinson,31.373
+GB1-2025,R-2025-20,M-2025-20-003,Wolverhampton Wanderers,3:0,West Ham United,03/01/2026,Peter Bankes,29.874
+GB1-2025,R-2025-20,M-2025-20-004,AFC Bournemouth,2:3,Arsenal FC,03/01/2026,Chris Kavanagh,11.240
+GB1-2025,R-2025-20,M-2025-20-005,Leeds United,1:1,Manchester United,04/01/2026,Jarred Gillett,36.909
+GB1-2025,R-2025-20,M-2025-20-006,Everton FC,2:4,Brentford FC,04/01/2026,Anthony Taylor,52.514
+GB1-2025,R-2025-20,M-2025-20-007,Fulham FC,2:2,Liverpool FC,04/01/2026,Craig Pawson,27.547
+GB1-2025,R-2025-20,M-2025-20-008,Newcastle United,2:0,Crystal Palace,04/01/2026,John Brooks,51.979
+GB1-2025,R-2025-20,M-2025-20-009,Tottenham Hotspur,1:1,Sunderland AFC,04/01/2026,Stuart Attwell,60.877
+GB1-2025,R-2025-20,M-2025-20-010,Manchester City,1:1,Chelsea FC,04/01/2026,Michael Oliver,52.503
+GB1-2025,R-2025-21,M-2025-21-001,West Ham United,1:2,Nottingham Forest,06/01/2026,Tony Harrington,62.429
+GB1-2025,R-2025-21,M-2025-21-002,AFC Bournemouth,3:2,Tottenham Hotspur,07/01/2026,Darren England,11.212
+GB1-2025,R-2025-21,M-2025-21-003,Brentford FC,3:0,Sunderland AFC,07/01/2026,Matthew Donohue,17.016
+GB1-2025,R-2025-21,M-2025-21-004,Crystal Palace,0:0,Aston Villa,07/01/2026,Andrew Madley,24.841
+GB1-2025,R-2025-21,M-2025-21-005,Everton FC,1:1,Wolverhampton Wanderers,07/01/2026,Thomas Kirk,51.768
+GB1-2025,R-2025-21,M-2025-21-006,Fulham FC,2:1,Chelsea FC,07/01/2026,Peter Bankes,26.990
+GB1-2025,R-2025-21,M-2025-21-007,Manchester City,1:1,Brighton & Hove Albion,07/01/2026,Thomas Bramall,51.728
+GB1-2025,R-2025-21,M-2025-21-008,Burnley FC,2:2,Manchester United,07/01/2026,Stuart Attwell,21.047
+GB1-2025,R-2025-21,M-2025-21-009,Newcastle United,4:3,Leeds United,07/01/2026,Michael Salisbury,51.176
+GB1-2025,R-2025-21,M-2025-21-010,Arsenal FC,0:0,Liverpool FC,08/01/2026,Anthony Taylor,60.258
+GB1-2025,R-2025-22,M-2025-22-001,Manchester United,2:0,Manchester City,17/01/2026,Anthony Taylor,74.004
+GB1-2025,R-2025-22,M-2025-22-002,Chelsea FC,2:0,Brentford FC,17/01/2026,John Brooks,39.704
+GB1-2025,R-2025-22,M-2025-22-003,Leeds United,1:0,Fulham FC,17/01/2026,Chris Kavanagh,36.300
+GB1-2025,R-2025-22,M-2025-22-004,Liverpool FC,1:1,Burnley FC,17/01/2026,Andrew Madley,60.431
+GB1-2025,R-2025-22,M-2025-22-005,Sunderland AFC,2:1,Crystal Palace,17/01/2026,Robert Jones,47.257
+GB1-2025,R-2025-22,M-2025-22-006,Tottenham Hotspur,1:2,West Ham United,17/01/2026,Jarred Gillett,60.857
+GB1-2025,R-2025-22,M-2025-22-007,Nottingham Forest,0:0,Arsenal FC,17/01/2026,Michael Oliver,30.729
+GB1-2025,R-2025-22,M-2025-22-008,Wolverhampton Wanderers,0:0,Newcastle United,18/01/2026,Samuel Barrott,29.751
+GB1-2025,R-2025-22,M-2025-22-009,Aston Villa,0:1,Everton FC,18/01/2026,Tony Harrington,42.770
+GB1-2025,R-2025-22,M-2025-22-010,Brighton & Hove Albion,1:1,AFC Bournemouth,19/01/2026,Paul Tierney,30.172
+GB1-2025,R-2025-23,M-2025-23-001,West Ham United,3:1,Sunderland AFC,24/01/2026,Thomas Bramall,62.456
+GB1-2025,R-2025-23,M-2025-23-002,Burnley FC,2:2,Tottenham Hotspur,24/01/2026,Peter Bankes,21.618
+GB1-2025,R-2025-23,M-2025-23-003,Fulham FC,2:1,Brighton & Hove Albion,24/01/2026,Michael Oliver,27.239
+GB1-2025,R-2025-23,M-2025-23-004,Manchester City,2:0,Wolverhampton Wanderers,24/01/2026,Farai Hallam,52.469
+GB1-2025,R-2025-23,M-2025-23-005,AFC Bournemouth,3:2,Liverpool FC,24/01/2026,Michael Salisbury,11.260
+GB1-2025,R-2025-23,M-2025-23-006,Brentford FC,0:2,Nottingham Forest,25/01/2026,Samuel Barrott,17.134
+GB1-2025,R-2025-23,M-2025-23-007,Crystal Palace,1:3,Chelsea FC,25/01/2026,Darren England,25.163
+GB1-2025,R-2025-23,M-2025-23-008,Newcastle United,0:2,Aston Villa,25/01/2026,Jarred Gillett,52.134
+GB1-2025,R-2025-23,M-2025-23-009,Arsenal FC,2:3,Manchester United,25/01/2026,Craig Pawson,60.296
+GB1-2025,R-2025-23,M-2025-23-010,Everton FC,1:1,Leeds United,26/01/2026,Simon Hooper,51.979
+GB1-2025,R-2025-24,M-2025-24-001,Brighton & Hove Albion,1:1,Everton FC,31/01/2026,Chris Kavanagh,31.419
+GB1-2025,R-2025-24,M-2025-24-002,Leeds United,0:4,Arsenal FC,31/01/2026,Stuart Attwell,36.858
+GB1-2025,R-2025-24,M-2025-24-003,Wolverhampton Wanderers,0:2,AFC Bournemouth,31/01/2026,Michael Oliver,30.161
+GB1-2025,R-2025-24,M-2025-24-004,Chelsea FC,3:2,West Ham United,31/01/2026,Anthony Taylor,39.430
+GB1-2025,R-2025-24,M-2025-24-005,Liverpool FC,4:1,Newcastle United,31/01/2026,Simon Hooper,60.416
+GB1-2025,R-2025-24,M-2025-24-006,Aston Villa,0:1,Brentford FC,01/02/2026,Tim Robinson,41.415
+GB1-2025,R-2025-24,M-2025-24-007,Manchester United,3:2,Fulham FC,01/02/2026,John Brooks,73.932
+GB1-2025,R-2025-24,M-2025-24-008,Nottingham Forest,1:1,Crystal Palace,01/02/2026,Tony Harrington,30.334
+GB1-2025,R-2025-24,M-2025-24-009,Tottenham Hotspur,2:2,Manchester City,01/02/2026,Robert Jones,61.337
+GB1-2025,R-2025-24,M-2025-24-010,Sunderland AFC,3:0,Burnley FC,02/02/2026,Paul Tierney,46.370
+GB1-2025,R-2025-25,M-2025-25-001,Leeds United,3:1,Nottingham Forest,06/02/2026,Peter Bankes,36.835
+GB1-2025,R-2025-25,M-2025-25-002,Manchester United,2:0,Tottenham Hotspur,07/02/2026,Michael Oliver,73.985
+GB1-2025,R-2025-25,M-2025-25-003,Arsenal FC,3:0,Sunderland AFC,07/02/2026,Samuel Barrott,60.312
+GB1-2025,R-2025-25,M-2025-25-004,AFC Bournemouth,1:1,Aston Villa,07/02/2026,Anthony Taylor,11.248
+GB1-2025,R-2025-25,M-2025-25-005,Burnley FC,0:2,West Ham United,07/02/2026,Darren England,21.273
+GB1-2025,R-2025-25,M-2025-25-006,Fulham FC,1:2,Everton FC,07/02/2026,Stuart Attwell,27.155
+GB1-2025,R-2025-25,M-2025-25-007,Wolverhampton Wanderers,1:3,Chelsea FC,07/02/2026,Jarred Gillett,29.762
+GB1-2025,R-2025-25,M-2025-25-008,Newcastle United,2:3,Brentford FC,07/02/2026,Andrew Madley,52.032
+GB1-2025,R-2025-25,M-2025-25-009,Brighton & Hove Albion,0:1,Crystal Palace,08/02/2026,Thomas Bramall,31.179
+GB1-2025,R-2025-25,M-2025-25-010,Liverpool FC,1:2,Manchester City,08/02/2026,Craig Pawson,60.336
+GB1-2025,R-2025-26,M-2025-26-001,Chelsea FC,2:2,Leeds United,10/02/2026,Robert Jones,39.253
+GB1-2025,R-2025-26,M-2025-26-002,Everton FC,1:2,AFC Bournemouth,10/02/2026,Andrew Madley,50.196
+GB1-2025,R-2025-26,M-2025-26-003,Tottenham Hotspur,1:2,Newcastle United,10/02/2026,Anthony Taylor,59.773
+GB1-2025,R-2025-26,M-2025-26-004,West Ham United,1:1,Manchester United,10/02/2026,Simon Hooper,62.473
+GB1-2025,R-2025-26,M-2025-26-005,Aston Villa,1:0,Brighton & Hove Albion,11/02/2026,Peter Bankes,39.495
+GB1-2025,R-2025-26,M-2025-26-006,Crystal Palace,2:3,Burnley FC,11/02/2026,Farai Hallam,23.267
+GB1-2025,R-2025-26,M-2025-26-007,Manchester City,3:0,Fulham FC,11/02/2026,Paul Tierney,50.717
+GB1-2025,R-2025-26,M-2025-26-008,Nottingham Forest,0:0,Wolverhampton Wanderers,11/02/2026,Tim Robinson,29.921
+GB1-2025,R-2025-26,M-2025-26-009,Sunderland AFC,0:1,Liverpool FC,11/02/2026,Chris Kavanagh,47.159
+GB1-2025,R-2025-26,M-2025-26-010,Brentford FC,1:1,Arsenal FC,12/02/2026,John Brooks,17.224
+GB1-2025,R-2025-27,M-2025-27-001,Aston Villa,1:1,Leeds United,21/02/2026,Michael Oliver,43.048
+GB1-2025,R-2025-27,M-2025-27-002,Brentford FC,0:2,Brighton & Hove Albion,21/02/2026,Jarred Gillett,17.163
+GB1-2025,R-2025-27,M-2025-27-003,Chelsea FC,1:1,Burnley FC,21/02/2026,Lewis Smith,39.603
+GB1-2025,R-2025-27,M-2025-27-004,West Ham United,0:0,AFC Bournemouth,21/02/2026,Samuel Barrott,62.437
+GB1-2025,R-2025-27,M-2025-27-005,Manchester City,2:1,Newcastle United,21/02/2026,Thomas Bramall,52.187
+GB1-2025,R-2025-27,M-2025-27-006,Crystal Palace,1:0,Wolverhampton Wanderers,22/02/2026,Thomas Kirk,24.547
+GB1-2025,R-2025-27,M-2025-27-007,Nottingham Forest,0:1,Liverpool FC,22/02/2026,Anthony Taylor,30.737
+GB1-2025,R-2025-27,M-2025-27-008,Sunderland AFC,1:3,Fulham FC,22/02/2026,Craig Pawson,47.222
+GB1-2025,R-2025-27,M-2025-27-009,Tottenham Hotspur,1:4,Arsenal FC,22/02/2026,Peter Bankes,61.439
+GB1-2025,R-2025-27,M-2025-27-010,Everton FC,0:1,Manchester United,23/02/2026,Darren England,52.326
+GB1-2025,R-2025-28,M-2025-28-001,Wolverhampton Wanderers,2:0,Aston Villa,27/02/2026,Craig Pawson,30.197
+GB1-2025,R-2025-28,M-2025-28-002,AFC Bournemouth,1:1,Sunderland AFC,28/02/2026,Jarred Gillett,11.240
+GB1-2025,R-2025-28,M-2025-28-003,Burnley FC,3:4,Brentford FC,28/02/2026,Samuel Barrott,20.069
+GB1-2025,R-2025-28,M-2025-28-004,Liverpool FC,5:2,West Ham United,28/02/2026,Tim Robinson,60.425
+GB1-2025,R-2025-28,M-2025-28-005,Newcastle United,2:3,Everton FC,28/02/2026,Stuart Attwell,52.264
+GB1-2025,R-2025-28,M-2025-28-006,Leeds United,0:1,Manchester City,28/02/2026,Peter Bankes,36.838
+GB1-2025,R-2025-28,M-2025-28-007,Brighton & Hove Albion,2:1,Nottingham Forest,01/03/2026,Andrew Madley,31.427
+GB1-2025,R-2025-28,M-2025-28-008,Fulham FC,2:1,Tottenham Hotspur,01/03/2026,Thomas Bramall,27.439
+GB1-2025,R-2025-28,M-2025-28-009,Manchester United,2:1,Crystal Palace,01/03/2026,Chris Kavanagh,73.934
+GB1-2025,R-2025-28,M-2025-28-010,Arsenal FC,2:1,Chelsea FC,01/03/2026,Darren England,60.296
+GB1-2025,R-2025-29,M-2025-29-001,AFC Bournemouth,0:0,Brentford FC,03/03/2026,Craig Pawson,11.108
+GB1-2025,R-2025-29,M-2025-29-002,Everton FC,2:0,Burnley FC,03/03/2026,Tim Robinson,51.959
+GB1-2025,R-2025-29,M-2025-29-003,Leeds United,0:1,Sunderland AFC,03/03/2026,Stuart Attwell,36.713
+GB1-2025,R-2025-29,M-2025-29-004,Wolverhampton Wanderers,2:1,Liverpool FC,03/03/2026,Thomas Bramall,30.247
+GB1-2025,R-2025-29,M-2025-29-005,Aston Villa,1:4,Chelsea FC,04/03/2026,Jarred Gillett,42.084
+GB1-2025,R-2025-29,M-2025-29-006,Brighton & Hove Albion,0:1,Arsenal FC,04/03/2026,Chris Kavanagh,31.575
+GB1-2025,R-2025-29,M-2025-29-007,Fulham FC,0:1,West Ham United,04/03/2026,Matthew Donohue,27.191
+GB1-2025,R-2025-29,M-2025-29-008,Manchester City,2:2,Nottingham Forest,04/03/2026,Darren England,51.965
+GB1-2025,R-2025-29,M-2025-29-009,Newcastle United,2:1,Manchester United,04/03/2026,Peter Bankes,52.184
+GB1-2025,R-2025-29,M-2025-29-010,Tottenham Hotspur,1:3,Crystal Palace,05/03/2026,Andrew Madley,60.213
+GB1-2025,R-2025-30,M-2025-30-001,Burnley FC,0:0,AFC Bournemouth,14/03/2026,Peter Bankes,20.281
+GB1-2025,R-2025-30,M-2025-30-002,Sunderland AFC,0:1,Brighton & Hove Albion,14/03/2026,Thomas Kirk,45.497
+GB1-2025,R-2025-30,M-2025-30-003,Arsenal FC,2:0,Everton FC,14/03/2026,Andrew Madley,60.176
+GB1-2025,R-2025-30,M-2025-30-004,Chelsea FC,0:1,Newcastle United,14/03/2026,Paul Tierney,39.857
+GB1-2025,R-2025-30,M-2025-30-005,West Ham United,1:1,Manchester City,14/03/2026,Michael Oliver,62.459
+GB1-2025,R-2025-30,M-2025-30-006,Crystal Palace,0:0,Leeds United,15/03/2026,Thomas Bramall,25.155
+GB1-2025,R-2025-30,M-2025-30-007,Manchester United,3:1,Aston Villa,15/03/2026,Anthony Taylor,73.997
+GB1-2025,R-2025-30,M-2025-30-008,Nottingham Forest,0:0,Fulham FC,15/03/2026,Samuel Barrott,30.013
+GB1-2025,R-2025-30,M-2025-30-009,Liverpool FC,1:1,Tottenham Hotspur,15/03/2026,Chris Kavanagh,60.386
+GB1-2025,R-2025-30,M-2025-30-010,Brentford FC,2:2,Wolverhampton Wanderers,16/03/2026,Stuart Attwell,17.155
+GB1-2025,R-2025-31,M-2025-31-001,Wolverhampton Wanderers,2:2,Arsenal FC,18/02/2026,Paul Tierney,29.843
+GB1-2025,R-2025-31,M-2025-31-002,AFC Bournemouth,2:2,Manchester United,20/03/2026,Stuart Attwell,11.250
+GB1-2025,R-2025-31,M-2025-31-003,Brighton & Hove Albion,2:1,Liverpool FC,21/03/2026,Darren England,31.680
+GB1-2025,R-2025-31,M-2025-31-004,Fulham FC,3:1,Burnley FC,21/03/2026,Chris Kavanagh,27.323
+GB1-2025,R-2025-31,M-2025-31-005,Everton FC,3:0,Chelsea FC,21/03/2026,Samuel Barrott,52.547
+GB1-2025,R-2025-31,M-2025-31-006,Leeds United,0:0,Brentford FC,21/03/2026,Jarred Gillett,36.386
+GB1-2025,R-2025-31,M-2025-31-007,Newcastle United,1:2,Sunderland AFC,22/03/2026,Anthony Taylor,52.253
+GB1-2025,R-2025-31,M-2025-31-008,Aston Villa,2:0,West Ham United,22/03/2026,Paul Tierney,42.130
+GB1-2025,R-2025-31,M-2025-31-009,Tottenham Hotspur,0:3,Nottingham Forest,22/03/2026,Michael Oliver,61.519
+GB1-2025,R-2025-31,M-2025-31-010,Manchester City,3:0,Crystal Palace,13/05/2026,Stuart Attwell,51.738
+GB1-2025,R-2025-32,M-2025-32-001,West Ham United,4:0,Wolverhampton Wanderers,10/04/2026,Jarred Gillett,62.457
+GB1-2025,R-2025-32,M-2025-32-002,Arsenal FC,1:2,AFC Bournemouth,11/04/2026,Michael Oliver,60.210
+GB1-2025,R-2025-32,M-2025-32-003,Brentford FC,2:2,Everton FC,11/04/2026,Farai Hallam,17.220
+GB1-2025,R-2025-32,M-2025-32-004,Burnley FC,0:2,Brighton & Hove Albion,11/04/2026,Thomas Bramall,20.408
+GB1-2025,R-2025-32,M-2025-32-005,Liverpool FC,2:0,Fulham FC,11/04/2026,Anthony Taylor,60.401
+GB1-2025,R-2025-32,M-2025-32-006,Crystal Palace,2:1,Newcastle United,12/04/2026,Andrew Madley,25.141
+GB1-2025,R-2025-32,M-2025-32-007,Nottingham Forest,1:1,Aston Villa,12/04/2026,Michael Salisbury,30.591
+GB1-2025,R-2025-32,M-2025-32-008,Sunderland AFC,1:0,Tottenham Hotspur,12/04/2026,Robert Jones,47.010
+GB1-2025,R-2025-32,M-2025-32-009,Chelsea FC,0:3,Manchester City,12/04/2026,Chris Kavanagh,39.552
+GB1-2025,R-2025-32,M-2025-32-010,Manchester United,1:2,Leeds United,13/04/2026,Paul Tierney,74.018
+GB1-2025,R-2025-33,M-2025-33-001,Brentford FC,0:0,Fulham FC,18/04/2026,Paul Tierney,17.171
+GB1-2025,R-2025-33,M-2025-33-002,Leeds United,3:0,Wolverhampton Wanderers,18/04/2026,Farai Hallam,36.840
+GB1-2025,R-2025-33,M-2025-33-003,Newcastle United,1:2,AFC Bournemouth,18/04/2026,Thomas Bramall,52.109
+GB1-2025,R-2025-33,M-2025-33-004,Tottenham Hotspur,2:2,Brighton & Hove Albion,18/04/2026,Stuart Attwell,61.167
+GB1-2025,R-2025-33,M-2025-33-005,Chelsea FC,0:1,Manchester United,18/04/2026,Michael Oliver,39.733
+GB1-2025,R-2025-33,M-2025-33-006,Aston Villa,4:3,Sunderland AFC,19/04/2026,Samuel Barrott,42.599
+GB1-2025,R-2025-33,M-2025-33-007,Everton FC,1:2,Liverpool FC,19/04/2026,Chris Kavanagh,52.585
+GB1-2025,R-2025-33,M-2025-33-008,Nottingham Forest,4:1,Burnley FC,19/04/2026,Thomas Kirk,29.458
+GB1-2025,R-2025-33,M-2025-33-009,Manchester City,2:1,Arsenal FC,19/04/2026,Anthony Taylor,52.523
+GB1-2025,R-2025-33,M-2025-33-010,Crystal Palace,0:0,West Ham United,20/04/2026,Darren England,24.974
+GB1-2025,R-2025-34,M-2025-34-001,Brighton & Hove Albion,3:0,Chelsea FC,21/04/2026,Craig Pawson,31.220
+GB1-2025,R-2025-34,M-2025-34-002,AFC Bournemouth,2:2,Leeds United,22/04/2026,Michael Salisbury,11.226
+GB1-2025,R-2025-34,M-2025-34-003,Burnley FC,0:1,Manchester City,22/04/2026,Andrew Madley,21.259
+GB1-2025,R-2025-34,M-2025-34-004,Sunderland AFC,0:5,Nottingham Forest,24/04/2026,Darren England,47.047
+GB1-2025,R-2025-34,M-2025-34-005,Fulham FC,1:0,Aston Villa,25/04/2026,Michael Oliver,27.606
+GB1-2025,R-2025-34,M-2025-34-006,Liverpool FC,3:1,Crystal Palace,25/04/2026,Andrew Madley,60.314
+GB1-2025,R-2025-34,M-2025-34-007,West Ham United,2:1,Everton FC,25/04/2026,Stuart Attwell,62.454
+GB1-2025,R-2025-34,M-2025-34-008,Wolverhampton Wanderers,0:1,Tottenham Hotspur,25/04/2026,Anthony Taylor,31.253
+GB1-2025,R-2025-34,M-2025-34-009,Arsenal FC,1:0,Newcastle United,25/04/2026,Samuel Barrott,60.204
+GB1-2025,R-2025-34,M-2025-34-010,Manchester United,2:1,Brentford FC,27/04/2026,Chris Kavanagh,73.773
+GB1-2025,R-2025-35,M-2025-35-001,Leeds United,3:1,Burnley FC,01/05/2026,Thomas Bramall,36.265
+GB1-2025,R-2025-35,M-2025-35-002,Brentford FC,3:0,West Ham United,02/05/2026,Craig Pawson,17.194
+GB1-2025,R-2025-35,M-2025-35-003,Newcastle United,3:1,Brighton & Hove Albion,02/05/2026,Chris Kavanagh,52.099
+GB1-2025,R-2025-35,M-2025-35-004,Wolverhampton Wanderers,1:1,Sunderland AFC,02/05/2026,Paul Tierney,29.632
+GB1-2025,R-2025-35,M-2025-35-005,Arsenal FC,3:0,Fulham FC,02/05/2026,Jarred Gillett,60.196
+GB1-2025,R-2025-35,M-2025-35-006,AFC Bournemouth,3:0,Crystal Palace,03/05/2026,Robert Jones,11.122
+GB1-2025,R-2025-35,M-2025-35-007,Manchester United,3:2,Liverpool FC,03/05/2026,Darren England,74.027
+GB1-2025,R-2025-35,M-2025-35-008,Aston Villa,1:2,Tottenham Hotspur,03/05/2026,Samuel Barrott,42.767
+GB1-2025,R-2025-35,M-2025-35-009,Chelsea FC,1:3,Nottingham Forest,04/05/2026,Anthony Taylor,39.605
+GB1-2025,R-2025-35,M-2025-35-010,Everton FC,3:3,Manchester City,04/05/2026,Michael Oliver,52.257
+GB1-2025,R-2025-36,M-2025-36-001,Liverpool FC,1:1,Chelsea FC,09/05/2026,Craig Pawson,60.429
+GB1-2025,R-2025-36,M-2025-36-002,Brighton & Hove Albion,3:0,Wolverhampton Wanderers,09/05/2026,John Brooks,31.587
+GB1-2025,R-2025-36,M-2025-36-003,Fulham FC,0:1,AFC Bournemouth,09/05/2026,Andrew Madley,27.626
+GB1-2025,R-2025-36,M-2025-36-004,Sunderland AFC,0:0,Manchester United,09/05/2026,Stuart Attwell,47.233
+GB1-2025,R-2025-36,M-2025-36-005,Manchester City,3:0,Brentford FC,09/05/2026,Michael Salisbury,52.489
+GB1-2025,R-2025-36,M-2025-36-006,Burnley FC,2:2,Aston Villa,10/05/2026,Anthony Taylor,21.196
+GB1-2025,R-2025-36,M-2025-36-007,Crystal Palace,2:2,Everton FC,10/05/2026,Thomas Bramall,24.958
+GB1-2025,R-2025-36,M-2025-36-008,Nottingham Forest,1:1,Newcastle United,10/05/2026,Paul Tierney,30.691
+GB1-2025,R-2025-36,M-2025-36-009,West Ham United,0:1,Arsenal FC,10/05/2026,Chris Kavanagh,60.429
+GB1-2025,R-2025-36,M-2025-36-010,Tottenham Hotspur,1:1,Leeds United,11/05/2026,Jarred Gillett,61.048
+GB1-2025,R-2025-37,M-2025-37-001,Aston Villa,4:2,Liverpool FC,15/05/2026,Chris Kavanagh,43.033
+GB1-2025,R-2025-37,M-2025-37-002,Manchester United,3:2,Nottingham Forest,17/05/2026,Michael Salisbury,74.015
+GB1-2025,R-2025-37,M-2025-37-003,Brentford FC,2:2,Crystal Palace,17/05/2026,Samuel Barrott,17.213
+GB1-2025,R-2025-37,M-2025-37-004,Everton FC,1:3,Sunderland AFC,17/05/2026,John Brooks,52.590
+GB1-2025,R-2025-37,M-2025-37-005,Leeds United,1:0,Brighton & Hove Albion,17/05/2026,Michael Oliver,36.880
+GB1-2025,R-2025-37,M-2025-37-006,Wolverhampton Wanderers,1:1,Fulham FC,17/05/2026,Thomas Kirk,28.709
+GB1-2025,R-2025-37,M-2025-37-007,Newcastle United,3:1,West Ham United,17/05/2026,Jarred Gillett,52.206
+GB1-2025,R-2025-37,M-2025-37-008,Arsenal FC,1:0,Burnley FC,18/05/2026,Paul Tierney,60.274
+GB1-2025,R-2025-37,M-2025-37-009,AFC Bournemouth,1:1,Manchester City,19/05/2026,Anthony Taylor,11.218
+GB1-2025,R-2025-37,M-2025-37-010,Chelsea FC,2:1,Tottenham Hotspur,19/05/2026,Stuart Attwell,39.463
+GB1-2025,R-2025-38,M-2025-38-001,Brighton & Hove Albion,0:3,Manchester United,24/05/2026,Samuel Barrott,31.729
+GB1-2025,R-2025-38,M-2025-38-002,Burnley FC,1:1,Wolverhampton Wanderers,24/05/2026,Andrew Kitchen,21.057
+GB1-2025,R-2025-38,M-2025-38-003,Crystal Palace,1:2,Arsenal FC,24/05/2026,Farai Hallam,25.192
+GB1-2025,R-2025-38,M-2025-38-004,Fulham FC,2:0,Newcastle United,24/05/2026,Robert Jones,27.442
+GB1-2025,R-2025-38,M-2025-38-005,Liverpool FC,1:1,Brentford FC,24/05/2026,Darren England,60.325
+GB1-2025,R-2025-38,M-2025-38-006,Manchester City,1:2,Aston Villa,24/05/2026,Andrew Madley,60.332
+GB1-2025,R-2025-38,M-2025-38-007,Nottingham Forest,1:1,AFC Bournemouth,24/05/2026,Craig Pawson,30.741
+GB1-2025,R-2025-38,M-2025-38-008,Sunderland AFC,2:1,Chelsea FC,24/05/2026,Chris Kavanagh,47.155
+GB1-2025,R-2025-38,M-2025-38-009,Tottenham Hotspur,1:0,Everton FC,24/05/2026,Michael Oliver,61.812
+GB1-2025,R-2025-38,M-2025-38-010,West Ham United,3:0,Leeds United,24/05/2026,Anthony Taylor,62.471
