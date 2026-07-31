@@ -237,11 +237,8 @@ def get_match(headers, league, n_season, n_round):
         for i, item in enumerate(adicional_info):
             # Attendance requires different handling because it may contain extra text besides the numeric value
             if i == 2:
-                text = item.get_text(" ", strip=True)
-                try: 
-                    attendance = text.split()[0]
-                    temp.append(attendance)
-                except: temp.append(text)
+                attendance = next(item.stripped_strings, '0.0')
+                temp.append(int(attendance.replace('.', '')))
             
             # Date and referee are stored as hyperlink text
             else:
