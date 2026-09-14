@@ -1,8 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
+import time
+import re
 
 # ------------------------------------------------------------------
-# leagues dictionary
+# Leagues Dictionary
 # ------------------------------------------------------------------
 all_leagues = {
 	'premier-league' : 'GB1',
@@ -14,656 +16,628 @@ all_leagues = {
 }
 
 # ------------------------------------------------------------------
+# Request Function
+# ------------------------------------------------------------------
+def get_page(url, headers, retries=5):
+    """
+    Sends an HTTP GET request to a given URL and retries the request
+    if the page is not successfully retrieved.
+
+    The function attempts to access the requested page up to the specified
+    number of retries. If a request returns HTTP status code 200, the
+    response is immediately returned. Otherwise, the function waits
+    three seconds before trying again.
+
+    Parameters:
+        url (str): URL of the page to be requested.
+        headers (dict): HTTP headers used when sending the request.
+        retries (int): Maximum number of request attempts. Defaults to 5.
+
+    Returns:
+        requests.Response: The successful response, or the response from
+        the final attempt if all retries fail.
+    """
+    for attempt in range(retries):
+        response = requests.get(url, headers=headers)
+
+        if response.status_code == 200:
+            return response
+
+        time.sleep(3)
+    # If every attempt fails, return the response from the final request
+    return response
+
+# ------------------------------------------------------------------
 # All available scraping functions
 # ------------------------------------------------------------------
 def get_events(headers, league, n_season, n_round):
     """
-    Scrape match events from a specific league, season, and round.
+    Extracts all match events from a specific league round on Transfermarkt.
 
-    The function accesses the Transfermarkt matchday page and extracts
-    events such as goals, penalties, own goals, missed penalties, and
-    red cards. Each event is associated with its season, match, team,
-    minute, type, and player.
+    The function accesses the Transfermarkt matchday page for the selected
+    league, season, and round. It collects the events registered for each
+    match, including player information, event type, score at the time of
+    the event, and the minute in which the event occurred.
 
-    Parameters
-    ----------
-    headers : dict
-        HTTP headers used in the request to Transfermarkt.
+    Parameters:
+        headers (dict): HTTP headers used when sending the request.
+        league (str): League identifier used in the Transfermarkt URL.
+        n_season (int): Starting year of the season.
+        n_round (int): Round number to be scraped.
 
-    league : str
-        League name used in the Transfermarkt URL and as a key in the
-        all_leagues dictionary.
-
-    n_season : int
-        Starting year of the season.
-
-    n_round : int
-        Round number to be scraped.
-
-    Returns
-    -------
-    list
-        A list containing the event records. The first element contains
-        the column names, while the remaining elements contain the
-        extracted event data.
+    Returns:
+        list: A list of dictionaries where each dictionary represents
+        one match event.
     """
-    # Initialize the output list and identifier counters
-    events_list = []
-    count_event = 0
-    n_match = 0
+    # Build the Transfermarkt URL for the selected league, season, and round
+    # Request the page and create a BeautifulSoup object for HTML parsing
+    url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
+    response = get_page(url, headers)
+    soup = BeautifulSoup(response.content, "lxml")
 
-    # Create a unique identifier for the selected league and season
+    # Find the tables containing the matches from the selected round
+    all_matches = soup.find_all('table',{'style':'border-top: 0 !important;'})
+
+    # Create a unique identifier for the season
     season_id = f'{all_leagues[league]}-{n_season}'
-    
-    # Build the matchday URL and parse the page content
+
+    # Store all extracted match events
+    output_list = []
+
+    # Iterate through every match in the round
+    for m, match in enumerate(all_matches):
+        # Create a unique identifier for the match
+        match_id = f'M-{n_season}-{n_round:02d}-{m+1:02d}'
+        # Extract the URL of the match page
+        match_url = match.find('td',{'class':'spieltagsansicht-ergebnis'}).find('a').get('href')
+
+        # Find all rows containing events from the current match
+        match_event = match.find_all('tr',{'class':'no-border spieltagsansicht-aktionen'})
+        # Extract information from each event
+        for event in match_event:
+            # PLAYER INFORMATION
+
+            # Extract the player's Transfermarkt URL
+            player_url = event.find('td',{'class':'spieltagsansicht'}).find('a').get('href')
+            # Extract the player ID from the end of the URL
+            player_id = int(player_url.split('/')[-1])
+            # Extract the player's name from the link title
+            player_name = event.find('td',{'class':'spieltagsansicht'}).find('a').get('title')
+
+            # EVENT INFORMATION
+
+            # Identify the event type from the icon's CSS class
+            event_type = event.find('span',{'class':'icons_sprite'}).get('class')[-1]
+            # Check whether a score is associated with the event
+            check = event.find('td',{'class':'zentriert hauptlink'})
+            # Store the score when available
+            event_score = None if check == None else check.string
+
+            # EVENT TIME INFORMATION
+
+            # Transfermarkt stores event times in different columns
+            # depending on whether the event belongs to the home or away team
+            home='links'
+            away='rechts'
+
+            # Helper function for extracting the time value from either column
+            check = lambda x: event.find('td',{'class':f'zentriert no-border-{x}'}).string
+            # Select the column containing the actual event time
+            event_time_label = check(away) if check(home) == '\xa0' else check(home)
+
+            # Remove the apostrophe and separate regular and stoppage time
+            time_list = re.sub("[']",'', event_time_label).split('+')
+            # Extract the regular match minute
+            event_time_minute = int(time_list[0])
+            # Extract stoppage time when available, otherwise default to zero
+            event_time_extra = int(time_list[-1]) if len(time_list) > 1 else 0
+
+            # Combine all extracted values into a single event record
+            temp = {
+                'season_id': season_id,
+                'match_id': match_id,
+                'match_url': match_url,
+                'player_url': player_url,
+                'player_id': player_id,
+                'player_name': player_name,
+                'event_type': event_type,
+                'event_score': event_score,
+                'event_time_label': event_time_label,
+                'event_time_minute': event_time_minute,
+                'event_time_extra': event_time_extra
+            }
+
+            # Add the event record to the final output
+            output_list.append(temp)
+    # Return all events extracted from the selected round
+    return output_list
+
+def get_matches(headers, league, n_season, n_round):
+    """
+    Extracts information about all matches from a specific league round
+    on Transfermarkt.
+
+    The function accesses the Transfermarkt matchday page for the selected
+    league, season, and round. For each match, it collects information about
+    the home and away teams, final result, match date, referee, attendance,
+    kickoff time, and the corresponding Transfermarkt match URL.
+
+    Parameters:
+        headers (dict): HTTP headers used when sending the request.
+        league (str): League identifier used in the Transfermarkt URL.
+        n_season (int): Starting year of the season.
+        n_round (int): Round number to be scraped.
+
+    Returns:
+        list: A list of dictionaries where each dictionary contains
+        information about one match from the selected round.
+    """
+    # Build the Transfermarkt URL for the selected league, season, and round
+    # Request the page and create a BeautifulSoup object for HTML parsing
     url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
-    response = requests.get(url, headers=headers)
+    response = get_page(url, headers)
     soup = BeautifulSoup(response.content, "lxml")
 
-    # Find all tables containing individual match information
-    all_matches = soup.find_all('table', {'style':'border-top: 0 !important;'})
-    
-    # Process each match found on the page
-    for match in all_matches:
-        # Create a sequential identifier for the current match
-        n_match += 1
-        match_id = f'M-{n_season}-{n_round:02d}-{n_match:02d}'
-        
-        # Find all event rows associated with the current match
-        event = match.find_all('tr', {'class':'no-border spieltagsansicht-aktionen'})
+    # Find all tables containing matches from the selected round
+    all_matches = soup.find_all('table',{'style':'border-top: 0 !important;'})
 
-        # Locate the HTML containers holding the home and away team names
-        gross_h_team = match.find('td', {'class':'rechts hauptlink no-border-rechts hide-for-small spieltagsansicht-vereinsname'})
-        gross_a_team = match.find('td', {'class':'hauptlink zentriert no-border-rechts no-border-links hide-for-small spieltagsansicht-wappen'})
+    # CSS classes used to identify the home and away team cells
+    home_team = 'hauptlink zentriert no-border-links no-border-rechts hide-for-small spieltagsansicht-wappen'
+    away_team = 'hauptlink zentriert no-border-rechts no-border-links hide-for-small spieltagsansicht-wappen'
 
-        # Check whether an additional forum link appears before the team link
-        home_forum_check = gross_h_team.find('a').get('href')
-        away_forum_check = gross_a_team.find('a').get('href')
+    # Create a unique identifier for the season
+    season_id = f'{all_leagues[league]}-{n_season}'
 
-        # Extract team names while accounting for optional forum links
-        if 'forum' in home_forum_check and 'forum' in away_forum_check:
-            h_team = gross_h_team.find_all('a')[1].get('title')
-            a_team = gross_a_team.find_all('a')[1].get('title')
-        elif 'forum' in home_forum_check:
-            h_team = gross_h_team.find_all('a')[1].get('title')
-            a_team = gross_a_team.find('a').get('title')
-        elif 'forum' in away_forum_check:
-            h_team = gross_h_team.find('a').get('title')
-            a_team = gross_a_team.find_all('a')[1].get('title')
-        else:
-            h_team = gross_h_team.find('a').get('title')
-            a_team = gross_a_team.find('a').get('title')
+    # Store the information extracted from each match
+    output_list = []
 
-        # Process each event recorded for the current match
-        for row in event:
-            # Start a new record with its season and match identifiers
-            temp = []
-            temp.append(season_id)
-            temp.append(match_id)
+    # Iterate through every match found in the round
+    for m, match in enumerate(all_matches):
+        # Create a unique identifier for the current match
+        match_id = f'M-{n_season}-{n_round:02d}-{m+1:02d}'
+        # Extract the URL of the individual match page
+        match_url = match.find('td',{'class':'spieltagsansicht-ergebnis'}).find('a').get('href')
 
-            # Create a unique sequential identifier for the event
-            count_event += 1
-            event_id = f"E-{n_season}-{n_round:02d}-{count_event:04d}"
-            temp.append(event_id)
+        # AWAY TEAM INFORMATION
 
-            # Transfermarkt separates home and away team events
-            try: 
-                # Extract event information from the home-team side
-                event_type = row.find('td', {'class':'rechts no-border-rechts spieltagsansicht'}).find_all('span')[2].get('class')[1]
-                event_minute = row.find('td', {'class':'zentriert no-border-links'}).string
-                temp.append(h_team)
-                temp.append(event_minute)
-            
-            except: 
-                # Extract event information from the away-team side
-                event_type = row.find('td', {'class':'links no-border-links spieltagsansicht'}).find('span').get('class')[1]
-                event_minute = row.find('td', {'class':'zentriert no-border-rechts'}).string
-                temp.append(a_team)
-                temp.append(event_minute)
+        # Locate the cell containing the away team information
+        away_team_info = match.find_all('td',{'class':away_team})
+        # Extract the team's Transfermarkt URL
+        away_team_url = away_team_info[0].find('a').get('href')
+        # Extract the team ID from the Transfermarkt URL
+        away_team_id = int(away_team_url.split('/')[-3])
+        # Extract the official team name
+        away_team_name = away_team_info[0].find('a').get('title')
 
-            # Convert Transfermarkt event icons into numeric event codes
-            if event_type == 'icon-tor-formation': temp.append(1) # Regular goal
-            elif event_type == 'icon-elfmeter-formation': temp.append(2) # Penalty Goal
-            elif event_type == 'icon-eigentor-formation': temp.append(3) # Own Goal
-            elif event_type == 'icon-verschossener-elfmeter-formation': temp.append(-1) # Missed penalty
-            elif event_type == 'icon-rotekarte-formation': temp.append(-2) # # Direct red card
-            elif event_type == 'icon-gelbrotekarte-formation': temp.append(-3) # Second yellow card
-            else: temp.append(0) # Unmapped or exceptional event
+        # HOME TEAM INFORMATION
 
-            # Extract the player responsible for the event
-            player = row.find('a').get('title')
-            temp.append(player)    
-
-            # Add the completed event record to the output list
-            events_list.append(temp)
-
-    # Add column names as the first row of the returned dataset
-    events_list.insert(0,['season_id', 'match_id', 'event_id','event_team','event_minute','event_type', 'event_player'])
-    return events_list
-
-def get_match(headers, league, n_season, n_round):
-    """
-    Scrape all matches from a specific league round.
-
-    The function accesses the Transfermarkt matchday page and extracts
-    general information for every match, including the participating
-    teams, final score, match date, referee, and attendance.
-
-    Parameters
-    ----------
-    headers : dict
-        HTTP headers used in the request to Transfermarkt.
-
-    league : str
-        League name used in the Transfermarkt URL and as a key in the
-        all_leagues dictionary.
-
-    n_season : int
-        Starting year of the season.
-
-    n_round : int
-        Round number to be scraped.
-
-    Returns
-    -------
-    list
-        A list containing one record per match. The first element
-        contains the column names, while the remaining elements contain
-        the extracted match data.
-    """
-    # Initialize the output list and match counter
-    all_rounds = []
-    n_match = 0
-
-    # Build the matchday URL and parse the page content
-    url = f'https://www.transfermarkt.com/{league}/spieltag/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.content, "lxml")
-    
-    # Locate all tables containing match information
-    all_information = soup.find_all('table', {'style':'border-top: 0 !important;'})
-
-    # Process each match individually
-    for row in all_information:
-        # Start a new record and a sequential identifier for the current match
-        temp = []
-        n_match += 1
-
-        # Create unique identifiers for the season, round, and match
-        season_key = f'{all_leagues[league]}-{n_season}'
-        match_key = f'M-{n_season}-{n_round:02d}-{n_match:03d}'
-
-        if n_round < 10: round_key = f'R-{n_season}-0' + str(n_round)
-        else: round_key = f'R-{n_season}-' + str(n_round)
-
-        temp.append(season_key)
-        temp.append(round_key)
-        temp.append(match_key)
-
-        # Locate the HTML elements containing the home and away team names
-        gross_home_team = row.find('td', {'class':'rechts hauptlink no-border-rechts hide-for-small spieltagsansicht-vereinsname'})
-        gross_away_team = row.find('td', {'class':'hauptlink zentriert no-border-rechts no-border-links hide-for-small spieltagsansicht-wappen'})
-
-        # Check whether an additional forum link appears before the team link
-        home_forum_check = gross_home_team.find('a').get('href')
-        away_forum_check = gross_away_team.find('a').get('href')
-
-        # Extract team names while accounting for optional forum links
-        if 'forum' in home_forum_check and 'forum' in away_forum_check:
-            home_team = gross_home_team.find_all('a')[1].get('title')
-            away_team = gross_away_team.find_all('a')[1].get('title')
-        elif 'forum' in home_forum_check:
-            home_team = gross_home_team.find_all('a')[1].get('title')
-            away_team = gross_away_team.find('a').get('title')
-        elif 'forum' in away_forum_check:
-            home_team = gross_home_team.find('a').get('title')
-            away_team = gross_away_team.find_all('a')[1].get('title')
-        else:
-            home_team = gross_home_team.find('a').get('title')
-            away_team = gross_away_team.find('a').get('title')
+        # Locate the cell containing the home team information
+        home_team_info = match.find_all('td',{'class':home_team})
+        # Extract the team's Transfermarkt URL
+        home_team_url = home_team_info[0].find('a').get('href')
+        # Extract the team ID from the Transfermarkt URL
+        home_team_id = int(home_team_url.split('/')[-3])
+        # Extract the official team name
+        home_team_name = home_team_info[0].find('a').get('title')
 
         # Extract the final score of the match
-        final_score = row.find('span', {'class':'matchresult finished'}).string
+        match_result = match.find('span',{'class':'matchresult finished'}).string
 
-        # Store the main match information
-        temp.append(home_team)
-        temp.append(final_score)
-        temp.append(away_team)
+        # ADDITIONAL MATCH INFORMATION
 
-        # Additional match information is stored in separate table cells
-        adicional_info = row.find_all('td', {'class':'zentriert no-border'})
+        # Locate the cells containing date, referee, attendance, and time data
+        match_info = match.find_all('td',{'class':'zentriert no-border'})
 
-        # Extract the date, referee, and attendance
-        for i, item in enumerate(adicional_info):
-            # Attendance requires different handling because it may contain extra text besides the numeric value
-            if i == 2:
-                attendance = next(item.stripped_strings, '0.0')
-                temp.append(int(attendance.replace('.', '')))
-            
-            # Date and referee are stored as hyperlink text
-            else:
-                day_ref = item.find('a').string
-                temp.append(day_ref.strip())
+        # Extract the match date from the URL linked to the date
+        match_day = match_info[0].find('a').get('href').split('/')[-1]
+        # Extract the referee's name
+        match_referee = match_info[1].find('a').string
+        # Extract the attendance value as displayed on the page
+        match_attendance = match_info[2].get_text().strip()
+        # Remove the thousands separator and convert attendance to an integer
+        match_attendance = int(re.sub('[.]','', match_attendance).split(' ')[0])
+        # Extract the kickoff time text located after the match date link
+        # Separate the kickoff time from its AM/PM period
+        time_info = match_info[0].find('a').next_sibling.strip().removeprefix('-').strip().split(' ')
+        match_time = time_info[0]
+        match_time_period = time_info[-1]
 
-        # Store the completed match record
-        all_rounds.append(temp)
+        # Combine all extracted values into a single match record
+        temp = {
+            'season_id': season_id,
+            'match_id': match_id,
+            'match_url': match_url,
+            'home_team_url': home_team_url,
+            'home_team_id': home_team_id,
+            'home_team_name': home_team_name,
+            'match_result': match_result,
+            'away_team_url': away_team_url,
+            'away_team_id': away_team_id,
+            'away_team_name': away_team_name,
+            'match_day': match_day,
+            'match_referee': match_referee,
+            'match_attendance': match_attendance,
+            'match_time': match_time,
+            'match_time_period': match_time_period
+        }
 
-    # Add the column names as the first row
-    all_rounds.insert(0,['season_id','round_id', 'match_id', 'home_team', 'final_score', 'away_team', 'date', 'referee', 'attendance'])
-    return all_rounds
+        # Add the current match record to the final output
+        output_list.append(temp)
+    # Return all matches extracted from the selected round
+    return output_list
 
 def get_placements(headers, league, n_season, n_round):
     """
-    Scrape the league standings after a specific round.
+    Extracts the league table standings for a specific round and season
+    from Transfermarkt.
 
-    The function accesses the Transfermarkt standings page for the
-    selected matchday and extracts each team's league position and
-    performance statistics, including matches played, wins, draws,
-    losses, goals, goal difference, and points.
+    The function accesses the standings page for the selected league,
+    season, and round. For each team, it collects its current position,
+    team information, matches played, wins, draws, losses, goals,
+    goal difference, and total points.
 
-    Parameters
-    ----------
-    headers : dict
-        HTTP headers used in the request to Transfermarkt.
+    Parameters:
+        headers (dict): HTTP headers used when sending the request.
+        league (str): League identifier used in the Transfermarkt URL.
+        n_season (int): Starting year of the season to be scraped.
+        n_round (int): Round number used to retrieve the standings.
 
-    league : str
-        League name used in the Transfermarkt URL and as a key in the
-        all_leagues dictionary.
-
-    n_season : int
-        Starting year of the season.
-
-    n_round : int
-        Round number whose standings will be retrieved.
-
-    Returns
-    -------
-    list
-        A list containing the league standings. The first element
-        contains the column names, while the remaining elements contain
-        one record for each team.
+    Returns:
+        list: A list of dictionaries where each dictionary contains
+        the league-table information for one team after the selected round.
     """
-    # Initialize the output list
-    all_placements = []
-    
-    # Build the standings URL and parse the page
+    # Build the Transfermarkt standings URL for the selected league, season, and round
+    # Request the page and create a BeautifulSoup object for HTML parsing
     url = f'https://www.transfermarkt.com/{league}/spieltagtabelle/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/spieltag/{n_round}'
-    response = requests.get(url,headers=headers)
-    soup = BeautifulSoup(response.content,'lxml')
+    response = get_page(url, headers)
+    soup = BeautifulSoup(response.content, "lxml")
 
-    # The third table body contains the league standings
-    info = soup.find_all('tbody')
-    table_info = info[2].find_all('tr')
+    # Locate the tables containing the league standings
+    # Extract all rows from the main standings table
+    all_info = soup.find_all('table',{'class':'items'})
+    table_info = all_info[0].find_all('tr')
 
-    # Process each team in the standings
-    for i,row in enumerate(table_info):
-        temp = []
+    # Create a unique identifier for the selected league and season
+    season_id = f'{all_leagues[league]}-{n_season}'
 
-        # Create identifiers for the season and round
-        season_key = f'{all_leagues[league]}-{n_season}'
-        round_key = f'R-{n_season}-{n_round:02d}'
+    # Store the standings information for all teams
+    output_list = []
 
-        # League position corresponds to the row order
-        placement = i+1
+    # Skip the first row because it contains the table headers,
+    # then process each team according to its current table position
+    for i, row in enumerate(table_info[1:]):
+        # TEAM INFORMATION
 
-        # Extract the team name
-        team = row.find('a').get('title')
-        
-        temp.append(season_key)
-        temp.append(round_key)
-        temp.append(placement)
-        temp.append(team)
+        # Locate the cell containing the team's name and profile link
+        team_info = row.find('td',{'class':'no-border-links hauptlink'})
 
-        # Extract the team's statistics:
-        # matches, wins, draws, losses, goals,
-        # goal difference, and points
-        team_info = row.find_all('td', {'class':'zentriert'})
-        for i, item in enumerate(team_info):
-            # Skip the first centered cell since it does not contain one of the desired statistics
-            if i == 0: continue
-            temp.append(item.string)
+        # Extract the team's Transfermarkt profile URL
+        team_url = team_info.find('a').get('href')
+        # Extract the Transfermarkt team ID from the profile URL
+        team_id = int(team_url.split('/')[-3])
+        # Extract the team name from the link title
+        team_name = team_info.find('a').get('title')
 
-        # Store the completed standings record
-        all_placements.append(temp)
+        # STANDINGS INFORMATION
 
-    # Add the column names as the first row
-    all_placements.insert(0,['season_id','round_id','placement','team_name','matches','wins','draws','losses','goals','goal_dif','points'])
-    return all_placements
+        # Locate the cells containing the team's statistical information
+        stats_info = row.find_all('td',{'class':'zentriert'})
+
+        # Extract the statistics in the same order in which they appear
+        # in the standings table. The first centered cell is excluded
+        # because it does not belong to these performance statistics.
+        (
+            matches_played,
+            matches_won,
+            matches_draw,
+            matches_losses,
+            matches_goals,
+            goals_dif,
+            points
+        ) = [stat.string for stat in stats_info[1:8]]
+
+        # Combine the team information and statistics into a single record
+        temp = {
+            'season_id': season_id,
+            'team_url': team_url,
+            'team_id': team_id,
+            'team_name': team_name,
+            'position': i+1,
+            'matches_played': int(matches_played),
+            'matches_won': int(matches_won),
+            'matches_draw': int(matches_draw),
+            'matches_losses': int(matches_losses),
+            'matches_goals': matches_goals,
+            'goals_dif': int(goals_dif),
+            'points': int(points)
+        }
+
+        # Add the current team's standings record to the final output
+        output_list.append(temp)
+    # Return the complete league table for the selected round
+    return output_list
 
 def get_squad(headers, league, n_season):
     """
-    Scrape squad information for every team in a league season.
+    Extracts squad and market value information for every team in a
+    specific league and season from Transfermarkt.
 
-    The function accesses the Transfermarkt league overview page and
-    extracts general squad information for each club, including the
-    estimated market value, squad size, average age, and number of
-    foreign players.
+    The function accesses the league overview page and collects information
+    about each team, including the team name, Transfermarkt ID, squad size,
+    average player age, number of foreign players, and total market value.
+    The displayed market value is also converted into a numeric integer
+    value to simplify future analysis.
 
-    Market values are converted from Transfermarkt's abbreviated format
-    (e.g., €895.50m or €1.25bn) into numeric values.
+    Parameters:
+        headers (dict): HTTP headers used when sending the request.
+        league (str): League identifier used in the Transfermarkt URL.
+        n_season (int): Starting year of the season to be scraped.
 
-    Parameters
-    ----------
-    headers : dict
-        HTTP headers used in the request to Transfermarkt.
-
-    league : str
-        League name used in the Transfermarkt URL and as a key in the
-        all_leagues dictionary.
-
-    n_season : int
-        Starting year of the season.
-
-    Returns
-    -------
-    list
-        A list containing one record for each team. The first element
-        contains the column names, while the remaining elements contain
-        the extracted squad information.
+    Returns:
+        list: A list of dictionaries where each dictionary contains
+        squad and market value information for one team.
     """
-    # Initialize the output list
-    all_squads = []
-
-    # Build the league overview URL and parse the page
+    # Build the Transfermarkt league overview URL for the selected season
+    # Request the page and create a BeautifulSoup object for HTML parsing
     url = f'https://www.transfermarkt.com/{league}/startseite/wettbewerb/{all_leagues[league]}/plus/?saison_id={n_season}'
-    response = requests.get(url, headers=headers)
+    response = get_page(url, headers)
     soup = BeautifulSoup(response.content, "lxml")
 
-    # The first table contains the league overview
-    tables = soup.find_all('table', {'class':'items'})
-    main_table = tables[0]
+    # Create a unique identifier for the selected league and season
+    season_id = f'{all_leagues[league]}-{n_season}'
 
-    # Team rows are split between "odd" and "even" classes
-    even_info = main_table.find_all('tr', {'class':'even'})
-    odd_info = main_table.find_all('tr', {'class':'odd'})
+    # Locate all tables with the "items" class on the league overview page
+    all_info = soup.find_all('table',{'class':'items'})
 
-    # Combine all rows into a single iterable
-    info = odd_info + even_info
+    # Store the extracted information for all teams
+    output_list = []
 
-    # Create the season identifier
-    season_key = f'{all_leagues[league]}-{n_season}'
+    # Extract all team rows from the main league table
+    table_info = all_info[0].find_all('tr',{'class':['odd','even']})
 
-    # Process each team
-    for row in info:
-        temp = []
-        temp.append(season_key)
+    # Process each team in the league
+    for row in table_info:
 
+        # TEAM INFORMATION
+
+        # Locate all links contained in the current team row
+        team_info = row.find_all('a')
+
+        # Extract the team's Transfermarkt profile URL
+        team_url = team_info[0].get('href')
+        # Extract the Transfermarkt team ID from the profile URL
+        team_id = int(team_url.split('/')[-3])
         # Extract the team name
-        team_name = row.find('a').get('title')
-        
-        # The position of the market value link changes depending on whether an additional hidden link is present
-        if row.find_all('a')[2].get('href') == '#': team_value = row.find_all('a')[-1].string
-        else: team_value = row.find_all('a')[3].string
+        team_name = team_info[1].string
+        # Extract the number of players registered in the squad
+        team_squad = int(team_info[-2].string)
+        # Extract the team's total market value as displayed by Transfermarkt
+        team_value = team_info[-1].string
 
-        # Convert Transfermarkt abbreviations into numeric values
-        # 'm' -> millions (e.g., €895.50m)
-        # 'n' -> billions (e.g., €1.25bn)
-        if team_value[-1] == 'm': 
-            team_value = team_value[1:-1]+'0.000'
-            team_value = float(team_value.replace(".", ""))
-        elif team_value[-1] == 'n': 
-            team_value = team_value[1:-2]+'0.000.000'
-            team_value = float(team_value.replace(".", ""))
+        # Identify the abbreviation used in the market value
+        # (bn = billion, m = million, k = thousand)
+        abv_index = team_value[-1]
+        if abv_index == 'n': team_value_int = int(float(team_value.replace('€', '').replace('bn', '')) * 1_000_000_000)
+        elif abv_index == 'm': team_value_int = int(float(team_value.replace('€', '').replace('m', '')) * 1_000_000)
+        elif abv_index == 'k': team_value_int = int(float(team_value.replace('€', '').replace('k', '')) * 1_000)
+        else: team_value_int = int(team_value.replace('€', ''))
 
-        temp.append(team_name)
-        temp.append(team_value)
+        # ADDITIONAL SQUAD INFORMATION
 
-        # Extract additional squad statistics:
-        # squad size, average age, and number of foreign players
-        squad_info = row.find_all('td', {'class':'zentriert'})
-        for i, item in enumerate(squad_info):
-            # Skip the first centered cell since it is not required
-            if i != 0: temp.append(item.string)
+        # Locate the centered cells containing age and foreign-player data
+        add_info = row.find_all('td',{'class':'zentriert'})
+        # Extract the average age of the squad
+        team_avg_age = float(add_info[-2].string)
+        # Extract the number of foreign players in the squad
+        team_foreigners = int(add_info[-1].string)
 
-        # Store the completed team record
-        all_squads.append(temp)
+        # Combine all extracted values into a single team record
+        temp = {
+            'season_id': season_id,
+            'team_url': team_url,
+            'team_id': team_id,
+            'team_name': team_name,
+            'team_squad': team_squad,
+            'team_value': team_value,
+            'team_value_int': team_value_int,
+            'team_avg_age': team_avg_age,
+            'team_foreigners': team_foreigners
+        }
 
-    # Add the column names as the first row
-    all_squads.insert(0, ['season_id', 'team_name','team_value','team_squad','team_avg_age','team_foreigners'])
-    return all_squads
+        # Add the current team record to the final output
+        output_list.append(temp)
+    # Return squad information for all teams in the selected season
+    return output_list
 
 def get_title(headers, league):
     """
-    Scrape league title winners by season.
+    Extracts the championship history for a specific league from Transfermarkt.
 
-    The function accesses the Transfermarkt honours page for a league
-    and extracts the champion club and its manager for every season.
-    The scraping stops at the 1991/92 season, which marks the beginning
-    of the current Premier League format.
+    The function accesses the league's title-history page and collects
+    information about each championship season, including the winning team,
+    the team's Transfermarkt ID and URL, and the manager responsible for
+    the title. The extraction stops after the 1992/93 season.
 
-    Parameters
-    ----------
-    headers : dict
-        HTTP headers used in the request to Transfermarkt.
+    Parameters:
+        headers (dict): HTTP headers used when sending the request.
+        league (str): League identifier used in the Transfermarkt URL.
 
-    league : str
-        League name used in the Transfermarkt URL and as a key in the
-        all_leagues dictionary.
-
-    Returns
-    -------
-    list
-        A list containing one record per league title. The first
-        element contains the column names, while the remaining elements
-        contain the extracted title information.
+    Returns:
+        list: A list of dictionaries where each dictionary represents
+        one championship season and its corresponding winner and manager.
     """
-    # Initialize the output list
-    titles = []
-
-    # Build the honours page URL and parse the page
+    # Build the Transfermarkt URL containing the league's title history
+    # Request the page and create a BeautifulSoup object for HTML parsing
     url = f'https://www.transfermarkt.com/{league}/erfolge/wettbewerb/{all_leagues[league]}'
-    response = requests.get(url, headers=headers)
+    response = get_page(url, headers)
     soup = BeautifulSoup(response.content, "lxml")
 
-    # The first table body contains the list of league champions
-    all_info = soup.find_all('tbody')
-    info = all_info[0].find_all('tr')
+    # Locate the table containing the championship history
+    all_info = soup.find_all('table',{'class':'items'})
+    # Extract all season rows from the title-history table
+    table_info = all_info[0].find_all('tr',{'class':['odd','even']})
 
-    # Process each championship-winning season
-    for row in info:
-        temp = []
+    # Store the extracted championship records
+    output_list = []
 
-        # Extract the season label (e.g., "24/25")
-        season = row.find('td', {'class':'zentriert'}).string
-        # Stop at the first Premier League season of the current format
-        # (consider making this configurable for other leagues)
-        if season == '91/92': break
-        
-        # Convert the abbreviated season into its starting year
-        x = int(season.split('/')[0])
-        if x > 90: n_season = x+1900
-        else: n_season = x+2000
+    # Process each championship season
+    for row in table_info:
 
-        # Create the season identifier
-        season_key = f'{all_leagues[league]}-{n_season}'
-        
-        temp.append(season_key)
-        temp.append(season)
+        # TEAM AND MANAGER INFORMATION
 
-        # Extract champions statistics:
-        # team name, manager name
-        team_manager = row.find_all('a')
+        # Locate all links containing team and manager information
+        team_info = row.find_all('a')
 
-        for i, item in enumerate(team_manager):
-            if i == 0: continue
-            temp.append(item.string)
-        
-        # Store the completed title record
-        titles.append(temp)
+        # Extract the winning team's Transfermarkt URL
+        team_url = team_info[0].get('href')
+        # Extract the team's Transfermarkt ID from its URL
+        team_id = team_url.split('/')[-3]
+        # Extract the name of the championship-winning team
+        team_name = team_info[1].string
+        # Extract the manager's Transfermarkt profile URL
+        manager_url = team_info[2].get('href')
+        # Extract the manager ID stored in the HTML element
+        manager_id = team_info[2].get('id')
+        # Extract the manager's name
+        manager_name = team_info[2].string
 
-    # Add the column names as the first row
-    titles.insert(0,['season_id', 'season_name','team_name', 'manager_name'])
-    return titles
+        # SEASON INFORMATION
 
-def get_table(headers, league, n_season):
-    """
-    Scrape the final league table for a specific season.
+        # Locate the centered table cells containing season information
+        add_info = row.find_all('td',{'class':'zentriert'})
+        # Extract the displayed season label, such as "23/24"
+        season_name = add_info[0].string
+        # Extract the season starting year from the team URL
+        season = team_url.split('/')[-1]
+        # Create a unique identifier combining league and season
+        season_id = f'{all_leagues[league]}-{season}'
 
-    The function accesses the Transfermarkt standings page and extracts
-    the final league position and season statistics for every team,
-    including matches played, wins, draws, losses, goals, goal
-    difference, and points.
+        # Combine all extracted values into a single title record
+        temp = {
+            'season_id': season_id,
+            'season_name': season_name,
+            'team_url': team_url,
+            'team_id': team_id,
+            'team_name': team_name,
+            'manager_url': manager_url,
+            'manager_id': manager_id,
+            'manager_name': manager_name
+        }
 
-    Parameters
-    ----------
-    headers : dict
-        HTTP headers used in the request to Transfermarkt.
+        # Add the current championship record to the final output
+        output_list.append(temp)
 
-    league : str
-        League name used in the Transfermarkt URL and as a key in the
-        all_leagues dictionary.
+        # Stop after the first Premier League season,
+        # excluding records from before the competition was created
+        if season_name == '92/93': break
 
-    n_season : int
-        Starting year of the season.
+    # Return the championship history from 1992/93 onward
+    return output_list
 
-    Returns
-    -------
-    list
-        A list containing one record per team. The first element
-        contains the column names, while the remaining elements contain
-        the extracted final league table.
-    """
-    # Initialize the output list
-    final_placement = []
-
-    # Build the final standings URL and parse the page
-    url = f'https://www.transfermarkt.com/{league}/tabelle/wettbewerb/{all_leagues[league]}/saison_id/{n_season}'
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.content, "lxml")
-
-    # The second table body contains the final league standings
-    all_info = soup.find_all('tbody')
-    info = all_info[1].find_all('tr')
-
-    # Create the season identifier
-    season_key = f'{all_leagues[league]}-{n_season}'
-
-    # Process each team in the final league table
-    for i,row in enumerate(info):
-        temp = []
-        temp.append(season_key)
-
-        # League position corresponds to the row order
-        position = i+1
-        # Extract the team name
-        team = row.find('a').get('title')
-
-        temp.append(position)
-        temp.append(team)
-
-        # Extract the team's season statistics:
-        # matches played, wins, draws, losses, goals, goal difference, and points
-        data_info = row.find_all('td', {'class':'zentriert'})
-
-        # Skip the first centered cell since it is not part of the desired statistics
-        for i, item in enumerate(data_info):
-            if i == 0: continue
-            temp.append(item.string)
-        
-        # Store the completed team record
-        final_placement.append(temp)
-
-    # Add the column names as the first row
-    final_placement.insert(0,['season_id', 'pos','team_name','played','wins','draws','losses','goals','goal_dif','points'])
-    return final_placement
-
-# ------------------------------------------------------------------
-# get_top_scorers() function
-# ------------------------------------------------------------------
 def get_top_scorers(headers, league, n_season):
     """
-    Scrape the top scorers ranking for a specific league season.
+    Extracts the complete top-scorers leaderboard for a specific league
+    and season from Transfermarkt.
 
-    The function accesses the Transfermarkt top scorers page and
-    extracts every player's ranking, nationality, age, club, matches
-    played, and goals scored. Since the ranking spans multiple pages,
-    the function first determines the total number of pages and then
-    iterates through each one.
+    The function first accesses the first page of the top-scorers ranking
+    to determine how many pages are available. It then iterates through
+    every leaderboard page and extracts player, team, nationality,
+    ranking, matches played, and goals information.
 
-    Parameters
-    ----------
-    headers : dict
-        HTTP headers used in the request to Transfermarkt.
+    Parameters:
+        headers (dict): HTTP headers used when sending requests to Transfermarkt.
+        league (str): League identifier used in the Transfermarkt URL.
+        n_season (int): Starting year of the season to be scraped.
 
-    league : str
-        League name used in the Transfermarkt URL and as a key in the
-        all_leagues dictionary.
-
-    n_season : int
-        Starting year of the season.
-
-    Returns
-    -------
-    list
-        A list containing one record per player. The first element
-        contains the column names, while the remaining elements contain
-        the extracted top scorer information.
+    Returns:
+        list: A list of dictionaries where each dictionary contains
+        information about one player from the top-scorers leaderboard.
     """
-    # Initialize the output list
-    top_scorers = []
-
-    # Access the first page of the top scorers ranking
+    # Build the URL for the first page of the selected season's top-scorers ranking
+    # Request the first page and create a BeautifulSoup object for HTML parsing
     url = f'https://www.transfermarkt.com/{league}/torschuetzenliste/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/altersklasse/alle/detailpos//page/1'
-    response = requests.get(url, headers=headers)
-    soup = BeautifulSoup(response.content,'lxml')
+    response = get_page(url, headers)
+    soup = BeautifulSoup(response.content, "lxml")
 
-    # Determine the total number of ranking pages
+    # Locate the pagination section to determine the total number of pages
     pages_info = soup.find_all('div', {'class':'pager'})
+    # Find the link that points to the final leaderboard page
     last_page_link = pages_info[0].find_all('li',{'class':'tm-pagination__list-item tm-pagination__list-item--icon-last-page'})
+    # Extract the last page number from the URL
     last_page_number = last_page_link[0].find('a').get('href').split('/')[-1]
 
+    # Store all players extracted from the leaderboard
+    output_list = []
 
-    # Process every page of the ranking
+    # Iterate through every page of the top-scorers ranking
     for n_page in range(1,int(last_page_number)+1):
+        # Build the URL for the current leaderboard page
+        # Request and parse the current page
         url = f'https://www.transfermarkt.com/{league}/torschuetzenliste/wettbewerb/{all_leagues[league]}/saison_id/{n_season}/altersklasse/alle/detailpos//page/{n_page}'
-        response = requests.get(url, headers=headers)
-        soup = BeautifulSoup(response.content,'lxml')
-        
-        # The second table contains the player rankings
-        all_info = soup.find_all('table')
+        response = get_page(url, headers)
+        soup = BeautifulSoup(response.content, "lxml")
 
-        # Transfermarkt separates rows into "odd" and "even" classes
-        odd_info = all_info[1].find_all('tr',{'class':'odd'})
-        even_info = all_info[1].find_all('tr',{'class':'even'})
+        # Locate the table body containing the top-scorers ranking
+        all_content = soup.find_all('tbody')
+        # Extract all player rows, which alternate between "odd" and "even"
+        content = all_content[1].find_all('tr',{'class':['odd','even']})
 
-        player_list = [odd_info,even_info]
+        # Create a unique identifier for the selected season
+        season_id = f'{all_leagues[league]}-{n_season}'
 
-        # Process every player on the current page
-        for player in player_list:
-            for row in player:
-                temp = []
+        # Process each player from the current leaderboard page
+        for row in content:
+            # Locate the centered cells containing most leaderboard information
+            td_player_info = row.find_all('td',{'class':'zentriert'})
 
-                # Extract the centered table cells containing the player's ranking statistics
-                data = row.find_all('td',{'class':'zentriert'})
+            # Extract the player's position in the top-scorers leaderboard
+            leaderboard_pos = int(td_player_info[0].string)
+            # Extract the player's nationality from the flag image
+            country_name = td_player_info[1].find('img').get('title')
+            # Extract the player's age during the selected season
+            player_age = int(td_player_info[2].string)
 
-                # Extract the relevant player information
-                pos = int(data[0].string)
-                country = data[1].find('img').get('alt')
-                age = int(data[2].string)
-                name = data[4].find('a').get('title')
-                matches = int(data[4].find('a').string)
-                goals = int(data[5].find('a').string)
+            # Check how the team information is stored in the HTML.
+            # In most cases, the team is inside an <a> tag
+            if td_player_info[3].string == None:
+                team_name = td_player_info[3].find('a').get('title')
+                team_url = td_player_info[3].find('a').get('href')
+                team_id = int(team_url.split('/')[-3])
+            else:
+                # If the team information is stored only as plain text (if the player played for more than one team),
+                # keep the displayed name and leave URL and ID unavailable
+                team_name = td_player_info[3].string
+                team_url = None 
+                team_id = 0
 
-                # Players who represented multiple clubs during the season have a different HTML structure
-                try:team = data[3].find('a').get('title')
-                except AttributeError: team = data[3].string
-                
-                # Create the season identifier
-                season_key = f'{all_leagues[league]}-{n_season}'
+            # Extract the player's name from the profile link
+            player_name = td_player_info[4].find('a').get('title')
+            # Extract the player's Transfermarkt profile URL
+            player_url = td_player_info[4].find('a').get('href')
+            # Extract the Transfermarkt player ID from the profile URL
+            player_id = int(player_url.split('/')[-5])
+            # Extract the number of matches played during the season
+            matches_played = int(td_player_info[4].string)
+            # Extract the total number of goals scored
+            goals = int(td_player_info[5].string)
 
-                # Store the player's statistics
-                temp.append(season_key)
-                temp.append(pos)
-                temp.append(country)
-                temp.append(age)
-                temp.append(name)
-                temp.append(team)
-                temp.append(matches)
-                temp.append(goals)
+            # Combine all extracted values into a single leaderboard record
+            temp = {
+                'season_id': season_id,
+                'player_url': player_url,
+                'player_id': player_id,
+                'player_name': player_name,
+                'player_age': player_age,
+                'country_name': country_name,
+                'team_url': team_url,
+                'team_id': team_id,
+                'team_name': team_name,
+                'leaderboard_pos': leaderboard_pos,
+                'matches_played': matches_played,
+                'goals': goals
+            }
 
-                # Add the completed player record to the output list
-                top_scorers.append(temp)
-    
-    # Add the column names as the first row
-    top_scorers.insert(0,['season_id','pos','country','age','player_name','team','matches','goals'])
-    return top_scorers
+            # Add the player record to the final output
+            output_list.append(temp)
+    # Return the complete top-scorers leaderboard
+    return output_list
