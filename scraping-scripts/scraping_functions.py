@@ -445,7 +445,7 @@ def get_squad(headers, league, n_season):
         if abv_index == 'n': team_value_int = int(float(team_value.replace('€', '').replace('bn', '')) * 1_000_000_000)
         elif abv_index == 'm': team_value_int = int(float(team_value.replace('€', '').replace('m', '')) * 1_000_000)
         elif abv_index == 'k': team_value_int = int(float(team_value.replace('€', '').replace('k', '')) * 1_000)
-        else: team_value_int = int(team_value.replace('-', '0'))
+        else: team_value_int = None
 
         # ADDITIONAL SQUAD INFORMATION
 
