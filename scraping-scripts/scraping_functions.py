@@ -122,8 +122,17 @@ def get_events(headers, league, n_season, n_round):
 
             # Helper function for extracting the time value from either column
             check = lambda x: event.find('td',{'class':f'zentriert no-border-{x}'}).string
-            # Select the column containing the actual event time
-            event_time_label = check(away) if check(home) == '\xa0' else check(home)
+
+            # Determine whether the event belongs to the home or away team.
+            # The empty value (\xa0) indicates that the event information is stored in the opposite column.
+            if check(home) == '\xa0':
+                event_time_label = check(away)
+                # Use the CSS class associated with the away team
+                team_link = 'hauptlink zentriert no-border-rechts no-border-links hide-for-small spieltagsansicht-wappen'
+            else: 
+                event_time_label = check(home)
+                # Use the CSS class associated with the home team
+                team_link = 'hauptlink zentriert no-border-links no-border-rechts hide-for-small spieltagsansicht-wappen'
 
             # Remove the apostrophe and separate regular and stoppage time
             time_list = re.sub("[']",'', event_time_label).split('+')
@@ -132,11 +141,24 @@ def get_events(headers, league, n_season, n_round):
             # Extract stoppage time when available, otherwise default to zero
             event_time_extra = int(time_list[-1]) if len(time_list) > 1 else 0
 
+            # Locate the team associated with the event (selected according to whether the event belongs to the home or away team)
+            team_info = match.find('td',{'class':team_link})
+
+            # Extract the team's Transfermarkt profile URL
+            team_url = team_info.find('a').get('href')
+            # Extract the Transfermarkt team ID from the profile URL
+            team_id = team_url.split('/')[-3]
+            # Extract the team name from the link title
+            team_name = team_info.find('a').get('title')
+
             # Combine all extracted values into a single event record
             temp = {
                 'season_id': season_id,
                 'match_id': match_id,
                 'match_url': match_url,
+                'team_url': team_url,
+                'team_id': team_id,
+                'team_name': team_name,
                 'player_url': player_url,
                 'player_id': player_id,
                 'player_name': player_name,
