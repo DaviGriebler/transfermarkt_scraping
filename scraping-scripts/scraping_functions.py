@@ -234,8 +234,11 @@ def get_matches(headers, league, n_season, n_round):
         match_referee = match_info[1].find('a').string
         # Extract the attendance value as displayed on the page
         match_attendance = match_info[2].get_text().strip()
-        # Remove the thousands separator and convert attendance to an integer
-        match_attendance = int(re.sub('[.]','', match_attendance).split(' ')[0])
+        # If match attendance is not null, remove the thousands separator and convert attendance to an integer
+        if match_attendance:
+            match_attendance = int(re.sub(r'[.]', '', match_attendance).split()[0])
+        else:
+            match_attendance = None
         # Extract the kickoff time text located after the match date link
         # Separate the kickoff time from its AM/PM period
         time_info = match_info[0].find('a').next_sibling.strip().removeprefix('-').strip().split(' ')
@@ -420,7 +423,7 @@ def get_squad(headers, league, n_season):
         if abv_index == 'n': team_value_int = int(float(team_value.replace('€', '').replace('bn', '')) * 1_000_000_000)
         elif abv_index == 'm': team_value_int = int(float(team_value.replace('€', '').replace('m', '')) * 1_000_000)
         elif abv_index == 'k': team_value_int = int(float(team_value.replace('€', '').replace('k', '')) * 1_000)
-        else: team_value_int = int(team_value.replace('€', ''))
+        else: team_value_int = int(team_value.replace('-', '0'))
 
         # ADDITIONAL SQUAD INFORMATION
 
