@@ -41,6 +41,8 @@ This stage includes tasks such as:
 
 The Power BI section of the project transforms the scraped data into an analytical model and interactive dashboards.
 
+> **Interactive Dashboard:** [Open the public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjllZDY4MWItYmJiNy00OWNkLTllNzYtZGJiMWRhOTg0MWVjIiwidCI6ImZhZDBiOTU3LTBjNTgtNGQ5Ny1iYmE5LTNlODJkYTNjOTE1NCJ9)
+
 The reports explore topics such as:
 
 * Goals and scoring trends
