@@ -16,7 +16,7 @@ The scraping process was designed to collect data across multiple seasons and or
 ## Projetc Preview
 > **Interactive Dashboard:** [Open the public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjllZDY4MWItYmJiNy00OWNkLTllNzYtZGJiMWRhOTg0MWVjIiwidCI6ImZhZDBiOTU3LTBjNTgtNGQ5Ny1iYmE5LTNlODJkYTNjOTE1NCJ9)
 
-![Premier League Analytics Dashboard](power-bi\images\premier-analysis_page-01.jpg)
+![Premier League Analytics Dashboard](power-bi/images/premier-analysis_page-01.jpg)
 
 ## Data Collected
 
