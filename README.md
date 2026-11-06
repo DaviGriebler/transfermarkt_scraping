@@ -13,6 +13,11 @@ The project is divided into two main stages:
 
 The scraping process was designed to collect data across multiple seasons and organize it into datasets that can be related through identifiers such as seasons, rounds, matches, teams, and players.
 
+## Projetc Preview
+> **Interactive Dashboard:** [Open the public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjllZDY4MWItYmJiNy00OWNkLTllNzYtZGJiMWRhOTg0MWVjIiwidCI6ImZhZDBiOTU3LTBjNTgtNGQ5Ny1iYmE5LTNlODJkYTNjOTE1NCJ9)
+
+![Premier League Analytics Dashboard](power-bi\images\premier-analysis_page-01.jpg)
+
 ## Data Collected
 
 The scraping scripts retrieve different types of information from Transfermarkt, including:
@@ -40,8 +45,6 @@ This stage includes tasks such as:
 ## Power BI Dashboard
 
 The Power BI section of the project transforms the scraped data into an analytical model and interactive dashboards.
-
-> **Interactive Dashboard:** [Open the public Power BI report](https://app.powerbi.com/view?r=eyJrIjoiMjllZDY4MWItYmJiNy00OWNkLTllNzYtZGJiMWRhOTg0MWVjIiwidCI6ImZhZDBiOTU3LTBjNTgtNGQ5Ny1iYmE5LTNlODJkYTNjOTE1NCJ9)
 
 The reports explore topics such as:
 
